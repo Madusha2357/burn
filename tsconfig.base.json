@@ -1,0 +1,25 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@damen/models": ["libs/models/src/index.ts"],
+      "@damen/stubs": ["libs/stubs/src/index.ts"],
+      "@damen/utils-fe": ["libs/utils-fe/src/index.ts"],
+      "@damen/utils/fe": ["apps/quize/src/app/_utils/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

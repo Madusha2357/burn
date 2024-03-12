@@ -1,0 +1,139 @@
+.nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: var(--white);
+  color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--toolbar-height);
+  z-index: 2;
+
+  & span {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    display: flex;
+  }
+
+  & .links {
+    float: left;
+    color: var(--black);
+    text-align: center;
+    padding-right: 34px;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  & .links:hover {
+    color: var(--green);
+  }
+
+  & .links.active {
+    color: var(--black);
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  & .user-profile {
+    height: 15px;
+    width: 15px;
+  }
+
+  & .user {
+    color: var(--black);
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 8px;
+  }
+}
+
+.sign-out {
+  color: var(--red);
+  font-size: 14px;
+  padding-inline: 36px;
+  cursor: pointer;
+}
+
+.logo {
+  padding-left: 36px;
+  height: 66px;
+  width: 114px;
+}
+
+#side-nav {
+  position: fixed;
+  z-index: 3;
+  bottom: 0;
+  width: 100%;
+  // height: calc(100vh - var(--toolbar-height));
+  top: var(--toolbar-height);
+  background-color: var(--white);
+  border-top: 1px solid var(--orange);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+#menu-icon {
+  color: var(--black);
+  display: none;
+}
+
+.red {
+  font-weight: bolder;
+}
+
+@media only screen and (max-width: 768px) {
+  .nav {
+    & .mobile {
+      display: none;
+    }
+  }
+
+  .logo {
+    padding-left: 16px;
+    scale: 0.7;
+  }
+
+  #menu-icon {
+    display: block;
+  }
+
+  #sign-out-bar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+    & .singout-button {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 32px;
+    }
+    & span {
+      display: flex;
+      flex-direction: column;
+      padding: 32px;
+      gap: 20px;
+      & a {
+        text-decoration: none;
+        font-family: 'TT Firs Neue Trial';
+      }
+    }
+  }
+
+  .user {
+    font-size: 12px;
+  }
+
+  .toggle-button {
+    display: flex;
+  }
+
+  .mobile-active {
+    font-weight: bolder;
+  }
+}

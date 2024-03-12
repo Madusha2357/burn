@@ -1,0 +1,30 @@
+.line {
+  width: 100%;
+  height: 2px;
+  background-image: linear-gradient(
+    to right,
+    #9C4924(0%),
+    #e09f7c (33%),
+    #ab5c37 (66%),
+    #e09f7c (100%)
+  );
+  margin-block-end: 0;
+  margin-block-start: 0;
+}
+.footer-logo {
+  width: 164px;
+  height: 95px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 24px;
+}
+
+.footer-text {
+  padding-top: 35px;
+  padding-bottom: 40px;
+}
+
+a {
+  color: black;
+}

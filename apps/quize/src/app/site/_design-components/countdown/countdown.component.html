@@ -1,0 +1,57 @@
+<img src="assets/images/site/home/shape-1-left.png" />
+<div id="main" [ngSwitch]="status">
+  <div *ngSwitchCase="statuses.STARTED">
+    <p class="title green center">The challenge is now available</p>
+    <p>
+      Explore the new SeaXplorer 80 and participate in the challenge to have a
+      change at winning an expedition to the Antarctic or Papua New Guinea.<br />
+    </p>
+    <button class="button" (click)="startQuiz()">Start the Challenge</button>
+  </div>
+
+  <div *ngSwitchCase="statuses.WAITING">
+    <p class="title green">Access the SeaXplorer challenge on 12 July, 2023.</p>
+
+    <div class="timer" *ngIf="timeLeft$ | async as timer">
+      <div>
+        <p>{{ timer.daysToDday }}</p>
+        <span>DAYS</span>
+      </div>
+      <div>
+        <p>{{ timer.hoursToDday }}</p>
+        <span>HOURS</span>
+      </div>
+      <div>
+        <p>{{ timer.minutesToDday }}</p>
+        <span>MINUTES</span>
+      </div>
+      <div>
+        <p>{{ timer.secondsToDday }}</p>
+        <span>SECONDS</span>
+      </div>
+    </div>
+
+    <p class="center-long-text">
+      The countdown is on! Before you start the challenge, take the time to
+      explore this platform and learn the facts, figures and stories behind the
+      SeaXplorer 80. Once you feel ready, click the button to start the
+      challenge.
+    </p>
+
+    <p class="center-long-text-2">
+      The challenge will be accessible for 48-hours from 00:01 CEST on 12 July
+      2023 until 23:59 CEST on 13 July 2023. Answer the questions correctly and
+      you could win an unforgettable Damen Yachting SeaXplorer experience with
+      EYOS to Antarctica or Papua New Guinea. Don't miss out!
+    </p>
+  </div>
+
+  <div *ngSwitchCase="statuses.ENDED">
+    <p class="title green">The challenge has ended</p>
+    <p>
+      Thank you for everybody who participated in the challenge! You can still
+      explore the new SeaXplorer 80!
+    </p>
+  </div>
+</div>
+<img src="assets/images/site/home/shape-1-right.png" />

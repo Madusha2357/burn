@@ -1,0 +1,51 @@
+#explorer {
+  margin-bottom: -37px;
+  & .seaXplorer-image {
+    display: flex;
+    width: 100%;
+  }
+
+  & div {
+    position: relative;
+    margin-top: -400px;
+    padding: 72px;
+    width: 550px;
+    color: var(--white);
+  }
+}
+
+.white-transparent {
+  color: var(--white);
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 18px;
+  border-style: solid;
+  border-color: var(--white);
+  border-width: 3px;
+  border-radius: 2px;
+  padding-inline: 20px;
+  padding-block: 12px;
+}
+
+@media only screen and (max-width: 768px) {
+  #explorer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 500px;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 0px;
+    background-image: url('/assets/images/site/home/seaxplorer_80_gradient_mobile.webp');
+
+    & .seaXplorer-image {
+      display: none;
+    }
+
+    & div {
+      padding: 16px;
+      width: 85%;
+      color: var(--white);
+    }
+  }
+}

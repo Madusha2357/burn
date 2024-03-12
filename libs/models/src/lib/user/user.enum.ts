@@ -1,0 +1,7 @@
+export enum UserStatus {
+  REGISTERED = 'REGISTERED',
+  ACTIVE = 'ACTIVE',
+  INACTIVE = 'INACTIVE',
+  COMPLETE = 'COMPLETE',
+  ALL = 'ALL',
+}

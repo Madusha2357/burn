@@ -1,0 +1,70 @@
+<mat-toolbar class="white-toolbar">
+  <button mat-stroked-button color="primary" (click)="onSave()">
+    <mat-icon>save</mat-icon>
+    <span>Save</span>
+  </button>
+</mat-toolbar>
+
+<div class="content">
+  <form [formGroup]="formGroup">
+    <mat-form-field id="email" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+      <mat-error *ngIf="email?.errors as error">
+        <span *ngIf="error['required']">Email is required</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field id="registerCode" appearance="outline">
+      <mat-label>Register Code</mat-label>
+      <input matInput formControlName="registerCode" />
+      <mat-error *ngIf="registerCode.errors as error">
+        <span *ngIf="error['required']">Register code is required</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field id="phoneNumber" appearance="outline">
+      <mat-label>Phone Number</mat-label>
+      <input matInput formControlName="phoneNumber" />
+      <mat-error *ngIf="phoneNumber.errors as error">
+        <span *ngIf="error['phoneNumber']">Phone Number is required</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field id="firstName" appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input matInput formControlName="firstName" />
+    </mat-form-field>
+
+    <mat-form-field id="lastName" appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="lastName" />
+    </mat-form-field>
+
+    <ng-container formGroupName="address">
+      <mat-form-field id="addressLine" appearance="outline">
+        <mat-label>Address Line</mat-label>
+        <input type="text" matInput formControlName="addressLine" />
+      </mat-form-field>
+      <mat-form-field id="city" appearance="outline">
+        <mat-label>City</mat-label>
+        <input type="text" matInput formControlName="city" />
+      </mat-form-field>
+      <mat-form-field id="state" appearance="outline">
+        <mat-label>State</mat-label>
+        <input type="text" matInput formControlName="state" />
+      </mat-form-field>
+      <mat-form-field id="zipCode" appearance="outline">
+        <mat-label>Zip Code</mat-label>
+        <input type="text" matInput formControlName="zipCode" />
+      </mat-form-field>
+      <mat-form-field id="country" appearance="outline">
+        <mat-label>Country</mat-label>
+        <input type="text" matInput formControlName="country" />
+      </mat-form-field>
+      <mat-checkbox formControlName="allowMarketingMails">
+        Allow Marketing Mails
+      </mat-checkbox>
+    </ng-container>
+  </form>
+</div>

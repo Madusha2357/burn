@@ -1,0 +1,142 @@
+<div class="mat-elevation-z0">
+  <mat-toolbar class="white-toolbar">
+    <span>Users</span>
+    <span class="actions">
+      <!-- <mat-form-field
+        id="user"
+        class="dense-5"
+        appearance="outline"
+        subscriptSizing="dynamic"
+      >
+        <mat-label>Filter by quiz</mat-label>
+        <mat-select (selectionChange)="onSelectQuizChange($event.value)">
+          <mat-option
+            *ngFor="let option of quizes | async"
+            [value]="option._id"
+          >
+            {{ option.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> -->
+      <mat-form-field
+        id="user"
+        class="dense-5"
+        appearance="outline"
+        subscriptSizing="dynamic"
+      >
+        <mat-label>Filter by status</mat-label>
+        <mat-select (selectionChange)="onSelectUserChange($event.value)">
+          <mat-option *ngFor="let user of users; let i = index" [value]="user">
+            {{ user }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-stroked-button color="primary" (click)="onAdd()">
+        <mat-icon>add</mat-icon>
+        <span>Create New User</span>
+      </button>
+      <mat-paginator
+        class="dense-5"
+        [length]="pagedRecords.page.length"
+        [pageSize]="pagedRecords.page.pageSize"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+      >
+      </mat-paginator>
+      <button (click)="downloadCsv()" mat-icon-button>
+        <mat-icon>download</mat-icon>
+      </button>
+    </span>
+  </mat-toolbar>
+
+  <table mat-table [dataSource]="pagedRecords.data" matSort matSortDisableClear>
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef>Role</th>
+      <td mat-cell *matCellDef="let element">{{ element.role }}</td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="companyName">
+      <th mat-header-cell *matHeaderCellDef>Company Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.company?.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="jobTitle">
+      <th mat-header-cell *matHeaderCellDef>Job Title</th>
+      <td mat-cell *matCellDef="let element">{{ element.company?.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="marketingMails">
+      <th mat-header-cell *matHeaderCellDef>Allow Marketing Mails</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.allowMarketingMails }}
+      </td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="onDelete(element)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button (click)="onEdit(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          [matMenuTriggerData]="{ element: element }"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
+
+<mat-menu #menu="matMenu">
+  <ng-template matMenuContent let-element="element">
+    <button mat-menu-item (click)="onViewAnswers(element)">
+      <mat-icon>quiz</mat-icon>
+      <span>View Answers</span>
+    </button>
+    <button
+      mat-menu-item
+      [matMenuTriggerFor]="emails"
+      [matMenuTriggerData]="{ element: element }"
+    >
+      <span>Send</span>
+      <mat-icon>send</mat-icon>
+    </button>
+    <button mat-menu-item (click)="onOpenRegistration(element)">
+      <mat-icon>link</mat-icon>
+      <span>Open Regitration</span>
+    </button>
+    <button mat-menu-item disabled>
+      <mat-icon>delete</mat-icon>
+      <span>Delete</span>
+    </button>
+  </ng-template>
+</mat-menu>
+
+<mat-menu #emails="matMenu">
+  <ng-template matMenuContent let-element="element">
+    <button mat-menu-item (click)="onSendInvitation(element)">
+      Invitation
+    </button>
+    <button mat-menu-item>Login Success</button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item>Reset password</button>
+  </ng-template>
+</mat-menu>

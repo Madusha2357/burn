@@ -1,0 +1,156 @@
+#details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  gap: 10%;
+  & div {
+    width: 33%;
+    & .table {
+      width: 100%;
+      & span {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #dbdbdb;
+        border-top: 1px solid #dbdbdb;
+      }
+    }
+  }
+}
+
+.base-div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--gray);
+  padding: 100px 70px;
+}
+
+#video-gal {
+  @extend .base-div;
+
+  & .v-holder {
+    display: flex;
+  }
+
+  & .v {
+    display: none;
+  }
+
+  & .v-holder {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    & img:hover {
+      opacity: 0.7;
+    }
+
+    & .v-card {
+      display: flex;
+      gap: 20px;
+      width: 49%;
+      margin-top: 36px;
+      flex-direction: row;
+
+      & .v-title {
+        font-family: 'TT Firs Neue DemiBold', sans-serif !important;
+        font-weight: 600;
+        font-size: 18px;
+      }
+
+      & span {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 8px;
+        & p {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+.decription {
+  width: 80%;
+  text-align: center;
+}
+
+#divider-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media only screen and (max-width: 768px) {
+  #details {
+    flex-direction: column;
+    margin-top: 32px;
+    gap: 10%;
+    & div {
+      width: 90%;
+    }
+  }
+
+  .base-div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--gray);
+    padding: 0px 0px;
+    padding-top: 32px;
+  }
+
+  #video-gal {
+    @extend .base-div;
+
+    & .v-holder {
+      display: none;
+    }
+
+    & img:hover {
+      width: 640px;
+      opacity: 0.7;
+    }
+
+    & .v {
+      display: flex;
+      flex-direction: column;
+    }
+
+    & .vc {
+      margin-inline: 16px;
+      margin-top: 20px;
+      & img {
+        width: 100%;
+      }
+
+      & img:hover {
+        opacity: 0.7;
+      }
+    }
+
+    & .v-t {
+      font-family: 'TT Firs Neue DemiBold', sans-serif !important;
+      margin: 0px;
+      font-weight: 600;
+      font-size: 14px;
+      padding-block: 12px 8px;
+    }
+
+    & .v-d {
+      margin: 0px;
+    }
+  }
+
+  #divider-image {
+    padding-top: 32px;
+    height: 160px;
+  }
+}

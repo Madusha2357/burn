@@ -1,0 +1,126 @@
+<mat-toolbar class="white-toolbar">
+  <button mat-stroked-button color="primary" (click)="onSave()">
+    <mat-icon>save</mat-icon>
+    <span>Save</span>
+  </button>
+</mat-toolbar>
+<div class="content">
+  <form id="question-form" [formGroup]="formGroup" ngxsForm="question.form">
+    <!-- Text -->
+    <mat-form-field id="text" appearance="outline">
+      <mat-label>Text</mat-label>
+      <input matInput formControlName="text" />
+      <mat-error *ngIf="text?.errors as error">
+        <span *ngIf="error['required']">Text is required</span>
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Type -->
+    <mat-form-field id="type" appearance="outline">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let type of types" [value]="type">
+          {{ type }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="type.errors as error">
+        <span *ngIf="error['required']">Type is required</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field id="image" appearance="outline">
+      <mat-label>Image</mat-label>
+      <input matInput formControlName="image" />
+      <button mat-icon-button matSuffix (click)="imageFile.click()">
+        <mat-icon>upload</mat-icon>
+      </button>
+      <input
+        #imageFile
+        type="file"
+        style="display: none"
+        (change)="onImageChange($event, 'image')"
+      />
+      <mat-error *ngIf="image?.errors as error">
+        <span *ngIf="error['required']">Image is required</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field id="imageMobile" appearance="outline">
+      <mat-label>Image Mobile</mat-label>
+      <input matInput formControlName="imageMobile" />
+      <button mat-icon-button matSuffix (click)="imageFileMobile.click()">
+        <mat-icon>upload</mat-icon>
+      </button>
+      <input
+        #imageFileMobile
+        type="file"
+        style="display: none"
+        (change)="onImageChange($event, 'imageMobile')"
+      />
+      <mat-error *ngIf="image?.errors as error">
+        <span *ngIf="error['required']">Image Mobile is required</span>
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Quiz -->
+    <mat-form-field id="quiz" appearance="outline">
+      <mat-label>Select Quiz</mat-label>
+      <mat-select formControlName="quiz">
+        <mat-option *ngFor="let quiz of quizes" [value]="quiz._id">
+          {{ quiz.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="quiz.errors as error">
+        <span *ngIf="error['required']">Status is required</span>
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Time in Seconds -->
+    <mat-form-field id="timer-in-seconds" appearance="outline">
+      <mat-label>Timer In Seconds</mat-label>
+      <input matInput formControlName="timerInSeconds" />
+    </mat-form-field>
+
+    <!-- Display order -->
+    <mat-form-field id="display-order" appearance="outline">
+      <mat-label>Display Order</mat-label>
+      <input matInput formControlName="displayOrder" />
+    </mat-form-field>
+
+    <!-- status -->
+    <mat-form-field id="status" appearance="outline">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option *ngFor="let status of statuss" [value]="status">
+          {{ status }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="status.errors as error">
+        <span *ngIf="error['required']">Status is required</span>
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Video URL -->
+    <mat-form-field id="video-url" appearance="outline">
+      <mat-label>Video</mat-label>
+      <input matInput formControlName="videoUrl" />
+    </mat-form-field>
+
+    <mat-form-field id="video-url-mobile" appearance="outline">
+      <mat-label>Video Mobile</mat-label>
+      <input matInput formControlName="videoUrlMobile" />
+    </mat-form-field>
+
+    <!-- Multiple choices -->
+    <mat-checkbox formControlName="isMultipleChoice"
+      >Multiple Choices</mat-checkbox
+    >
+
+    <!-- Choises -->
+    <damen-questions-upsert-choice
+      id="choices"
+      formControlName="choices"
+    ></damen-questions-upsert-choice>
+  </form>
+</div>
+<!-- {{ formGroup.value | json }} -->

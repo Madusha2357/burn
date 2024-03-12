@@ -1,0 +1,176 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invitation</title>
+  </head>
+  <style>
+    @font-face {
+      font-family: 'TT Firs Neue Trial';
+      src: url(http://161.35.149.160/assets/fonts/regular.ttf)
+        format('truetype');
+    }
+    body {
+      font-family: 'TT Firs Neue Trial';
+      margin: 0;
+      width: 100%;
+      justify-content: center;
+      display: flex;
+      background-color: #f0f1f2; /*
+    background-color: red; */
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .content {
+      width: 75%;
+      height: 100vh;
+    }
+    .text-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5%;
+      background-color: white;
+      flex-direction: column;
+    }
+    .toolbar {
+      width: 100%;
+      background-color: white;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+    }
+    .logo {
+      height: 54px;
+    }
+    .yatch {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+    }
+    .title {
+      font-weight: 600;
+      text-align: center;
+      color: #013e34;
+    }
+    .text {
+      /*
+    font-size: 14px; */
+      line-height: 24px;
+      font-weight: 100;
+      font-style: normal;
+      text-align: center;
+    }
+    .code {
+      width: 48px;
+      height: 60px;
+      background: #efefef;
+      border-radius: 3px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .dash {
+      width: 48px;
+      height: 60px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .code-wrap {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 24px;
+    }
+    #register-now {
+      margin-top: 24px;
+      width: 160px;
+      height: 48px;
+      background-color: #013e34;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .desktop-show {
+      display: flex;
+    }
+    @media only screen and (max-width: 768px) {
+      .content {
+        width: 100%;
+      }
+      .desktop-show {
+        display: none;
+      }
+      .code {
+        width: 24px;
+        height: 30px;
+      }
+      .dash {
+        width: 24px;
+        height: 30px;
+      }
+    }
+  </style>
+  <body>
+    <div class="content">
+      <div class="toolbar">
+        <img
+          class="logo"
+          src="http://161.35.149.160/assets/images/site/home/damenLogo.png"
+        />
+      </div>
+      <img
+        class="yatch"
+        src="http://161.35.149.160/assets/images/site/seaXplorer/image-6.webp"
+      />
+      <div class="text-content">
+        <h1 class="title">
+          Be part of the exclusive SeaXplorer
+          <br />
+          pre-launch event
+        </h1>
+        <h3 class="text">
+          As a valued VIP, we are thrilled to invite you to our exclusive
+          pre-launch event for
+          <br class="desktop-show" />
+          the SeaXplorer 80. Be part of this special experience, where you will
+          be given a
+          <br class="desktop-show" />
+          chance to win an all-inclusive expedition to the stunning Antarctic or
+          to
+          <br class="desktop-show" />
+          breathtaking Papua New Guinea, provided in collaboration with EYOS
+          Expeditions.
+          <br />
+          <br />
+          Register for this unique event using your personal code below
+        </h3>
+        <div class="code-wrap">
+          <div class="code">1</div>
+          <div class="code">2</div>
+          <div class="code">3</div>
+          <div class="code">4</div>
+          <div class="code">5</div>
+          <div class="code">6</div>
+        </div>
+
+        <div id="register-now">
+          <a href="http://161.35.149.160/#/login/register-code?email=h@h.com"
+            >Register now!</a
+          >
+        </div>
+        <h1 class="title">Yachting Without Limits | SeaXplorer</h1>
+      </div>
+    </div>
+  </body>
+</html>

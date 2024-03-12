@@ -1,0 +1,54 @@
+<div class="content mat-typography">
+  <div class="row">
+    <h1>Winner: {{ winner }}</h1>
+    <span class="spacer"></span>
+    <button class="button-padding" (click)="downloadCsv()" mat-icon-button>
+      <mat-icon>download</mat-icon>
+    </button>
+  </div>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"> </mat-paginator>
+
+  <form [formGroup]="winnerForm">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="question">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.createdBy }}</td>
+        <td mat-footer-cell *matFooterCellDef>
+          <b>Correct Answers</b>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="answer">
+        <th mat-header-cell *matHeaderCellDef>Correct Answers Count</th>
+        <td mat-cell *matCellDef="let element">{{ element.correctCount }}</td>
+        <td mat-footer-cell *matFooterCellDef></td>
+      </ng-container>
+
+      <ng-container matColumnDef="winner">
+        <th mat-header-cell *matHeaderCellDef>Create winner place</th>
+        <td mat-cell *matCellDef="let element">
+          <input
+            class="place-input"
+            matInput
+            formControlName="place"
+            [placeholder]="element.place"
+          />
+        </td>
+        <td mat-footer-cell *matFooterCellDef></td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button (click)="onEdit(element)">
+            <mat-icon>update</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </form>
+</div>

@@ -1,0 +1,33 @@
+<damen-navigation-bar></damen-navigation-bar>
+<div (click)="back()" class="answers">
+  <div class="back-button row">
+    <img class="back-icon" src="assets/images/back-icon.png" />
+    <p class="back-text">Back</p>
+  </div>
+
+  <p class="sub-header-32">Answers</p>
+
+  <div *ngFor="let item of items; let i = index">
+    <div class="divider"></div>
+    <p class="question">{{ i + 1 }}. {{ item.question }}</p>
+    <p class="your-answer padding-top-16">You answered: {{ item.response }}</p>
+
+    <div class="correct-answer" *ngIf="item.responseStatus === 'CORRECT'">
+      <p>Correct!</p>
+    </div>
+
+    <div *ngIf="item.responseStatus === 'INCORRECT'">
+      <p class="incorrect-answer">Incorrect!</p>
+      <p class="question">Correct answer: {{ item.answer }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- footer -->
+<div class="footer column center">
+  <img class="footer-line" src="assets/images/site/home/footerLine.png" />
+  <img class="footer-logo" src="assets/images/site/home/damenLogo.png" />
+  <p class="footer-text">
+    © Copyright 2023 Damen Yachting BV • All rights reserved • Privacy • Legal
+  </p>
+</div>

@@ -1,0 +1,115 @@
+#logos {
+  display: flex;
+  justify-content: center;
+
+  & div {
+    padding-top: 60px;
+    width: 445px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & .logo-1 {
+    height: 81.12px;
+  }
+
+  & .logo-2 {
+    padding-top: 20px;
+    height: 50px;
+    padding-left: 10px;
+  }
+}
+
+#t-cards {
+  padding-top: 50px;
+  padding-bottom: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.slides-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);
+  width: 30%;
+  margin-bottom: 16px;
+
+  & img {
+    width: 100%;
+  }
+
+  & a {
+    color: var(--black);
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  & .card-details {
+    display: flex;
+    flex-direction: column;
+    //justify-content: flex-start;
+    //align-items: flex-start;
+    padding-top: 16px;
+    width: 90%;
+    height: 60%;
+    & p {
+      text-align: start;
+    }
+
+    & .location {
+      color: var(--black);
+      font-family: 'TT Firs Neue DemiBold', sans-serif !important;
+      padding-right: 5px;
+    }
+
+    & .link {
+      padding-block: 20px;
+      color: var(--black);
+    }
+  }
+}
+
+ul {
+  margin: 0;
+}
+
+li {
+  text-align: start;
+}
+
+@media only screen and (max-width: 768px) {
+  #logos {
+    & div {
+      padding-top: 32px;
+      padding-inline: 30px;
+      width: 100%;
+      display: flex;
+      justify-content: none;
+    }
+
+    & .logo-1 {
+      height: 75px;
+    }
+
+    & .logo-2 {
+      padding-top: 16px;
+      height: 40px;
+    }
+  }
+
+  #t-cards {
+    padding-top: 39px;
+    padding-bottom: 10px;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .slides-item {
+    width: 90%;
+  }
+}

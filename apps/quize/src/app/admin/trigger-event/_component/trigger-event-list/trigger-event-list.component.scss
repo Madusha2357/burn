@@ -1,0 +1,10 @@
+mat-toolbar > span {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-column-actions {
+  width: 128px;
+}

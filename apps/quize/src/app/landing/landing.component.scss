@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: white;
+  color: white;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+}
+
+li {
+  margin-right: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.auth-buttons {
+  display: flex;
+}
+
+button {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.light {
+  background-color: cadetblue;
+}
+
+#content {
+  width: 100vw;
+  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & .scan {
+    background-color: rgb(157, 191, 192);
+    padding-inline: 100px;
+    height: 100px;
+    // padding-bottom: 30px;
+  }
+}

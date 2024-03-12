@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 72px;
+  & div {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  :host {
+    margin-top: 18px;
+    padding: 16px;
+    text-align: justify;
+    & div {
+      width: 100%;
+    }
+  }
+}

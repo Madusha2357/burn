@@ -1,0 +1,22 @@
+<mat-dialog-content
+  class="mat-typography"
+  *ngIf="pagedRecords$ | async as pagedRecords"
+>
+  <damen-quiz-list
+    title="Select Quiz"
+    [pagedRecords]="pagedRecords"
+    [displayedColumns]="displayColumns"
+    [multiSelect]="false"
+    [showAdd]="false"
+    [skip]="1"
+    (sortAndPage)="onSortAndPage($event)"
+  ></damen-quiz-list>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <span class="spacer"></span>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" (click)="onSelect()">
+    Select
+  </button>
+</mat-dialog-actions>

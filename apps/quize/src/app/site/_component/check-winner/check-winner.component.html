@@ -1,0 +1,164 @@
+<damen-navigation-bar></damen-navigation-bar>
+<div [ngSwitch]="winner">
+  <!-- when user win -->
+  <div *ngSwitchCase="0">
+    <!-- question and shapes -->
+    <div class="winner">
+      <img class="shape-1" src="assets/images/site/home/shape-1-left.png" />
+
+      <div class="middle-text">
+        <p class="header">You have won!</p>
+
+        <p class="para-1">
+          Congratulations! You have won the Damen Yachting Xplorer Experience!
+        </p>
+
+        <p class="para-2">
+          You answered the most questions correctly and just won an
+          all-inclusive expedition to the stunning Antarctic or to breathtaking
+          Papua New Guinea, provided in collaboration with EYOS Expeditions.
+        </p>
+
+        <p class="para-2">
+          We will contact you to arrange all the details for this
+          once-in-a-lifetime trip of your choice.
+        </p>
+
+        <p class="para-3">
+          You have answered {{ correctCount }}/{{ total }} questions correctly!
+        </p>
+
+        <div>
+          <button class="button" type="submit" (click)="viewAnswers()">
+            View answers
+          </button>
+        </div>
+      </div>
+
+      <img class="shape-1" src="assets/images/site/home/shape-1-right.png" />
+    </div>
+
+    <!-- winner-responsive -->
+    <div class="winner-responsive">
+      <div class="column">
+        <div class="t row">
+          <img class="shape-1" src="assets/images/site/home/shape-2-left.png" />
+          <p class="challenge-start-text">You have won!</p>
+          <img
+            class="shape-1"
+            src="assets/images/site/home/shape-2-right.png"
+          />
+        </div>
+
+        <!-- center text 1 -->
+        <div>
+          <div class="middle-text">
+            <p class="para-1">
+              Congratulations! You have won the Damen Yachting Xplorer
+              Experience!
+            </p>
+
+            <p class="para-2">
+              You answered the most questions correctly and just won an
+              all-inclusive expedition to the stunning Antarctic or to
+              breathtaking Papua New Guinea, provided in collaboration with EYOS
+              Expeditions.
+            </p>
+
+            <p class="para-2">
+              We will contact you to arrange all the details for this
+              once-in-a-lifetime trip of your choice.
+            </p>
+
+            <p class="para-3">
+              You have answered {{ correctCount }}/{{ total }} questions
+              correctly!
+            </p>
+
+            <div>
+              <button class="button" type="submit" (click)="viewAnswers()">
+                View answers
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- when user did not win -->
+  <div *ngSwitchCase="1">
+    <!-- question and shapes -->
+    <div class="winner">
+      <img class="shape-1" src="assets/images/site/home/shape-1-left.png" />
+
+      <div class="middle-text">
+        <p class="header">Sorry, you did not win</p>
+
+        <p class="para-1">
+          However, we would like to thank you for joining this challenge by
+          inviting you to the world premiere of the SeaXplorer 80 during the
+          2023 Monaco Yacht Show.
+        </p>
+
+        <p class="para-2">
+          Thank you for participating. You can check the correct answers by
+          clicking on the button below.
+        </p>
+
+        <p class="para-3">
+          You have answered {{ correctCount }}/{{ total }} questions correctly!
+        </p>
+
+        <div>
+          <button class="button" type="submit" (click)="viewAnswers()">
+            See answers
+          </button>
+        </div>
+      </div>
+
+      <img class="shape-1" src="assets/images/site/home/shape-1-right.png" />
+    </div>
+
+    <!-- winner-responsive -->
+    <div class="winner-responsive">
+      <div class="column">
+        <div class="t row">
+          <img class="shape-1" src="assets/images/site/home/shape-2-left.png" />
+          <p class="challenge-start-text">Sorry, you did not win</p>
+          <img
+            class="shape-1"
+            src="assets/images/site/home/shape-2-right.png"
+          />
+        </div>
+
+        <!-- center text 1 -->
+        <div>
+          <div class="middle-text column">
+            <p class="para-1">
+              However, we would like to thank you for joining this challenge by
+              inviting you to the world premiere of the SeaXplorer 80 during the
+              2023 Monaco Yacht Show.
+            </p>
+
+            <p class="para-2">
+              Thank you for participating. You can check the correct answers by
+              clicking on the button below.
+            </p>
+
+            <p class="para-3">
+              You have answered {{ correctCount }}/{{ total }} questions
+              correctly!
+            </p>
+
+            <div>
+              <button class="button" type="submit" (click)="viewAnswers()">
+                See answers
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

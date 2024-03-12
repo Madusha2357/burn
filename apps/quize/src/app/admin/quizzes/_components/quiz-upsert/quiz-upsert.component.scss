@@ -1,0 +1,45 @@
+form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.content {
+  padding: 16px;
+}
+
+#name {
+  width: 48%;
+}
+
+#startDate {
+  width: 25%;
+}
+
+#endDate {
+  width: 25%;
+}
+
+ngx-mat-calendar {
+  .mat-calendar-body-cell {
+    position: relative !important;
+  }
+}
+mat-calendar {
+  .mat-calendar-arrow {
+    width: 0;
+    height: 0;
+  }
+
+  .mat-calendar-body-cell {
+    position: absolute !important;
+    height: 100%;
+  }
+}
+
+ngx-mat-datetime-content {
+  .mat-calendar-arrow {
+    width: 0;
+  }
+}

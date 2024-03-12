@@ -1,0 +1,81 @@
+<div class="nav">
+  <a [routerLink]="['/site']">
+    <img class="logo" src="assets/images/site/home/damenLogo.png" />
+  </a>
+  <span>
+    <div class="mobile">
+      <a
+        class="links"
+        routerLinkActive="red"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLink="/site"
+      >
+        Home
+      </a>
+      <!-- <a
+        class="links"
+        routerLinkActive="red"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLink="/site/seaXplorer"
+        >SeaXplorer 80</a
+      >
+      <a
+        class="links"
+        routerLinkActive="red"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLink="/site/about"
+        >About the challenge</a
+      > -->
+    </div>
+
+    <img class="user-profile" src="assets/images/site/home/userProfile.png" />
+
+    <p *ngIf="user$ | async as user" class="user">
+      {{ user.firstName }} {{ user.lastName }}
+    </p>
+
+    <button mat-icon-button id="menu-icon" (click)="showSideNav = !showSideNav">
+      <mat-icon>{{ showSideNav ? 'close' : 'menu' }}</mat-icon>
+    </button>
+
+    <span class="mobile">
+      <ng-container *ngTemplateOutlet="signOut"></ng-container>
+    </span>
+  </span>
+</div>
+
+<div *ngIf="showSideNav" id="side-nav" @fadeIn @fadeOut>
+  <span id="sign-out-bar">
+    <div class="singout-button">
+      <ng-container *ngTemplateOutlet="signOut"></ng-container>
+    </div>
+    <span>
+      <a
+        class="links title green"
+        routerLinkActive="mobile-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="onClickLink('site')"
+        >Home</a
+      >
+      <a
+        class="links title green"
+        routerLinkActive="mobile-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="onClickLink('site/seaXplorer')"
+      >
+        SeaXplorer 80
+      </a>
+      <a
+        class="links title green"
+        routerLinkActive="mobile-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="onClickLink('site/about')"
+        >About the challenge
+      </a>
+    </span>
+  </span>
+</div>
+
+<ng-template #signOut>
+  <a class="sign-out" (click)="onSignOut()">Sign out</a>
+</ng-template>

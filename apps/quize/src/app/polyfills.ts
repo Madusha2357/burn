@@ -1,0 +1,1 @@
+import 'path/to/event-source-polyfill/src/eventsource.min.js'

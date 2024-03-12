@@ -1,0 +1,137 @@
+@media only screen and (max-width: 768px) {
+  .logos-contents {
+    .logos {
+      padding-inline: 30px;
+      padding-bottom: 39px;
+
+      .logo-1 {
+        height: 65px;
+      }
+
+      .logo-2 {
+        height: 30px;
+      }
+    }
+  }
+
+  .two-cards {
+    padding-inline: 16px;
+    flex-direction: column;
+    padding-bottom: 32px;
+
+    .card-1-image {
+      width: 100%;
+      height: 221px;
+    }
+
+    .space {
+      padding-top: 24px;
+    }
+
+    .card-content {
+      width: 88%;
+      height: 225px;
+      padding-top: 16px;
+      padding-inline: 21px;
+    }
+
+    .second-card {
+      padding-left: 0px;
+    }
+  }
+
+  .how-challenge-works {
+    .challenge-description {
+      padding-top: 32px;
+      padding-bottom: 32px;
+    }
+
+    .challenge-cards {
+      .row-r {
+        flex-direction: column;
+      }
+
+      .card-spacer {
+        padding-top: 16px;
+      }
+
+      .card-divider {
+        padding-top: 0px;
+      }
+
+      .sub-header-24 {
+        font-size: 18px;
+      }
+
+      .cards {
+        padding-left: 16px;
+        width: 100%;
+        .card-content {
+          width: 80%;
+          height: 100%;
+          padding-top: 24px;
+          padding-inline: 24px;
+          padding-bottom: 24px;
+        }
+      }
+    }
+  }
+
+  .four-images-c {
+    flex-direction: column;
+  }
+
+  .eyos-expedition {
+    padding-inline: 16px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+
+    .expediton-video {
+      padding-left: 0px;
+      padding-top: 32px;
+      .expediton-video-video {
+        width: 100%;
+        height: 186px;
+      }
+    }
+  }
+
+  .landing-2-image {
+    height: 460px;
+  }
+
+  .landing-2-text-1 {
+    top: 783%;
+    left: 4%;
+    font-weight: 600;
+    font-size: 24px;
+    width: 90%;
+  }
+
+  .landing-2-text-2 {
+    top: 682%;
+    left: 4%;
+    width: 90%;
+  }
+
+  .landing-2-button {
+    top: 772%;
+    left: 4%;
+  }
+
+  .footer {
+    .footer-logo {
+      width: 112px;
+      height: 65px;
+      padding-top: 24px;
+    }
+
+    .footer-text {
+      padding-top: 31px;
+      padding-bottom: 31px;
+      padding-inline: 23px;
+    }
+  }
+}

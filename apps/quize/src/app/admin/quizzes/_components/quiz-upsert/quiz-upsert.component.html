@@ -1,0 +1,75 @@
+<mat-toolbar class="white-toolbar">
+  <button mat-stroked-button color="primary" (click)="onSave()">
+    <mat-icon>save</mat-icon>
+    <span>Save</span>
+  </button>
+</mat-toolbar>
+
+<div class="content">
+  <form [formGroup]="formGroup">
+    <mat-form-field id="name" appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+      <mat-error *ngIf="name.errors as error">
+        <span *ngIf="error['required']">Name is required</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field id="startTime" appearance="outline">
+      <mat-label>Start Time</mat-label>
+      <input
+        matInput
+        [ngxMatDatetimePicker]="startDatePicker"
+        formControlName="startTime"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="$any(startDatePicker)"
+      ></mat-datepicker-toggle>
+      <ngx-mat-datetime-picker #startDatePicker> </ngx-mat-datetime-picker>
+      <mat-error *ngIf="startTime.errors as error">
+        <span *ngIf="error['required']">Start Time is required</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field id="endTime" appearance="outline">
+      <mat-label>End Time</mat-label>
+      <input
+        matInput
+        [min]="startTime.value"
+        [ngxMatDatetimePicker]="endDatePicker"
+        formControlName="endTime"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="$any(endDatePicker)"
+      ></mat-datepicker-toggle>
+      <ngx-mat-datetime-picker #endDatePicker> </ngx-mat-datetime-picker>
+
+      <mat-error *ngIf="endTime.errors as error">
+        <span *ngIf="error['required']">End Date is required</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field id="minimalAnswerCountForWinning" appearance="outline">
+      <mat-label>Winning answers count</mat-label>
+      <input matInput formControlName="minimalAnswerCountForWinning" />
+      <mat-error *ngIf="minimalAnswerCountForWinning.errors as error">
+        <span *ngIf="error['required']">Winning answer count is required</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field id="status" appearance="outline">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option *ngFor="let status of statuss" [value]="status">
+          {{ status }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="status.errors as error">
+        <span *ngIf="error['required']">Status is required</span>
+      </mat-error>
+    </mat-form-field>
+  </form>
+  <!-- <damen-questions-list [pagedRecords]="pagedRecords"> </damen-questions-list> -->
+</div>

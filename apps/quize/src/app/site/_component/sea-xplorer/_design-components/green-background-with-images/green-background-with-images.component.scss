@@ -1,0 +1,25 @@
+#green-bg {
+  padding-block: 49px;
+  padding-inline: 70px;
+  background-color: var(--green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  & img {
+    width: 640px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #green-bg {
+    margin-top: 34px;
+    padding-block: 32px;
+    padding-inline: 0px;
+    flex-direction: column;
+    gap: 12px;
+    & img {
+      width: 90%;
+    }
+  }
+}

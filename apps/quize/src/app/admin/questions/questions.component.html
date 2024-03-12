@@ -1,0 +1,6 @@
+<damen-questions-list
+  *ngIf="pagedRecords$ | async as pagedRecords"
+  [pagedRecords]="pagedRecords"
+  (add)="onAdd()"
+  (edit)="onEdit($event)"
+></damen-questions-list>

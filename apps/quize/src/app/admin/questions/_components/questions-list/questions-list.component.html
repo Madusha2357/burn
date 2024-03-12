@@ -1,0 +1,80 @@
+<div class="mat-elevation-z0">
+  <mat-toolbar class="white-toolbar">
+    <span>Questions</span>
+    <span>
+      <!-- Quiz -->
+      <mat-form-field
+        class="select-quiz"
+        appearance="outline"
+        class="dense-5"
+        subscriptSizing="dynamic"
+      >
+        <mat-label>Select Quiz</mat-label>
+        <input
+          type="text"
+          matInput
+          [formControl]="filterControl"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option
+            *ngFor="let option of quizes | async"
+            [value]="option"
+            (onSelectionChange)="onSelectQuize($event)"
+          >
+            {{ option.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <button mat-stroked-button color="primary" (click)="onAdd()">
+        <mat-icon>add</mat-icon>
+        <span>Create New Question</span>
+      </button>
+      <mat-paginator
+        [length]="pagedRecords.page.length"
+        [pageSize]="pagedRecords.page.pageSize"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+      >
+      </mat-paginator>
+    </span>
+  </mat-toolbar>
+
+  <table mat-table [dataSource]="pagedRecords.data" matSort matSortDisableClear>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.status }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="text">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Text</th>
+      <td mat-cell *matCellDef="let element">{{ element.text }}</td>
+    </ng-container>
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+      <td mat-cell *matCellDef="let element">{{ element.type }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="timerInSeconds">
+      <th mat-header-cell *matHeaderCellDef>Timer In Seconds</th>
+      <td mat-cell *matCellDef="let element">{{ element.timerInSeconds }}</td>
+    </ng-container>
+    <ng-container matColumnDef="displayOrder">
+      <th mat-header-cell *matHeaderCellDef>Display order</th>
+      <td mat-cell *matCellDef="let element">{{ element.displayOrder }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="onEdit(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

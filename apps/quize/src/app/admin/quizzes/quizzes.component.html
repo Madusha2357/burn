@@ -1,0 +1,7 @@
+<damen-quiz-list
+  *ngIf="pagedRecords$ | async as pagedRecords"
+  [pagedRecords]="pagedRecords"
+  [displayedColumns]="displayColumns"
+  (add)="onAdd()"
+  (sortAndPage)="onSortAndPage($event)"
+></damen-quiz-list>

@@ -1,0 +1,53 @@
+#question-form {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 8px;
+}
+
+.content {
+  padding: 16px;
+}
+
+#text {
+  width: 75%;
+}
+#type {
+  width: 24%;
+}
+
+#video-url {
+  width: 49%;
+}
+
+#video-url-mobile {
+  width: 49%;
+}
+
+#image {
+  width: 49%;
+}
+
+#imageMobile {
+  width: 49%;
+}
+
+#quiz {
+  width: 24%;
+}
+
+#timer-in-seconds {
+  width: 24%;
+}
+
+#display-order {
+  width: 24%;
+}
+
+#status {
+  width: 24%;
+}
+
+#choices {
+  width: 100%;
+}

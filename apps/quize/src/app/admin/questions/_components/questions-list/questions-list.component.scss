@@ -1,0 +1,15 @@
+mat-toolbar > span {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+}
+
+.mat-column-actions {
+  width: 64px;
+}
+
+.select-quiz {
+  padding-top: 20px;
+}

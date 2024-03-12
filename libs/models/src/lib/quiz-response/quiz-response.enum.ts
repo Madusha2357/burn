@@ -1,0 +1,6 @@
+export enum QuizResponseStatus {
+  CORRECT = 'CORRECT',
+  PARTIAL_CORRECT = 'PARTIAL_CORRECT',
+  INCORRECT = 'INCORRECT',
+  SKIPED = 'SKIPED',
+}

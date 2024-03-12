@@ -1,0 +1,53 @@
+<div class="host">
+  <div class="image"></div>
+  <div class="inputs">
+    <p class="header">Enter your personal code</p>
+    <span class="description">
+      To gain access to the event, please enter the unique code that was sent to
+      you via email.<br />
+    </span>
+
+    <form [formGroup]="formGroup">
+      <div formArrayName="inputs">
+        <div class="otp-conrainer">
+          <input
+            autofocus
+            *ngFor="let thing of inputs.controls; let i = index"
+            maxlength="1"
+            [formControlName]="i"
+            [name]="'input' + i"
+            [id]="'input' + i"
+            (keyup)="focusNext(i, $event)"
+          />
+        </div>
+      </div>
+    </form>
+    <!-- <span>
+      <input *ngFor="let i of [1, 2, 3, 4, 5, 6]" />
+    </span> -->
+
+    <p class="error" *ngIf="error">{{ error }}</p>
+    <button class="button" type="submit" (click)="onValidateCode()">
+      Validate code
+    </button>
+
+    <div class="link-to-login">
+      <p>Already registered?</p>
+      <a href="#login/sign-in">Click here to login</a>
+    </div>
+  </div>
+</div>
+
+<ng-template #welcome let-data>
+  <mat-dialog-content>
+    <p class="title">Welcome!</p>
+    <p class="content">
+      You will now be redirected to the registration page to complete your
+      registration for this exclusive event. Thank you for joining us!
+    </p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <span class="spacer"></span>
+    <button class="button" [mat-dialog-close]="true">Continue</button>
+  </mat-dialog-actions>
+</ng-template>

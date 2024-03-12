@@ -1,0 +1,17 @@
+.mat-column-actions {
+  width: 128px;
+}
+.mat-column-select {
+  width: 48px;
+}
+
+.mat-column-createdAt {
+  width: 180px;
+}
+
+mat-toolbar > span {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

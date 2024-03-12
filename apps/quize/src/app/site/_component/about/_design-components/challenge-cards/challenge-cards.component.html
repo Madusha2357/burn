@@ -1,0 +1,69 @@
+<!-- how the challenge works -->
+<div id="how-challenge-works">
+  <div class="challenge-description">
+    <p class="header">How the SeaXplorer challenge works?</p>
+    <p class="content">
+      Follow these steps to get ready and be challenged on the SeaXplorer 80.
+    </p>
+  </div>
+
+  <div class="challenge-cards">
+    <div class="f">
+      <div class="cards row-r">
+        <div *ngFor="let card of cardRowOne" class="card-content">
+          <div class="row">
+            <p class="title-3 green number">{{ card.number }}.</p>
+            <div class="column">
+              <p class="title-3 green">{{ card.title }}</p>
+              <p class="">
+                {{ card.description }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <span class="card-divider"></span>
+    <div class="cards row-r">
+      <div *ngFor="let card of cardRowTwo" class="card-content">
+        <div class="row">
+          <p class="title-3 green number">{{ card.number }}.</p>
+          <div class="column">
+            <p class="title-3 green">{{ card.title }}</p>
+            <p class="">
+              {{ card.description }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="challenge-c">
+    <div class="column">
+      <div *ngFor="let card of cardRowOne" class="card-content">
+        <div class="row">
+          <p class="title-3 green number">{{ card.number }}.</p>
+          <div class="column">
+            <p class="title-3 green">{{ card.title }}</p>
+            <p class="">
+              {{ card.description }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div *ngFor="let card of cardRowTwo" class="card-content">
+        <div class="row">
+          <p class="title-3 green number">{{ card.number }}.</p>
+          <div class="column">
+            <p class="title-3 green">{{ card.title }}</p>
+            <p class="">
+              {{ card.description }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

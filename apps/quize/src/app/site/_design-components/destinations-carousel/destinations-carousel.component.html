@@ -1,0 +1,17 @@
+<section class="carousel">
+  <button mat-icon-button (click)="onPrevios()">
+    <mat-icon>arrow_back_ios</mat-icon>
+  </button>
+  <div #slides class="slides">
+    <div *ngFor="let card of cards" class="slides-item">
+      <img [src]="card.image" />
+      <div>
+        <p class="title-card green">{{ card.location }}</p>
+        <p>{{ card.details }}</p>
+      </div>
+    </div>
+  </div>
+  <button mat-icon-button (click)="onNext()">
+    <mat-icon>arrow_forward_ios</mat-icon>
+  </button>
+</section>

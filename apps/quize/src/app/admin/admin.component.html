@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <button id="menuButton" mat-icon-button (click)="onMenuButton()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button mat-button>Dashboard</button>
+  <!-- <mat-icon>navigate_next</mat-icon>
+  <button mat-button>Users</button> -->
+  <span class="spacer"></span>
+  <button id="logoutButton" mat-button (click)="onLogout()">
+    <mat-icon>logout</mat-icon>
+    <span>Logout</span>
+  </button>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" [opened]="opened$ | async">
+    <damen-side-nav></damen-side-nav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

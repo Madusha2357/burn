@@ -1,0 +1,32 @@
+<!-- logos -->
+<div id="logos">
+  <div>
+    <img class="logo-1" src="assets/images/site/home/damenLogo.png" />
+    <img class="logo-2" src="assets/images/site/about/eyos_logo.png" />
+  </div>
+</div>
+
+<div id="t-cards">
+  <div *ngFor="let card of cards" class="slides-item">
+    <img [src]="card.image" />
+    <div class="card-details">
+      <p class="title-3 green">{{ card.title }}</p>
+      <p>{{ card.description }}</p>
+      <div class="spacer"></div>
+      <div class="row">
+        <p class="location">Location:</p>
+        <p>{{ card.location }}</p>
+      </div>
+
+      <ul>
+        <li *ngFor="let d of card.details">
+          {{ d }}
+        </li>
+      </ul>
+
+      <div class="link">
+        <a href="{{ card.href }}" target="_blank">Discover this destination</a>
+      </div>
+    </div>
+  </div>
+</div>

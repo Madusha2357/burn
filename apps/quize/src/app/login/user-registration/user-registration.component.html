@@ -1,0 +1,344 @@
+<form [formGroup]="registerForm">
+  <div class="host">
+    <div class="image"></div>
+    <img
+      class="image-mobile"
+      src="/assets/images/login/registration/registration-image-mobile.webp"
+    />
+
+    <div *ngIf="!status" class="choose">
+      <p class="header header-1">Registration</p>
+
+      <button class="button" type="submit" (click)="changeStatus('doctor')">
+        Doctor
+      </button>
+
+      <button class="button" type="submit" (click)="changeStatus('hospital')">
+        Hospital
+      </button>
+    </div>
+    <div *ngIf="status === 'doctor'" class="inputs">
+      <p class="header">Doctor Registration</p>
+
+      <div class="column">
+        <label class="input-label sub-header-16" for="name"> First Name </label>
+        <div class="row">
+          <input
+            class="input-field"
+            id="firstName"
+            type="text"
+            formControlName="firstName"
+            placeholder="First Name"
+          />
+        </div>
+      </div>
+
+      <div class="column">
+        <label class="input-label sub-header-16" for="name"> Last Name </label>
+        <div class="row">
+          <input
+            class="input-field"
+            id="lastName"
+            type="text"
+            formControlName="lastName"
+            placeholder="Last Name"
+          />
+        </div>
+      </div>
+      <div class="column">
+        <label class="input-label sub-header-16" for="name">
+          E-mailaddress
+        </label>
+        <div class="row">
+          <input
+            class="input-field"
+            id="E-mailaddress"
+            type="email"
+            formControlName="email"
+            placeholder="E-mailaddress"
+          />
+        </div>
+      </div>
+
+      <div class="column">
+        <label class="input-label sub-header-16" for="name">
+          Available times
+        </label>
+        <div class="row">
+          <input
+            class="input-field"
+            id="time"
+            type="email"
+            formControlName="time"
+            placeholder="Available times"
+          />
+        </div>
+      </div>
+
+      <div class="column password">
+        <label class="input-label sub-header-16" for="name"> Password </label>
+
+        <div class="row">
+          <input
+            class="input-field"
+            id="password"
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Password"
+            formControlName="password"
+            autocomplete="new-password"
+          />
+          <div class="toggle-button">
+            <a *ngIf="!showPassword" (click)="togglePassword()"
+              ><img
+                class="password-icon"
+                src="assets/images/login/login/password-icon-slash.png"
+                alt="HTML tutorial"
+            /></a>
+            <a *ngIf="showPassword" (click)="togglePassword()"
+              ><img
+                class="password-icon"
+                src="assets/images/login/login/password-icon.png"
+                alt="HTML tutorial"
+            /></a>
+          </div>
+        </div>
+
+        <span
+          *ngIf="f['password'].getError('minlength') !== null"
+          class="password-message"
+          >Use at least 8 characters, <br />1 number and 1 special
+          character.</span
+        >
+
+        <span
+          *ngIf="f['password'].errors?.['required'] && f['password'].touched"
+          class="error-message"
+        >
+          This field is required.
+        </span>
+      </div>
+
+      <div class="column password">
+        <label class="input-label sub-header-16" for="name">
+          Repeat password
+        </label>
+
+        <div class="row">
+          <input
+            class="input-field"
+            id="confirmPassword"
+            [type]="showConfirmPassword ? 'text' : 'password'"
+            placeholder="Repeat password"
+            formControlName="confirmPassword"
+            autocomplete="new-password"
+          />
+
+          <div class="toggle-button">
+            <a *ngIf="!showConfirmPassword" (click)="toggleConfirmPassword()"
+              ><img
+                class="password-icon"
+                src="assets/images/login/login/password-icon-slash.png"
+                alt="HTML tutorial"
+            /></a>
+            <a *ngIf="showConfirmPassword" (click)="toggleConfirmPassword()"
+              ><img
+                class="password-icon"
+                src="assets/images/login/login/password-icon.png"
+                alt="HTML tutorial"
+            /></a>
+          </div>
+        </div>
+      </div>
+      <div class="check-box">
+        <label class="container">
+          <input
+            type="checkbox"
+            [checked]="saveUsername"
+            (change)="saveUsername = !saveUsername"
+            formControlName="checkBox"
+          />
+          <span class="checkmark"></span>
+        </label>
+
+        <label class="terms-and-conditions">
+          I accept the
+          <a target="_blank">terms and conditions</a>
+        </label>
+      </div>
+
+      <div id="button-c">
+        <button
+          class="button"
+          type="submit"
+          [disabled]="!saveUsername"
+          (click)="userRegistration()"
+        >
+          Register
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="status === 'hospital'" class="inputs">
+      <p class="header">Hospital Registration</p>
+
+      <div class="column">
+        <label class="input-label sub-header-16" for="name">
+          Hospital Name
+        </label>
+        <div class="row">
+          <input
+            class="input-field"
+            id="firstName"
+            type="text"
+            formControlName="firstName"
+            placeholder="First Name"
+          />
+        </div>
+      </div>
+
+      <div class="column">
+        <label class="input-label sub-header-16" for="name">
+          Branch Name
+        </label>
+        <div class="row">
+          <input
+            class="input-field"
+            id="lastName"
+            type="text"
+            formControlName="lastName"
+            placeholder="Last Name"
+          />
+        </div>
+      </div>
+      <div class="column">
+        <label class="input-label sub-header-16" for="name">
+          E-mailaddress
+        </label>
+        <div class="row">
+          <input
+            class="input-field"
+            id="E-mailaddress"
+            type="email"
+            formControlName="email"
+            placeholder="E-mailaddress"
+          />
+        </div>
+      </div>
+
+      <div class="column">
+        <label class="input-label sub-header-16" for="name"> Location </label>
+        <div class="row">
+          <input
+            class="input-field"
+            id="location"
+            type="email"
+            formControlName="location"
+            placeholder="Location"
+          />
+        </div>
+      </div>
+
+      <div class="column password">
+        <label class="input-label sub-header-16" for="name"> Password </label>
+
+        <div class="row">
+          <input
+            class="input-field"
+            id="password"
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Password"
+            formControlName="password"
+            autocomplete="new-password"
+          />
+          <div class="toggle-button">
+            <a *ngIf="!showPassword" (click)="togglePassword()"
+              ><img
+                class="password-icon"
+                src="assets/images/login/login/password-icon-slash.png"
+                alt="HTML tutorial"
+            /></a>
+            <a *ngIf="showPassword" (click)="togglePassword()"
+              ><img
+                class="password-icon"
+                src="assets/images/login/login/password-icon.png"
+                alt="HTML tutorial"
+            /></a>
+          </div>
+        </div>
+
+        <span
+          *ngIf="f['password'].getError('minlength') !== null"
+          class="password-message"
+          >Use at least 8 characters, <br />1 number and 1 special
+          character.</span
+        >
+
+        <span
+          *ngIf="f['password'].errors?.['required'] && f['password'].touched"
+          class="error-message"
+        >
+          This field is required.
+        </span>
+      </div>
+
+      <div class="column password">
+        <label class="input-label sub-header-16" for="name">
+          Repeat password
+        </label>
+
+        <div class="row">
+          <input
+            class="input-field"
+            id="confirmPassword"
+            [type]="showConfirmPassword ? 'text' : 'password'"
+            placeholder="Repeat password"
+            formControlName="confirmPassword"
+            autocomplete="new-password"
+          />
+
+          <div class="toggle-button">
+            <a *ngIf="!showConfirmPassword" (click)="toggleConfirmPassword()"
+              ><img
+                class="password-icon"
+                src="assets/images/login/login/password-icon-slash.png"
+                alt="HTML tutorial"
+            /></a>
+            <a *ngIf="showConfirmPassword" (click)="toggleConfirmPassword()"
+              ><img
+                class="password-icon"
+                src="assets/images/login/login/password-icon.png"
+                alt="HTML tutorial"
+            /></a>
+          </div>
+        </div>
+      </div>
+      <div class="check-box">
+        <label class="container">
+          <input
+            type="checkbox"
+            [checked]="saveUsername"
+            (change)="saveUsername = !saveUsername"
+            formControlName="checkBox"
+          />
+          <span class="checkmark"></span>
+        </label>
+
+        <label class="terms-and-conditions">
+          I accept the
+          <a target="_blank">terms and conditions</a>
+        </label>
+      </div>
+
+      <div id="button-c">
+        <button
+          class="button"
+          type="submit"
+          [disabled]="!saveUsername"
+          (click)="userRegistration()"
+        >
+          Register
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

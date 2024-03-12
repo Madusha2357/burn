@@ -1,0 +1,78 @@
+<form [formGroup]="signInForm">
+  <div class="host">
+    <div class="image"></div>
+    <div class="inputs">
+      <p class="header">Login</p>
+      <div class="column">
+        <label class="input-label sub-header-16" for="name">
+          E-mailaddress
+        </label>
+
+        <div class="row">
+          <input
+            class="input-field"
+            id="email"
+            type="email"
+            placeholder="E-mailaddress"
+            formControlName="username"
+          />
+        </div>
+        <span class="error-message">{{ errorEmail }}</span>
+        <span
+          *ngIf="f['username'].errors?.['required'] && f['username'].touched"
+          class="error-message"
+        >
+          This field is required.
+        </span>
+        <span
+          *ngIf="f['username'].invalid && f['username'].touched"
+          class="error-message"
+        >
+          Enter valid email address.
+        </span>
+      </div>
+
+      <div class="column">
+        <label class="input-label sub-header-16" for="name"> Password </label>
+
+        <div class="row">
+          <input
+            class="input-field"
+            id="password"
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Password"
+            formControlName="password"
+            autocomplete="on"
+          />
+
+          <div class="toggle-button">
+            <a *ngIf="!showPassword" (click)="toggleShow()"
+              ><img
+                class="password-icon"
+                src="assets/images/login/login/password-icon-slash.png"
+                alt="HTML tutorial"
+            /></a>
+            <a *ngIf="showPassword" (click)="toggleShow()"
+              ><img
+                class="password-icon"
+                src="assets/images/login/login/password-icon.png"
+                alt="HTML tutorial"
+            /></a>
+          </div>
+        </div>
+        <span
+          *ngIf="f['password'].errors?.['required'] && f['password'].touched"
+          class="error-message"
+        >
+          This field is required.
+        </span>
+        <span class="error-message">{{ errorPassword }}</span>
+      </div>
+
+      <div id="button-c">
+        <button class="button" type="submit" (click)="signIn()">Login</button>
+      </div>
+      <a class="link" href="#login/forget-password">Forgot password?</a>
+    </div>
+  </div>
+</form>

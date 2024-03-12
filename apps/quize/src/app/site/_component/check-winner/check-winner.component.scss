@@ -1,0 +1,88 @@
+.winner {
+  padding-top: 60px;
+  padding-bottom: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .middle-text {
+    text-align: center;
+    padding-inline: 100px;
+    .para-1 {
+      font-family: 'TT Firs Neue DemiBold', sans-serif !important;
+      //padding-block: 24px;
+      font-weight: 600;
+      font-size: 24px;
+    }
+    .para-2 {
+      padding-block: 24px;
+      font-size: 24px;
+    }
+    .para-3 {
+      font-family: 'TT Firs Neue DemiBold', sans-serif !important;
+      //padding-block: 24px;
+      font-weight: 600;
+      font-size: 24px;
+    }
+  }
+}
+
+.winner-responsive {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .winner {
+    display: none;
+  }
+
+  .winner-responsive {
+    display: flex;
+
+    .t {
+      display: flex;
+      justify-content: space-between;
+
+      text-align: start;
+    }
+
+    .shape-1 {
+      width: 58px;
+      height: 67px;
+      padding-top: 40px;
+    }
+
+    .challenge-start-text {
+      font-family: 'TT Firs Neue DemiBold', sans-serif !important;
+      display: flex;
+      text-align: center;
+      font-size: 24px;
+      padding-top: 36px;
+      color: #013e34;
+    }
+
+    .middle-text {
+      padding-inline: 25px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+
+      .para-1 {
+        font-family: 'TT Firs Neue DemiBold', sans-serif !important;
+        //padding-block: 24px;
+        font-weight: 600;
+        font-size: 16px;
+      }
+      .para-2 {
+        padding-block: 0px;
+        font-size: 16px;
+      }
+      .para-3 {
+        font-family: 'TT Firs Neue DemiBold', sans-serif !important;
+        //padding-block: 24px;
+        font-weight: 600;
+        font-size: 16px;
+      }
+    }
+  }
+}

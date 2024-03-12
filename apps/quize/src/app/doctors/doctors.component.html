@@ -1,0 +1,17 @@
+<!-- <damen-navigation-bar></damen-navigation-bar> -->
+<div class="container">
+  <div *ngFor="let item of doctors" class="cards doctor-card">
+    <!-- <div class="card">{{ item.firstName }}</div> -->
+    <a
+      [href]="
+        'http://localhost:4200/#/site?name=' +
+        item.firstName +
+        '&level=' +
+        level
+      "
+    >
+      <button (click)="sendDoctor(item._id)">{{ item.firstName }}</button>
+    </a>
+  </div>
+</div>
+<damen-footer></damen-footer>

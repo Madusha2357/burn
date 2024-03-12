@@ -1,0 +1,11 @@
+<div class="map-wrap">
+  <a href="https://www.maptiler.com" class="watermark"
+    ><img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler logo"
+  /></a>
+  <div class="map" #map></div>
+</div>
+
+<div class="details" *ngIf="nearestLocation">
+  <h4>Nearest Location: {{ nearestLocation.name }}</h4>
+  <p>Distance: {{ nearestLocation.distance.toFixed(2) }} km</p>
+</div>

@@ -1,0 +1,36 @@
+<div id="discover">
+  <h1 class="title green">Discover our current SeaXplorer range</h1>
+  <p class="decription">
+    We have created the award-winning SeaXplorer range to provide the most
+    amount of fun possible on the water. The SeaXplorer represents the fusion of
+    years of luxury yachting experience with generations of shipbuilding
+    expertise. The result of this finely tuned blend is the world’s leading
+    range of expedition yachts with outstanding capabilities.
+  </p>
+  <section class="carousel" aria-label="carousel">
+    <div class="slides">
+      <div *ngFor="let card of cards" class="slides-item">
+        <a [href]="card.href" class="whole-cord-link">
+          <img [src]="card.image" />
+          <div class="card-content">
+            <p class="title-card green">{{ card.location }}</p>
+            <p class="content-12 green">{{ card.delivery }}</p>
+            <ul>
+              <li class="dots" *ngFor="let d of card.details">
+                {{ d }}
+              </li>
+            </ul>
+          </div>
+          <div>
+            <a [href]="card.href" target="_blank">
+              <img
+                src="assets/images/site/seaXplorer/explore-more.png"
+                alt=""
+              />
+            </a>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>

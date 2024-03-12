@@ -1,0 +1,35 @@
+<div
+  class="question fade-in-fwd"
+  [ngStyle]="{ 'background-image': image, 'z-index': showVideo ? -1 : 10 }"
+>
+  <div class="timer">
+    <div class="green-square-time">
+      <span class="timerx" *ngIf="timeLeft$ | async as timer">{{
+        timer.secondsToDday
+      }}</span>
+      <span class="timer-text">SECONDS</span>
+    </div>
+  </div>
+  <div class="question-text">
+    <img src="assets/images/site/home/shape-1-left.png" alt="" />
+    <h1 class="title white center">
+      {{ question?.text }}
+    </h1>
+    <img src="assets/images/site/home/shape-1-right.png" alt="" />
+  </div>
+  <div class="choices">
+    <div class="choise-list">
+      <button
+        class="base-button"
+        *ngFor="let choice of question?.choices"
+        (click)="next(choice.text)"
+      >
+        {{ choice.text }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="video">
+  <div class="video" #playerContainer></div>
+</div>

@@ -1,0 +1,68 @@
+<damen-green-background-with-images></damen-green-background-with-images>
+
+<div id="details">
+  <div>
+    <p class="title green">Luxurious Space for Guests and Crew</p>
+    <p>
+      The SeaXplorer 80 boasts approximately 720 square meters of luxurious
+      interior space in a comfortable and stylish environment. With ample space
+      for entertaining friends and family, the SeaXplorer 80 ensures a memorable
+      experience for everyone on board.
+    </p>
+  </div>
+  <div>
+    <div class="table">
+      <span>
+        <p>Guests</p>
+        <p class="title-2 green">12</p>
+      </span>
+      <span>
+        <p>Crew and staff</p>
+        <p class="title-2 green">27</p>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div id="video-gal">
+  <h1 class="title green">Xplore with SeaXplorer</h1>
+  <p class="decription">
+    Join our series as we explore the design, build and operation of our
+    “go-everywhere” SeaXplorer superyachts. Watch every episode for important
+    insights into this ultimate adventure vessel in preparation for the
+    challenge.
+  </p>
+  <div class="v-holder">
+    <div *ngFor="let v of videoes; let i = index" class="v-card">
+      <img
+        (click)="openVideo(v.video)"
+        src="assets/images/site/seaXplorer/video-{{ i + 1 }}.png"
+        alt=""
+      />
+      <span>
+        <p class="v-title">EPISODE #{{ i + 1 }}</p>
+        <p>
+          {{ v.description }}
+        </p>
+      </span>
+    </div>
+  </div>
+
+  <div class="v">
+    <div *ngFor="let v of videoes; let i = index" class="vc">
+      <img
+        (click)="openVideo(v.video)"
+        src="assets/images/site/seaXplorer/video-{{ i + 1 }}.png"
+        alt=""
+      />
+      <div>
+        <p class="v-t">EPISODE #{{ i + 1 }}</p>
+        <p class="v-d">{{ v.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<img id="divider-image" src="assets/images/site/seaXplorer/image-6.webp" />
+
+<damen-carousel-cards></damen-carousel-cards>

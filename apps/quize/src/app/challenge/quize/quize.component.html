@@ -1,0 +1,45 @@
+<div
+  class="question fade-in-fwd"
+  [ngStyle]="{ 'background-image': image, 'z-index': showVideo ? -1 : 10 }"
+>
+  <div class="question-text">
+    <img src="assets/images/site/home/shape-1-left.png" alt="" />
+    <h1 class="title white center">
+      {{ question?.text }}
+    </h1>
+    <img src="assets/images/site/home/shape-1-right.png" alt="" />
+  </div>
+  <div class="answer" [ngSwitch]="question?.type">
+    <!-- Text -->
+    <span *ngSwitchCase="'Text'">
+      <div class="text">
+        <textarea [formControl]="textCtrl" placeholder="Type here"></textarea>
+        <div>
+          <button
+            [disabled]="!textCtrl.value"
+            (click)="next(textCtrl.value)"
+            class="button"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </span>
+    <!-- choose -->
+    <span *ngSwitchCase="'Single Choice'">
+      <div class="choise-list">
+        <button
+          class="base-button"
+          *ngFor="let choice of question?.choices"
+          (click)="next(choice.text)"
+        >
+          {{ choice.text }}
+        </button>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="video">
+  <div class="video" #playerContainer></div>
+</div>

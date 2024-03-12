@@ -1,0 +1,24 @@
+#spec {
+  display: flex;
+  flex-direction: row;
+  gap: 54px;
+  margin-bottom: 48px;
+
+  & .draught {
+    margin-top: 52px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #spec {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    margin-bottom: 0px;
+
+    & .draught {
+      margin-top: 0px;
+      margin-right: 50px;
+    }
+  }
+}
