@@ -20,6 +20,7 @@ import { IDoctorNotificatoin } from '@damen/models';
 export class DoctorsComponent implements AfterViewInit {
   doctors?: any[];
   level: any;
+  chunkedCards: any;
 
   constructor(private store: Store, private route: ActivatedRoute) {}
 
@@ -32,10 +33,17 @@ export class DoctorsComponent implements AfterViewInit {
           switchMap(() => this.store.select(MapState.hospitals)),
           tap((doctors) => {
             this.doctors = doctors;
+            if (doctors) this.chunkedCards = this.chunkArray(doctors, 3);
           })
         )
         .subscribe();
     });
+  }
+
+  chunkArray(array: any[], size: number): any[][] {
+    return Array.from({ length: Math.ceil(array.length / size) }, (_, i) =>
+      array.slice(i * size, i * size + size)
+    );
   }
 
   sendDoctor(id: string) {
