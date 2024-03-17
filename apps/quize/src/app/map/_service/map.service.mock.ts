@@ -1,10 +1,21 @@
 import { Injectable } from '@angular/core';
-import { ICreateUserDto, IDoctorNotificatoin } from '@damen/models';
+import {
+  ICreateUserDto,
+  IDoctorNotificatoin,
+  ProjectionUserDataTable,
+  UpdateUserDto,
+} from '@damen/models';
 import { Observable } from 'rxjs';
 import { MapService } from './map.service.abstract';
 
 @Injectable({ providedIn: 'root' })
 export class MapMockService extends MapService {
+  override update(
+    id: string,
+    data: UpdateUserDto
+  ): Observable<ProjectionUserDataTable> {
+    throw new Error('Method not implemented.');
+  }
   override doctorNotification(
     details: IDoctorNotificatoin,
     id: string

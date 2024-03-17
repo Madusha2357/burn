@@ -2,7 +2,12 @@ import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import { tap } from 'rxjs';
 
-import { DoctorNotification, GetDoctors, GetHospitals } from './map.actions';
+import {
+  DoctorNotification,
+  GetDoctors,
+  GetHospitals,
+  UpdateUserM,
+} from './map.actions';
 import { MapService } from '../_service/map.service.abstract';
 import { ICreateUserDto } from '@damen/models';
 
@@ -60,5 +65,10 @@ export class MapState {
     { details, id }: DoctorNotification
   ) {
     return this.mapService.doctorNotification(details, id);
+  }
+
+  @Action(UpdateUserM)
+  updateUser(state: StateContext<MapStateModel>, { id, data }: UpdateUserM) {
+    return this.mapService.update(id, data);
   }
 }

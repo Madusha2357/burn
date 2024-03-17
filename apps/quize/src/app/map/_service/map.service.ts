@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {
   ICreateUserDto,
   IDoctorNotificatoin,
+  ProjectionUserDataTable,
   URL_USER,
   UpdateUserDto,
 } from '@damen/models';
@@ -43,6 +44,12 @@ export class MapHttpService extends MapService {
   ): Observable<any> {
     return this.httpClient
       .patch<any>(`${URL_USER}/${id}`, { notification })
+      .pipe(take(1));
+  }
+
+  update(id: string, data: UpdateUserDto): Observable<ProjectionUserDataTable> {
+    return this.httpClient
+      .patch<ProjectionUserDataTable>(`${URL_USER}/${id}`, data)
       .pipe(take(1));
   }
 }

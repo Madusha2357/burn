@@ -1,6 +1,6 @@
 <damen-navigation-bar></damen-navigation-bar>
-<div class="ma">
-  <div *ngIf="level">
+<div *ngIf="level" class="ma">
+  <div>
     <div id="content">
       <a href="https://meet.google.com/git-pgta-oas?authuser=0">
         <button class="button scan">Connect with video</button>
@@ -8,4 +8,34 @@
     </div>
   </div>
 </div>
+
+<div *ngIf="isDoctor" class="doctor-container column">
+  <!-- <div class="side-bar"></div> -->
+  <div *ngFor="let n of notifications" class="cards column">
+    <div class="card">
+      <div>
+        <p class="patient">Patient name: {{ n.name }}</p>
+        <p class="patient">Burn level: {{ n.level }}</p>
+      </div>
+      <a href="https://meet.google.com/git-pgta-oas?authuser=0">
+        <button class="button">Connect with video</button>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!isDoctor" class="doctor-container column">
+  <!-- <div class="side-bar"></div> -->
+  <div *ngFor="let n of notifications" class="cards column">
+    <div class="card">
+      <div>
+        <p class="patient">Patient name: {{ n.name }}</p>
+        <p class="patient">Burn level: {{ n.level }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hospital-container"></div>
+
 <damen-footer></damen-footer>

@@ -1,3 +1,4 @@
+import { IDoctorNotificatoin } from '../user/user';
 import { UserStatus } from '../user/user.enum';
 
 export interface DecodedPayload {
@@ -7,6 +8,7 @@ export interface DecodedPayload {
   firstName: string;
   lastName: string;
   roles: string[];
+  notifications?: IDoctorNotificatoin[];
 }
 
 /***

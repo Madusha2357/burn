@@ -192,4 +192,10 @@ export class UserHttpService extends UserService {
         )
       );
   }
+
+  findUser(id: string): Observable<ICreateUserDto> {
+    console.log('ser', id);
+
+    return this.httpClient.get<ICreateUserDto>(`${URL_USER}/${id}`);
+  }
 }

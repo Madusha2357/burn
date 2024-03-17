@@ -1,4 +1,9 @@
-import { ICreateUserDto, IDoctorNotificatoin } from '@damen/models';
+import {
+  ICreateUserDto,
+  IDoctorNotificatoin,
+  ProjectionUserDataTable,
+  UpdateUserDto,
+} from '@damen/models';
 import { Observable } from 'rxjs';
 
 export abstract class MapService {
@@ -18,4 +23,9 @@ export abstract class MapService {
     details: IDoctorNotificatoin,
     id: string
   ): Observable<any>;
+
+  abstract update(
+    id: string,
+    data: UpdateUserDto
+  ): Observable<ProjectionUserDataTable>;
 }

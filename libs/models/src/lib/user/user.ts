@@ -22,6 +22,7 @@ export interface ICreateUserDto extends BaseUser {
   role?: string;
   time?: string;
   location?: ILocation;
+  notification?: IDoctorNotificatoin[];
 }
 
 export interface UpdateUserDto extends BaseUser {
@@ -42,7 +43,7 @@ export interface UpdateUserDto extends BaseUser {
   location?: ILocation;
   email?: string;
   __v?: number;
-  notification?: IDoctorNotificatoin;
+  notification?: IDoctorNotificatoin[];
 }
 
 export class Company {
@@ -67,4 +68,5 @@ export interface ILocation {
 export interface IDoctorNotificatoin {
   level: string;
   name: string;
+  url?: string;
 }

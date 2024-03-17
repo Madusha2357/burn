@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Page, PageData, ProjectionUserDataTable } from '@damen/models';
+import {
+  ICreateUserDto,
+  Page,
+  PageData,
+  ProjectionUserDataTable,
+} from '@damen/models';
 import {
   Action,
   createSelector,
@@ -20,6 +25,7 @@ import {
   DeleteUser,
   DownloadCsv,
   GetRegisteredUsers,
+  GetUser,
   GetUsers,
   GetUsersByQuiz,
   SendInvitationEmail,
@@ -33,6 +39,7 @@ export interface UserStateModel {
   data: Record<string, ProjectionUserDataTable>;
   page: PageData;
   id?: string;
+  user?: ICreateUserDto;
 }
 
 @State<UserStateModel>({
@@ -78,6 +85,15 @@ export class UserState {
         const data: Record<string, ProjectionUserDataTable> = {};
         paged.data.forEach((user) => (data[user._id.toString()] = user));
         setState({ data, page });
+      })
+    );
+  }
+
+  @Action(GetUser)
+  getUser({ patchState }: StateContext<UserStateModel>, { id }: GetUser) {
+    return this.service.findUser(id).pipe(
+      tap((user) => {
+        patchState({ user });
       })
     );
   }

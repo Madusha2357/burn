@@ -16,6 +16,11 @@ export class CreateUser {
   constructor(public data: ICreateUserDto) {}
 }
 
+export class GetUser {
+  public static readonly type = '[Users] GetUser';
+  constructor(public id: string) {}
+}
+
 export class UpdateUser {
   public static readonly type = '[Users] UpdateUser';
   constructor(public id: string, public data: UpdateUserDto) {}

@@ -19,6 +19,10 @@ export class UserMockService extends UserService {
     super();
   }
 
+  override findUser(id: string): Observable<ICreateUserDto> {
+    throw new Error('Method not implemented.');
+  }
+
   override getUsersByQuiz(
     event: string,
     data: [Sort, PageEvent]

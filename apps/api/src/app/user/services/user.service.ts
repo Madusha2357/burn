@@ -74,7 +74,7 @@ export class UserService implements IUserService {
     if (existingUser) throw new ConflictException();
 
     const clone = { ...createUserDto };
-    clone.createdBy = requestUser.sub;
+    clone.createdBy = 'requestUser.email';
     clone.password = generateHashPassword(clone.registerCode);
     clone.roles = [Role.USER];
     return await this.userRepository.create(clone);
@@ -167,15 +167,18 @@ export class UserService implements IUserService {
     id: string,
     requestUser: DecodedPayload
   ): Promise<UserDocument> {
+    //
+    // if (!requestUser.roles.includes(Role.ADMIN)) {
+    //   user = await this.userRepository
+    //     .findOne({ email: requestUser.email }, new ProjectionUserBasic())
+    //     .exec();
+    // } else
+
     let user: UserDocument;
-    if (!requestUser.roles.includes(Role.ADMIN)) {
-      user = await this.userRepository
-        .findOne({ email: requestUser.sub }, new ProjectionUserBasic())
-        .exec();
-    } else
-      user = await this.userRepository
-        .findOne({ _id: new ObjectId(id) }, new ProjectionUserBasic())
-        .exec();
+
+    user = await this.userRepository
+      .findOne({ _id: new ObjectId(id) }, new ProjectionUserDataTableQuery())
+      .exec();
 
     checkToThrowError<User>(user);
     return user;
@@ -198,30 +201,50 @@ export class UserService implements IUserService {
     updateUserDto: UpdateUserDto,
     requestUser: DecodedPayload
   ) {
+    console.log('user', updateUserDto);
     id = requestUserRoleValidity(requestUser, id, updateUserDto);
     removePasswordField(updateUserDto);
     updateUserDto.modifiedBy = requestUser.sub;
     //updateUserDto.status = UserStatus.REGISTERED;
-    console.log('dwddwddq', updateUserDto);
 
     let x: IDoctorNotificatoin[];
 
     // only ROLE ADMIN can update others
     if (requestUser.roles.includes(Role.ADMIN)) {
-      console.log('requestUser.id', requestUser.id);
       return this.userRepository
         .findOneAndUpdate({ _id: new ObjectId(id) }, updateUserDto, {
           new: true,
         })
         .exec();
     } else {
-      return this.userRepository
-        .findOneAndUpdate(
-          { _id: new ObjectId(requestUser.id) },
-          updateUserDto,
-          { new: true }
-        )
-        .exec();
+      if (updateUserDto.notification) {
+        let newA: any[] = [];
+        const excistedUser = await this.userRepository
+          .findById({
+            _id: new ObjectId(requestUser.id),
+          })
+          .exec();
+        const exArray = excistedUser.notification;
+        console.log('excistedUser', exArray);
+        newA.push(excistedUser);
+        newA.push(updateUserDto.notification);
+        updateUserDto.notification = newA;
+        return this.userRepository
+          .findOneAndUpdate(
+            { _id: new ObjectId(requestUser.id) },
+            updateUserDto,
+            { new: true }
+          )
+          .exec();
+      } else {
+        return this.userRepository
+          .findOneAndUpdate(
+            { _id: new ObjectId(requestUser.id) },
+            updateUserDto,
+            { new: true }
+          )
+          .exec();
+      }
     }
     //updateUserDto.status = UserStatus.ACTIVE; //update status as ACTIVE for every user
   }

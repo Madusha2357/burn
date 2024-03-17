@@ -45,4 +45,6 @@ export abstract class UserService {
   abstract sendInvitationEmail(userId: string): Observable<void>;
 
   abstract downloadCsv(quizId?: string): any;
+
+  abstract findUser(id: string): Observable<ICreateUserDto>;
 }

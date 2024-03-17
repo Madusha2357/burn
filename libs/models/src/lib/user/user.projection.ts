@@ -21,6 +21,8 @@ export class ProjectionUserDataTableQuery {
   allowMarketingMails = true;
   isDeleted = true;
   company = true;
+  notification = true;
+  role = true;
 }
 
 export interface ProjectionUserDataTable extends BaseUser, BaseTime, BaseId {

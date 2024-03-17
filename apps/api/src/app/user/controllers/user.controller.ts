@@ -30,6 +30,7 @@ import { UserEmailService } from '../services/user-email.service';
 import { SkipThrottle } from '@nestjs/throttler';
 import { createReadStream } from 'fs';
 import { join } from 'path';
+import { Public } from '../../auth/auth.metadata';
 
 @Controller(`${URL_USER}`)
 export class UserController implements IUserController {
@@ -40,7 +41,8 @@ export class UserController implements IUserController {
 
   @SkipThrottle()
   @Post()
-  @Roles(Role.ADMIN)
+  // @Roles(Role.ADMIN)
+  @Public()
   create(@Body() dto: CreateUserDto, @Req() req: AuthorizedRequest) {
     return this.userService.create(dto, req.user);
   }
@@ -69,7 +71,8 @@ export class UserController implements IUserController {
   }
 
   @Get(':id')
-  @Roles(Role.ADMIN, Role.USER)
+  // @Roles(Role.ADMIN, Role.USER)
+  @Public()
   findOne(@Param('id') id: string, @Req() req: AuthorizedRequest) {
     return this.userService.findOne(id, req.user);
   }
@@ -131,7 +134,8 @@ export class UserController implements IUserController {
 
   @SkipThrottle()
   @Get('map-data/hospitals')
-  @Roles(Role.ADMIN)
+  // @Roles(Role.USER)
+  @Public()
   getHospitals(@Query() query: DefaultQueryParams) {
     query = applyDefaultPage(query);
     return this.userService.getHospitals(query);
@@ -139,7 +143,8 @@ export class UserController implements IUserController {
 
   @SkipThrottle()
   @Get('map-data/doctors')
-  @Roles(Role.ADMIN)
+  // @Roles(Role.USER)
+  @Public()
   getDoctors(@Query() query: DefaultQueryParams) {
     query = applyDefaultPage(query);
     return this.userService.getDoctors(query);

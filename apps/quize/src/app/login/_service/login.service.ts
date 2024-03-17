@@ -33,8 +33,6 @@ export class LoginHttpService extends LoginService {
    * calling to httpClient in back-end and it returns (Access Token)
    */
   login(credentials: models.Credentials): Observable<models.AccessToken> {
-    console.log('servise', credentials);
-
     return (
       this.httpClient
         .post<models.AccessToken>(models.URL_SIGN_IN, credentials)

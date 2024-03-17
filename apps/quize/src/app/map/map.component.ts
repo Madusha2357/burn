@@ -11,14 +11,16 @@ import { RESQUERS, Resquer } from './map.component.resquers';
 import * as maplibregl from 'maplibre-gl';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngxs/store';
-import { GetHospitals } from './_state/map.actions';
+import { GetHospitals, UpdateUserM } from './_state/map.actions';
 import { switchMap, tap } from 'rxjs';
 import { MapState } from './_state/map.state';
+import { UpdateUserDto } from '@damen/models';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'damen-map',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatSnackBarModule],
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
 })
@@ -97,7 +99,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   private addMarkers() {
     if (this.locations)
       this.locations.forEach((resquer) => {
-        const { firstName, location, email } = resquer;
+        const { firstName, location, email, _id } = resquer;
         const marker = new maplibregl.Marker({ color: '#B70404' }).setLngLat([
           location?.lon,
           location?.lat,
@@ -117,14 +119,27 @@ export class MapComponent implements AfterViewInit, OnDestroy {
           .querySelector('#sendEmailBtn')
           ?.addEventListener('click', () => {
             // Send email logic here
-            const subject = 'hello';
-            const body = 'This is body';
-            const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
-              subject
-            )}&body=${encodeURIComponent(body)}`;
-            window.location.href = mailtoLink;
+            // const subject = 'hello';
+            // const body = 'This is body';
+            // const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
+            //   subject
+            // )}&body=${encodeURIComponent(body)}`;
+            // window.location.href = mailtoLink;
+            this.anotherMethod(_id);
           });
       });
+  }
+
+  anotherMethod(id: string) {
+    const user: UpdateUserDto = {
+      notification: [
+        {
+          name: 'Madusha 2',
+          level: 'Level 2',
+        },
+      ],
+    };
+    this.store.dispatch(new UpdateUserM(id, user));
   }
 
   private findNearestLocation() {
