@@ -43,7 +43,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: PATH_TNC,
+    path: 'articles',
     loadComponent: () =>
       import(
         './_component/terms-and-conditions/terms-and-conditions.component'

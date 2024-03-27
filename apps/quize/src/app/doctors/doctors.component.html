@@ -22,7 +22,7 @@
             level
           "
         >
-          <p>{{ card.firstName }}</p>
+          <p (click)="sendDoctor(card._id)">{{ card.firstName }}</p>
         </a>
       </div>
     </div>

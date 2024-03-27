@@ -40,8 +40,6 @@ export class SiteComponent implements OnInit {
               .pipe(
                 tap((state) => {
                   if (state) {
-                    console.log('ssssss', state.site.user);
-
                     if (state.site.user.role == 'hospital') {
                       this.isDoctor = false;
                     } else {

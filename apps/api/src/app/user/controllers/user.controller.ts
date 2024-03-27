@@ -85,6 +85,8 @@ export class UserController implements IUserController {
     @Body() dto: UpdateUserDto,
     @Req() req: AuthorizedRequest
   ) {
+    console.log('controller', id);
+
     return this.userService.update(id, dto, req.user);
   }
 

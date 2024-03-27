@@ -64,6 +64,8 @@ export class MapState {
     { patchState }: StateContext<MapStateModel>,
     { details, id }: DoctorNotification
   ) {
+    console.log('state', id);
+
     return this.mapService.doctorNotification(details, id);
   }
 

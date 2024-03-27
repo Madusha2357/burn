@@ -202,7 +202,7 @@ export class UserService implements IUserService {
     requestUser: DecodedPayload
   ) {
     console.log('user', updateUserDto);
-    id = requestUserRoleValidity(requestUser, id, updateUserDto);
+    // ids = requestUserRoleValidity(requestUser, id, updateUserDto);
     removePasswordField(updateUserDto);
     updateUserDto.modifiedBy = requestUser.sub;
     //updateUserDto.status = UserStatus.REGISTERED;
@@ -218,23 +218,23 @@ export class UserService implements IUserService {
         .exec();
     } else {
       if (updateUserDto.notification) {
+        console.log('idddd', id);
+
         let newA: any[] = [];
         const excistedUser = await this.userRepository
           .findById({
-            _id: new ObjectId(requestUser.id),
+            _id: new ObjectId(id),
           })
           .exec();
-        const exArray = excistedUser.notification;
-        console.log('excistedUser', exArray);
-        newA.push(excistedUser);
+        // const exArray = excistedUser.notification;
+        // console.log('excistedUser', exArray);
+        // newA.push(exArray);
         newA.push(updateUserDto.notification);
         updateUserDto.notification = newA;
         return this.userRepository
-          .findOneAndUpdate(
-            { _id: new ObjectId(requestUser.id) },
-            updateUserDto,
-            { new: true }
-          )
+          .findOneAndUpdate({ _id: new ObjectId(id) }, updateUserDto, {
+            new: true,
+          })
           .exec();
       } else {
         return this.userRepository

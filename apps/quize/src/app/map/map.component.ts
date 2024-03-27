@@ -131,13 +131,13 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   }
 
   anotherMethod(id: string) {
-    const user: UpdateUserDto = {
-      notification: [
-        {
-          name: 'Madusha 2',
-          level: 'Level 2',
-        },
-      ],
+    console.log('id', id);
+
+    const user: any = {
+      notification: {
+        name: 'Name',
+        level: 'Level 2',
+      },
     };
     this.store.dispatch(new UpdateUserM(id, user));
   }

@@ -15,13 +15,13 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field id="registerCode" appearance="outline">
+    <!-- <mat-form-field id="registerCode" appearance="outline">
       <mat-label>Register Code</mat-label>
       <input matInput formControlName="registerCode" />
       <mat-error *ngIf="registerCode.errors as error">
         <span *ngIf="error['required']">Register code is required</span>
       </mat-error>
-    </mat-form-field>
+    </mat-form-field> -->
 
     <mat-form-field id="phoneNumber" appearance="outline">
       <mat-label>Phone Number</mat-label>
@@ -41,7 +41,7 @@
       <input matInput formControlName="lastName" />
     </mat-form-field>
 
-    <ng-container formGroupName="address">
+    <!-- <ng-container formGroupName="address">
       <mat-form-field id="addressLine" appearance="outline">
         <mat-label>Address Line</mat-label>
         <input type="text" matInput formControlName="addressLine" />
@@ -65,6 +65,6 @@
       <mat-checkbox formControlName="allowMarketingMails">
         Allow Marketing Mails
       </mat-checkbox>
-    </ng-container>
+    </ng-container> -->
   </form>
 </div>
