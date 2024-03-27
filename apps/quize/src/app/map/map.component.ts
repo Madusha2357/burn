@@ -108,7 +108,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
         popupContent.innerHTML = `
           <h3>${firstName}</h3>
           <p>${email}</p>
-          <button id="sendEmailBtn">Send Email</button>
+          <button id="sendEmailBtn">Notify hospital</button>
         `;
         const popup = new maplibregl.Popup().setDOMContent(popupContent);
 

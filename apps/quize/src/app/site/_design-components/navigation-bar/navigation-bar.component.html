@@ -5,12 +5,21 @@
   <span>
     <div class="mobile">
       <a
+        *ngIf="isDoctor"
+        class="links"
+        routerLinkActive="red"
+        [routerLinkActiveOptions]="{ exact: true }"
+        href="http://127.0.0.1:5000/"
+      >
+        Scan burn
+      </a>
+      <a
         class="links"
         routerLinkActive="red"
         [routerLinkActiveOptions]="{ exact: true }"
         routerLink="/site"
       >
-        Home
+        Patient notifications
       </a>
       <!-- <a
         class="links"
