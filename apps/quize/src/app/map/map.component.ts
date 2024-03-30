@@ -14,7 +14,6 @@ import { Store } from '@ngxs/store';
 import { GetHospitals, UpdateUserM } from './_state/map.actions';
 import { switchMap, tap } from 'rxjs';
 import { MapState } from './_state/map.state';
-import { UpdateUserDto } from '@damen/models';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
@@ -131,15 +130,19 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   }
 
   anotherMethod(id: string) {
-    console.log('id', id);
-
-    const user: any = {
-      notification: {
-        name: 'Name',
-        level: 'Level 2',
-      },
-    };
-    this.store.dispatch(new UpdateUserM(id, user));
+    if (this.currentLocation) {
+      console.log('hello', id);
+      const user = {
+        notification: [
+          {
+            name: 'Name',
+            level: 'Level 2',
+            url: `https://www.google.com/maps/place/${this.currentLocation.latitude},${this.currentLocation.longitude}`,
+          },
+        ],
+      };
+      this.store.dispatch(new UpdateUserM(id, user));
+    }
   }
 
   private findNearestLocation() {

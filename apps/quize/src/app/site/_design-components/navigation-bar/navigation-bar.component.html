@@ -1,5 +1,5 @@
 <div class="nav">
-  <a [routerLink]="['/site']">
+  <a [routerLink]="['/landing']">
     <img class="logo" src="assets/images/site/home/damenLogo.png" />
   </a>
   <span>
@@ -39,9 +39,11 @@
 
     <img class="user-profile" src="assets/images/site/home/userProfile.png" />
 
-    <p *ngIf="user$ | async as user" class="user">
-      {{ user.firstName }} {{ user.lastName }}
-    </p>
+    <div *ngIf="user$ | async as user">
+      <p (click)="update(user.id)" class="user">
+        {{ user.firstName }} {{ user.lastName }}
+      </p>
+    </div>
 
     <button mat-icon-button id="menu-icon" (click)="showSideNav = !showSideNav">
       <mat-icon>{{ showSideNav ? 'close' : 'menu' }}</mat-icon>

@@ -10,6 +10,9 @@ import { MapService } from './map.service.abstract';
 
 @Injectable({ providedIn: 'root' })
 export class MapMockService extends MapService {
+  override getUser(id: string): Observable<ICreateUserDto> {
+    throw new Error('Method not implemented.');
+  }
   override update(
     id: string,
     data: UpdateUserDto

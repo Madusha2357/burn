@@ -1,41 +1,37 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import {
-  ICreateUserDto,
-  ILocation,
-  UserRegistrationDto,
-  UserStatus,
-} from '@damen/models';
+import { ICreateUserDto, ILocation } from '@damen/models';
 import { Store } from '@ngxs/store';
-import { UserRegistration } from '../_state/user-registration/user-registration.actions';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
 import { PATH_TNC_FULL } from '../../app-routing.conts';
 import { Ng2TelInputModule } from '../../_directives/ng2-tel-input.module';
-import { log } from 'util';
-import { MapComponent } from '../../map/map.component';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { tap } from 'rxjs';
+import { MapState } from '../../map/_state/map.state';
+import { GetUserM, UpdateUserM } from '../../map/_state/map.actions';
 import { LocationComponent } from '../location-pick/location.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
-  selector: 'damen-user-registration',
+  selector: 'damen-user-update',
   standalone: true,
   imports: [
     CommonModule,
     RouterLink,
     ReactiveFormsModule,
     Ng2TelInputModule,
+    RouterModule,
     MatDialogModule,
   ],
-  templateUrl: './user-registration.component.html',
-  styleUrls: ['./user-registration.component.scss'],
+  templateUrl: './user-update.component.html',
+  styleUrls: ['./user-update.component.scss'],
 })
-export class UserRegistrationComponent {
+export class UserUpdateComponent implements OnInit {
   registerForm!: FormGroup;
   saveUsername?: boolean = false;
   showPassword = false;
@@ -43,10 +39,12 @@ export class UserRegistrationComponent {
   tnc: string = PATH_TNC_FULL;
   status?: string;
   location!: ILocation;
+  id?: string;
 
   constructor(
     private store: Store,
     formBuilder: FormBuilder,
+    private router: ActivatedRoute,
     private dialog: MatDialog
   ) {
     this.location = { lat: 0, lon: 0 }; // Initialize location as an empty object
@@ -58,12 +56,6 @@ export class UserRegistrationComponent {
       role: [null],
       time: [null],
       location: [''], // Empty for now
-      password: [
-        null,
-        Validators.compose([Validators.required, Validators.minLength(4)]),
-      ],
-      confirmPassword: [null, Validators.required],
-      checkBox: [false, Validators.requiredTrue],
     });
 
     navigator.geolocation.getCurrentPosition((p) => {
@@ -72,6 +64,26 @@ export class UserRegistrationComponent {
         location: `${this.location.lat}, ${this.location.lon}`,
       });
     });
+  }
+
+  ngOnInit() {
+    this.router.params
+      .pipe(
+        tap((params) => {
+          this.status = params['status'];
+          this.id = params['id'];
+          this.store
+            .dispatch(new GetUserM(params['id']))
+            .pipe(
+              tap(() => {
+                const user = this.store.selectSnapshot(MapState.user);
+                if (user) this.registerForm.patchValue(user);
+              })
+            )
+            .subscribe();
+        })
+      )
+      .subscribe();
   }
 
   togglePassword() {
@@ -83,15 +95,11 @@ export class UserRegistrationComponent {
   }
 
   userRegistration() {
-    if (this.registerForm.valid && this.status) {
-      const reg: ICreateUserDto = {
-        ...this.registerForm.value,
-      };
-      reg.status = UserStatus.REGISTERED;
-      reg.role = this.status;
-      reg.location = this.location;
-      reg.registerCode = reg.password;
-      this.store.dispatch(new UserRegistration(reg));
+    const reg: ICreateUserDto = {
+      ...this.registerForm.value,
+    };
+    if (this.id) {
+      this.store.dispatch(new UpdateUserM(this.id, reg));
     }
   }
 

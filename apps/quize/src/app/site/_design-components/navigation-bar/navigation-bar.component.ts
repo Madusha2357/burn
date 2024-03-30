@@ -12,6 +12,9 @@ import { fadeIn, fadeOut } from './navigation-bar.animation';
 import { Navigate } from '@ngxs/router-plugin';
 import { MapState } from '../../../map/_state/map.state';
 import { GetCurrentUser } from '../../_state/site.actions';
+import { UserState } from '../../../admin/users/_state/user.state';
+import { GetUser } from '../../../admin/users/_state/user.actions';
+import { GetUserM } from '../../../map/_state/map.actions';
 
 @Component({
   selector: 'damen-navigation-bar',
@@ -31,6 +34,7 @@ export class NavigationBarComponent implements OnDestroy {
   showSideNav = false;
   private notifier$ = new Subject<void>();
   user$: Observable<TokenUser | undefined>;
+  status?: string;
 
   isDoctor?: boolean = false;
 
@@ -51,8 +55,10 @@ export class NavigationBarComponent implements OnDestroy {
                   if (state) {
                     if (state.site.user.role == 'hospital') {
                       this.isDoctor = false;
+                      this.status = 'hospital';
                     } else {
                       this.isDoctor = true;
+                      this.status = 'doctor';
                     }
                   }
                 })
@@ -75,5 +81,19 @@ export class NavigationBarComponent implements OnDestroy {
   onClickLink(link: string) {
     this.store.dispatch(new Navigate([link]));
     this.showSideNav = false;
+  }
+
+  update(id: string) {
+    const status = this.status;
+    this.store
+      .dispatch(new GetUserM(id))
+      .pipe(
+        tap(() =>
+          this.store.dispatch(
+            new Navigate([`login/user-update/${id}/${status}`])
+          )
+        )
+      )
+      .subscribe();
   }
 }

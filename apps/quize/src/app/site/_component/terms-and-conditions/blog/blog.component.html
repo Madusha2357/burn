@@ -1,0 +1,14 @@
+<damen-navigation-bar></damen-navigation-bar>
+<p class="header">Blogs</p>
+<div class="container">
+  <div class="cards">
+    <div class="row" *ngFor="let chunk of chunkedCards">
+      <div class="card" *ngFor="let card of chunk">
+        <a class="link" routerLink="/articles">
+          <p>{{ card.name }}</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<damen-footer></damen-footer>

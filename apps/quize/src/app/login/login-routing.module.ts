@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, importProvidersFrom } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {
   PATH_CREATE_PASSOWORD,
@@ -8,6 +8,13 @@ import {
   PATH_USER_REGISTRATION,
 } from '../app-routing.conts';
 import { LoginComponent } from './login.component';
+import { UserState } from '../admin/users/_state/user.state';
+import { NgxsModule } from '@ngxs/store';
+import { MapState } from '../map/_state/map.state';
+import { environment } from '../../environments/environment';
+import { MapHttpService } from '../map/_service/map.service';
+import { MapService } from '../map/_service/map.service.abstract';
+import { MapMockService } from '../map/_service/map.service.mock';
 
 const routes: Routes = [
   {
@@ -43,6 +50,21 @@ const routes: Routes = [
         loadComponent: () =>
           import('./user-registration/user-registration.component').then(
             (m) => m.UserRegistrationComponent
+          ),
+      },
+      {
+        path: 'user-update/:id/:status',
+        // providers: [importProvidersFrom(NgxsModule.forFeature([MapState]))],
+        providers: [
+          {
+            provide: MapService,
+            useClass: environment.useMock ? MapMockService : MapHttpService,
+          },
+          importProvidersFrom(NgxsModule.forFeature([MapState])),
+        ],
+        loadComponent: () =>
+          import('./user-update/user-update.component').then(
+            (m) => m.UserUpdateComponent
           ),
       },
       {

@@ -1,0 +1,183 @@
+.header {
+  font-size: 22px;
+}
+
+.header-1 {
+  margin-top: -100px;
+  margin-bottom: 100px;
+}
+
+.host {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+
+  & .image {
+    width: 50%;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-image: url('/assets/images/login/registration/registration-image.png');
+  }
+
+  & .image-mobile {
+    display: none;
+  }
+
+  & .inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+    flex: 1;
+
+    & .error-message {
+      color: var(--red);
+      font-weight: 300;
+      font-size: 14px;
+      padding-top: 4px;
+    }
+
+    .password-message {
+      padding-top: 4px;
+      color: #666666;
+      font-weight: 300;
+      font-size: 14px;
+    }
+
+    .input-label {
+      padding-top: 10px;
+      padding-bottom: 4px;
+    }
+
+    .input-label-disable {
+      padding-top: 24px;
+      padding-bottom: 4px;
+      color: #aeaeae;
+    }
+
+    .inputs {
+      height: 34px;
+      background: #efefef;
+      border: #efefef solid;
+    }
+
+    & .input-field {
+      @extend .inputs;
+      width: 310px;
+      padding-left: 16px;
+    }
+
+    & .input-field-mobile {
+      @extend .inputs;
+      width: 332px;
+    }
+
+    & .toggle-button {
+      margin-top: 16px;
+    }
+
+    & .password-icon {
+      position: absolute;
+      margin-left: -35px;
+      width: 19.69px;
+      height: 14px;
+    }
+
+    .button:hover {
+      border: 1px solid #01463b;
+      background-color: #01463b;
+      color: #ffffff;
+      //padding: 5px 10px;
+    }
+
+    .button:disabled,
+    .button[disabled] {
+      border: 1px solid #678b8580;
+      background-color: #678b8580;
+      color: #ffffff;
+    }
+
+    & .button {
+      // margin-top: 32px;
+    }
+
+    & .check-box {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      margin-left: -36px;
+    }
+
+    & .terms-and-conditions {
+      margin-top: 25px;
+      margin-left: 40px;
+    }
+  }
+}
+
+.choose {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+@media only screen and (max-width: 768px) {
+  .host {
+    flex-direction: column;
+
+    & .image {
+      display: none;
+    }
+
+    & .image-mobile {
+      display: flex;
+      height: 100%;
+      width: 100%;
+    }
+
+    & .header {
+      text-align: center;
+    }
+
+    #button-c {
+      display: flex;
+      justify-content: center;
+      & .button {
+        justify-content: center;
+        align-items: center;
+        width: 130px;
+      }
+    }
+
+    & .inputs {
+      padding-top: 20px;
+      justify-content: normal;
+      align-items: normal;
+      gap: 0px;
+      flex: 0;
+      margin-inline: 20px;
+
+      & .input-field {
+        width: 100vw;
+      }
+
+      & .input-field-mobile {
+        width: 87vw;
+      }
+
+      & .check-box {
+        margin-left: 0px;
+      }
+    }
+
+    & .terms-and-conditions {
+      margin-top: 25px;
+      margin-left: 40px;
+    }
+  }
+}

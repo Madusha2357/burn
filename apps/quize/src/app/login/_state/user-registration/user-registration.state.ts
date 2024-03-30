@@ -33,6 +33,6 @@ export class RegistrationState {
     dto.status = UserStatus.REGISTERED;
     return this.loginService
       .create(dto)
-      .pipe(tap(() => dispatch(new Navigate([PATH_SITE]))));
+      .pipe(tap(() => dispatch(new Navigate(['login']))));
   }
 }

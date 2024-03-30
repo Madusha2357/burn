@@ -52,4 +52,10 @@ export class MapHttpService extends MapService {
       .patch<ProjectionUserDataTable>(`${URL_USER}/${id}`, data)
       .pipe(take(1));
   }
+
+  getUser(id: string): Observable<ICreateUserDto> {
+    return this.httpClient
+      .get<ICreateUserDto>(`${URL_USER}/${id}`)
+      .pipe(take(1));
+  }
 }

@@ -62,6 +62,20 @@ const routes: Routes = [
         (r) => r.DoctorsRoutingModule
       ),
   },
+  {
+    path: 'blogs',
+    loadComponent: () =>
+      import('./site/_component/terms-and-conditions/blog/blog.component').then(
+        (m) => m.BlogsComponent
+      ),
+  },
+  {
+    path: 'articles',
+    loadComponent: () =>
+      import(
+        './site/_component/terms-and-conditions/terms-and-conditions.component'
+      ).then((m) => m.TermsAndConditionsComponent),
+  },
 ];
 
 @NgModule({

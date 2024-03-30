@@ -42,13 +42,6 @@ const routes: Routes = [
         (m) => m.CheckAnswersComponent
       ),
   },
-  {
-    path: 'articles',
-    loadComponent: () =>
-      import(
-        './_component/terms-and-conditions/terms-and-conditions.component'
-      ).then((m) => m.TermsAndConditionsComponent),
-  },
 ];
 
 @NgModule({

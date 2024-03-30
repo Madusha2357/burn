@@ -6,14 +6,17 @@ import {
   DoctorNotification,
   GetDoctors,
   GetHospitals,
+  GetUserM,
   UpdateUserM,
 } from './map.actions';
 import { MapService } from '../_service/map.service.abstract';
 import { ICreateUserDto } from '@damen/models';
+import { Navigate } from '@ngxs/router-plugin';
 
 export interface MapStateModel {
   hospitals?: ICreateUserDto[];
   doctors?: ICreateUserDto[];
+  user?: ICreateUserDto;
 }
 
 @State<MapStateModel>({
@@ -30,6 +33,10 @@ export class MapState {
 
   @Selector() static doctors(state: MapStateModel) {
     return state.doctors;
+  }
+
+  @Selector() static user(state: MapStateModel) {
+    return state.user;
   }
 
   /**
@@ -71,6 +78,15 @@ export class MapState {
 
   @Action(UpdateUserM)
   updateUser(state: StateContext<MapStateModel>, { id, data }: UpdateUserM) {
-    return this.mapService.update(id, data);
+    return this.mapService
+      .update(id, data)
+      .pipe(tap(() => state.dispatch(new Navigate(['login']))));
+  }
+
+  @Action(GetUserM)
+  getUserM(state: StateContext<MapStateModel>, { id }: GetUserM) {
+    return this.mapService
+      .getUser(id)
+      .pipe(tap((user) => state.setState({ user })));
   }
 }

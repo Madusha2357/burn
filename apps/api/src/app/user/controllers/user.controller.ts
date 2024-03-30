@@ -71,6 +71,7 @@ export class UserController implements IUserController {
   }
 
   @Get(':id')
+  @SkipThrottle()
   // @Roles(Role.ADMIN, Role.USER)
   @Public()
   findOne(@Param('id') id: string, @Req() req: AuthorizedRequest) {

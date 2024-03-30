@@ -28,4 +28,6 @@ export abstract class MapService {
     id: string,
     data: UpdateUserDto
   ): Observable<ProjectionUserDataTable>;
+
+  abstract getUser(id: string): Observable<ICreateUserDto>;
 }

@@ -218,8 +218,6 @@ export class UserService implements IUserService {
         .exec();
     } else {
       if (updateUserDto.notification) {
-        console.log('idddd', id);
-
         let newA: any[] = [];
         const excistedUser = await this.userRepository
           .findById({
@@ -229,7 +227,7 @@ export class UserService implements IUserService {
         // const exArray = excistedUser.notification;
         // console.log('excistedUser', exArray);
         // newA.push(exArray);
-        newA.push(updateUserDto.notification);
+        newA.push(updateUserDto.notification[0]);
         updateUserDto.notification = newA;
         return this.userRepository
           .findOneAndUpdate({ _id: new ObjectId(id) }, updateUserDto, {

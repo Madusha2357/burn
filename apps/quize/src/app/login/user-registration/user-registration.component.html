@@ -17,6 +17,7 @@
         Hospital
       </button>
     </div>
+
     <div *ngIf="status === 'doctor'" class="inputs">
       <p class="header">Doctor Registration</p>
 
@@ -235,6 +236,8 @@
             formControlName="location"
             placeholder="Location"
           />
+
+          <button (click)="openMap()">pick</button>
         </div>
       </div>
 

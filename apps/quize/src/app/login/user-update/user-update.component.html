@@ -1,0 +1,141 @@
+<form [formGroup]="registerForm">
+  <div class="host">
+    <div class="image"></div>
+    <img
+      class="image-mobile"
+      src="/assets/images/login/registration/registration-image-mobile.webp"
+    />
+
+    <div *ngIf="status === 'doctor'" class="inputs">
+      <p class="header">Doctor Update</p>
+
+      <div class="column">
+        <label class="input-label sub-header-16" for="name"> First Name </label>
+        <div class="row">
+          <input
+            class="input-field"
+            id="firstName"
+            type="text"
+            formControlName="firstName"
+            placeholder="First Name"
+          />
+        </div>
+      </div>
+
+      <div class="column">
+        <label class="input-label sub-header-16" for="name"> Last Name </label>
+        <div class="row">
+          <input
+            class="input-field"
+            id="lastName"
+            type="text"
+            formControlName="lastName"
+            placeholder="Last Name"
+          />
+        </div>
+      </div>
+      <div class="column">
+        <label class="input-label sub-header-16" for="name">
+          E-mailaddress
+        </label>
+        <div class="row">
+          <input
+            class="input-field"
+            id="E-mailaddress"
+            type="email"
+            formControlName="email"
+            placeholder="E-mailaddress"
+          />
+        </div>
+      </div>
+
+      <div class="column">
+        <label class="input-label sub-header-16" for="name">
+          Available times
+        </label>
+        <div class="row">
+          <input
+            class="input-field"
+            id="time"
+            type="email"
+            formControlName="time"
+            placeholder="Available times"
+          />
+        </div>
+      </div>
+
+      <div id="button-c">
+        <button class="button" type="submit" (click)="userRegistration()">
+          Update
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="status === 'hospital'" class="inputs">
+      <p class="header">Hospital Update</p>
+
+      <div class="column">
+        <label class="input-label sub-header-16" for="name">
+          Hospital Name
+        </label>
+        <div class="row">
+          <input
+            class="input-field"
+            id="firstName"
+            type="text"
+            formControlName="firstName"
+            placeholder="First Name"
+          />
+        </div>
+      </div>
+
+      <div class="column">
+        <label class="input-label sub-header-16" for="name">
+          Branch Name
+        </label>
+        <div class="row">
+          <input
+            class="input-field"
+            id="lastName"
+            type="text"
+            formControlName="lastName"
+            placeholder="Last Name"
+          />
+        </div>
+      </div>
+      <div class="column">
+        <label class="input-label sub-header-16" for="name">
+          E-mailaddress
+        </label>
+        <div class="row">
+          <input
+            class="input-field"
+            id="E-mailaddress"
+            type="email"
+            formControlName="email"
+            placeholder="E-mailaddress"
+          />
+        </div>
+      </div>
+
+      <div class="column">
+        <label class="input-label sub-header-16" for="name"> Location </label>
+        <div class="row">
+          <input
+            class="input-field"
+            id="location"
+            type="email"
+            formControlName="location"
+            placeholder="Location"
+          />
+        </div>
+      </div>
+
+      <div id="button-c">
+        <button class="button" type="submit" (click)="userRegistration()">
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
