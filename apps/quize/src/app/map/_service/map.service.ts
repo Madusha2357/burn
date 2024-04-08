@@ -47,6 +47,12 @@ export class MapHttpService extends MapService {
       .pipe(take(1));
   }
 
+  doctorAllNotification(notification: IDoctorNotificatoin): Observable<any> {
+    return this.httpClient
+      .patch<any>(`${URL_USER}/All/All`, { notification })
+      .pipe(take(1));
+  }
+
   update(id: string, data: UpdateUserDto): Observable<ProjectionUserDataTable> {
     return this.httpClient
       .patch<ProjectionUserDataTable>(`${URL_USER}/${id}`, data)

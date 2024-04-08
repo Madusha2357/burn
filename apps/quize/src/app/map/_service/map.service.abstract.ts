@@ -24,6 +24,8 @@ export abstract class MapService {
     id: string
   ): Observable<any>;
 
+  abstract doctorAllNotification(details: IDoctorNotificatoin): Observable<any>;
+
   abstract update(
     id: string,
     data: UpdateUserDto

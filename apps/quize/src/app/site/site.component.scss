@@ -31,3 +31,19 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+#content {
+  width: 100vw;
+  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & .scan {
+    background-color: rgb(157, 191, 192);
+    padding-inline: 100px;
+    height: 100px;
+    // padding-bottom: 30px;
+  }
+}
+  

@@ -201,7 +201,6 @@ export class UserService implements IUserService {
     updateUserDto: UpdateUserDto,
     requestUser: DecodedPayload
   ) {
-    console.log('user', updateUserDto);
     // ids = requestUserRoleValidity(requestUser, id, updateUserDto);
     removePasswordField(updateUserDto);
     updateUserDto.modifiedBy = requestUser.sub;
@@ -245,6 +244,43 @@ export class UserService implements IUserService {
       }
     }
     //updateUserDto.status = UserStatus.ACTIVE; //update status as ACTIVE for every user
+  }
+
+  async updateAll(updateUserDto: UpdateUserDto, requestUser: DecodedPayload) {
+    console.log('user', updateUserDto);
+    removePasswordField(updateUserDto);
+    updateUserDto.modifiedBy = requestUser.sub;
+
+    if (updateUserDto.notification) {
+      let newA: any[] = [];
+      console.log('aaaaa');
+
+      const findQuery = await this.userRepository.find({ role: 'doctor' });
+
+      const doctorIds = findQuery.map((doctor) => doctor._id.toString());
+      console.log('fine all dotors', doctorIds);
+
+      for (const doctorId of doctorIds) {
+        await this.userRepository.findOneAndUpdate(
+          { _id: new ObjectId(doctorId) },
+          { notification: updateUserDto.notification },
+          { new: true }
+        );
+      }
+
+      // const excistedUser = await this.userRepository
+      //   .findById({
+      //     _id: new ObjectId(id),
+      //   })
+      //   .exec();
+      // newA.push(updateUserDto.notification[0]);
+      // updateUserDto.notification = newA;
+      // return this.userRepository
+      //   .findOneAndUpdate({ _id: new ObjectId(id) }, updateUserDto, {
+      //     new: true,
+      //   })
+      //   .exec();
+    }
   }
 
   remove(id: string): Promise<User> {

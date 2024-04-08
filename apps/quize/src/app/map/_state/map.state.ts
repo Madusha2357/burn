@@ -4,6 +4,7 @@ import { tap } from 'rxjs';
 
 import {
   DoctorNotification,
+  DoctorNotificationAll,
   GetDoctors,
   GetHospitals,
   GetUserM,
@@ -63,17 +64,20 @@ export class MapState {
     );
   }
 
-  /**
-   * Get quiz action
-   */
   @Action(DoctorNotification)
   doctorNotification(
     { patchState }: StateContext<MapStateModel>,
     { details, id }: DoctorNotification
   ) {
-    console.log('state', id);
-
     return this.mapService.doctorNotification(details, id);
+  }
+
+  @Action(DoctorNotificationAll)
+  doctorAllNotification(
+    { patchState }: StateContext<MapStateModel>,
+    { details }: DoctorNotificationAll
+  ) {
+    return this.mapService.doctorAllNotification(details);
   }
 
   @Action(UpdateUserM)

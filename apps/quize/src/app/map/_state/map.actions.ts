@@ -13,6 +13,11 @@ export class DoctorNotification {
   constructor(public details: IDoctorNotificatoin, public id: string) {}
 }
 
+export class DoctorNotificationAll {
+  public static readonly type = '[map] DoctorNotificationAll';
+  constructor(public details: IDoctorNotificatoin) {}
+}
+
 export class GetUserM {
   public static readonly type = '[map] getUserM';
   constructor(public id: string) {}

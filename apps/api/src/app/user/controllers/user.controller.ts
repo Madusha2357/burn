@@ -86,8 +86,6 @@ export class UserController implements IUserController {
     @Body() dto: UpdateUserDto,
     @Req() req: AuthorizedRequest
   ) {
-    console.log('controller', id);
-
     return this.userService.update(id, dto, req.user);
   }
 
@@ -151,5 +149,12 @@ export class UserController implements IUserController {
   getDoctors(@Query() query: DefaultQueryParams) {
     query = applyDefaultPage(query);
     return this.userService.getDoctors(query);
+  }
+
+  @SkipThrottle()
+  @Patch('All/All')
+  @Roles(Role.ADMIN, Role.USER)
+  updateAll(@Body() dto: UpdateUserDto, @Req() req: AuthorizedRequest) {
+    return this.userService.updateAll(dto, req.user);
   }
 }

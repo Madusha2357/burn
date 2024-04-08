@@ -3,7 +3,11 @@ import { AfterViewInit, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngxs/store';
 import { switchMap, tap } from 'rxjs';
-import { DoctorNotification, GetDoctors } from '../map/_state/map.actions';
+import {
+  DoctorNotification,
+  DoctorNotificationAll,
+  GetDoctors,
+} from '../map/_state/map.actions';
 import { MapState } from '../map/_state/map.state';
 import { FooterComponent } from '../site/_design-components/footer/footer.component';
 import { NavigationBarComponent } from '../site/_design-components/navigation-bar/navigation-bar.component';
@@ -53,5 +57,14 @@ export class DoctorsComponent implements AfterViewInit {
     } as IDoctorNotificatoin;
     console.log('doctor clcicked !', id);
     this.store.dispatch(new DoctorNotification(details, id));
+  }
+
+  notifyAll() {
+    const details = {
+      level: this.level,
+      name: 'madusha',
+    } as IDoctorNotificatoin;
+    console.log('doctor all clcicked !');
+    this.store.dispatch(new DoctorNotificationAll(details));
   }
 }
