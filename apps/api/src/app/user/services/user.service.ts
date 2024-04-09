@@ -228,6 +228,9 @@ export class UserService implements IUserService {
         // newA.push(exArray);
         newA.push(updateUserDto.notification[0]);
         updateUserDto.notification = newA;
+
+        console.log('hello notifications', newA);
+
         return this.userRepository
           .findOneAndUpdate({ _id: new ObjectId(id) }, updateUserDto, {
             new: true,

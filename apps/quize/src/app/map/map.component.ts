@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   OnDestroy,
+  OnInit,
   ViewChild,
 } from '@angular/core';
 import { Map } from 'maplibre-gl';
@@ -15,15 +16,18 @@ import { GetHospitals, UpdateUserM } from './_state/map.actions';
 import { switchMap, tap } from 'rxjs';
 import { MapState } from './_state/map.state';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { LocationComponent } from '../login/location-pick/location.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ILocation } from '@damen/models';
 
 @Component({
   selector: 'damen-map',
   standalone: true,
-  imports: [CommonModule, MatSnackBarModule],
+  imports: [CommonModule, MatSnackBarModule, MatDialogModule],
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
 })
-export class MapComponent implements AfterViewInit, OnDestroy {
+export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
   private map!: Map;
   searchLocation?: string = '';
   resquers: Resquer[] = RESQUERS;
@@ -33,10 +37,30 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
   locations?: any[];
 
+  location?: ILocation;
+
   @ViewChild('map')
   private mapContainer!: ElementRef<HTMLElement>;
 
-  constructor(private store: Store) {}
+  constructor(private store: Store, private dialog: MatDialog) {}
+
+  ngOnInit() {
+    const dialogRef = this.dialog.open(LocationComponent, {
+      width: '60%',
+      height: '60%',
+    });
+    dialogRef.componentInstance.locationSelected.subscribe(
+      (selectedLocation: { lat: number; lon: number }) => {
+        if (selectedLocation) {
+          this.location = {
+            lat: selectedLocation.lat,
+            lon: selectedLocation.lon,
+          };
+          dialogRef.close();
+        }
+      }
+    );
+  }
 
   ngAfterViewInit() {
     const initialState = { lng: 79.86124, lat: 6.9271, zoom: 7 };
@@ -131,14 +155,16 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   }
 
   anotherMethod(id: string) {
-    if (this.currentLocation) {
+    if (this.location) {
       console.log('hello', id);
       const user = {
         notification: [
           {
             name: 'Name',
             level: 'Level 2',
-            url: `https://www.google.com/maps/place/${this.currentLocation.latitude},${this.currentLocation.longitude}`,
+            url: `https://www.google.com/maps/place/${
+              this.location.lat ?? ''
+            },${this.location.lon}`,
           },
         ],
       };

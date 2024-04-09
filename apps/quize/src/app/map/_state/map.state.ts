@@ -82,9 +82,8 @@ export class MapState {
 
   @Action(UpdateUserM)
   updateUser(state: StateContext<MapStateModel>, { id, data }: UpdateUserM) {
-    return this.mapService
-      .update(id, data)
-      .pipe(tap(() => state.dispatch(new Navigate(['login']))));
+    return this.mapService.update(id, data);
+    // .pipe(tap(() => state.dispatch(new Navigate(['login']))));
   }
 
   @Action(GetUserM)
