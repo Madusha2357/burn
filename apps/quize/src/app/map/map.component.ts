@@ -106,6 +106,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
         const popupContent = document.createElement('div');
         popupContent.innerHTML = `
           <h3>${firstName}</h3>
+          <a>0771234567</a>
           <p>${email}</p>
           <button id="sendEmailBtn">Notify hospital</button>
         `;

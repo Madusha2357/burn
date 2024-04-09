@@ -257,13 +257,15 @@ export class UserService implements IUserService {
 
       const findQuery = await this.userRepository.find({ role: 'doctor' });
 
+      newA.push(updateUserDto.notification);
+
       const doctorIds = findQuery.map((doctor) => doctor._id.toString());
-      console.log('fine all dotors', doctorIds);
+      console.log('fineeeeeeeee all dotors', doctorIds);
 
       for (const doctorId of doctorIds) {
         await this.userRepository.findOneAndUpdate(
           { _id: new ObjectId(doctorId) },
-          { notification: updateUserDto.notification },
+          { notification: newA },
           { new: true }
         );
       }

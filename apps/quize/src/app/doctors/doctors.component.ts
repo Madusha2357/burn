@@ -52,8 +52,8 @@ export class DoctorsComponent implements AfterViewInit {
 
   sendDoctor(id: string) {
     const details = {
-      level: this.level,
-      name: 'madusha',
+      level: this.level ?? 'level 2',
+      name: 'Test',
     } as IDoctorNotificatoin;
     console.log('doctor clcicked !', id);
     this.store.dispatch(new DoctorNotification(details, id));
@@ -61,8 +61,8 @@ export class DoctorsComponent implements AfterViewInit {
 
   notifyAll() {
     const details = {
-      level: this.level,
-      name: 'madusha',
+      level: this.level ?? 'level 2',
+      name: 'Test',
     } as IDoctorNotificatoin;
     console.log('doctor all clcicked !');
     this.store.dispatch(new DoctorNotificationAll(details));
