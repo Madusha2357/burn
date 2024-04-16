@@ -2,13 +2,52 @@
   margin: 0;
 }
 
+body{
+  width: 1600px;
+}
+
+.herosingle {
+  width: 100%;
+  height: 766px;
+  background-image: url("/assets/images/landing/hero.png");
+}
+
+.heromask {
+  width: 100%;
+  height: 766px;
+  background-color: black;
+  opacity: 75%;
+}
+
 nav {
+  background-color: transparent;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  background-color: white;
-  color: white;
+  padding: 15px,0px,50px,0px;
+  height: 66px;
+  width: auto;
+}
+
+.navbar-logo{
+  align-items: center;
+  width: 207.47px;
+  height: 43px;
+  margin-left: 59px;
+  margin-top: 23px;
+}
+
+.nav-logo{
+  width: 199.24px;
+  height: 43px;
+}
+
+.navbar-links{
+  width: 624px;
+  height: 51px;
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
 }
 
 ul {
@@ -17,15 +56,47 @@ ul {
   margin: 0;
 }
 
-.links {
-  padding-top: 16px;
-  padding-left: 20px;
-  color: black;
+.links1 {
+  width: 64.38px;
+  height: 31px;
+  color: white;
+  margin-left: 9px;
+  margin-top: 10px;
+  margin-right: 29px;
 }
 
-li {
-  margin-right: 1rem;
+.links2 {
+  width: 130.05px;
+  height: 31px;
+  color: white;
+  margin-top: 10px;
+  margin-right: 29px;
 }
+
+.links3 {
+  width: 117.42px;
+  height: 31px;
+  color: white;
+  margin-top: 10px;
+  margin-right: 29px;
+}
+
+.links4 {
+  width: 77.07px;
+  height: 31px;
+  color: white;
+  margin-top: 10px;
+  margin-right: 29px;
+}
+
+.links5 {
+  width: 113.07px;
+  height: 31px;
+  color: white;
+  margin-top: 10px;
+  margin-right: 29px;
+}
+
 
 a {
   text-decoration: none;
@@ -34,16 +105,41 @@ a {
 
 .auth-buttons {
   display: flex;
+  width: 330px;
+  height: 35.89px;
+  margin-top: 16px;
+  padding: 0.9px,0px,0px,0px;
 }
 
-button {
-  margin-left: 1rem;
-  padding: 0.5rem 1rem;
+.button1 {
+  width: 107.36px;
+  height: 34.99px;
+  border: 0.9px;
+  border-radius: 19.79px;
+  margin-left: 34.32px;
+  margin-top: 0.9px;
+  margin-bottom: 0px;
+  margin-right: 8.99px;
+  background-color: transparent;
 }
 
-.light {
-  background-color: cadetblue;
+.button2 {
+  width: 122px;
+  height: 34.99px;
+  border: 0.9px;
+  border-radius: 19.79px;
+  margin-left: 32px;
+  margin-top: 0.9px;
+  margin-bottom: 0px;
+  margin-right: 34.32px;
+  background-color: transparent;
+
+  img {
+    margin-top: -2.0px;
+    margin-left: -7px;
+  }
 }
+
 
 #content {
   width: 100vw;
