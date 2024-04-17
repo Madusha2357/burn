@@ -1,22 +1,43 @@
-<nav>
-  <ul>
-    <li><a routerLink="/">Home</a></li>
-    <li><a routerLink="/about">About</a></li>
-    <!-- Add more navigation links as needed -->
-  </ul>
-  <div class="auth-buttons">
-    <a class="links" routerLink="/map">Find near by hospitals</a>
-    <a class="links" routerLink="/doctors">Connect with doctors</a>
-    <a class="links" routerLink="/blogs">Articles</a>
-    <button class="button light" routerLink="/login/sign-in">Login</button>
-    <button class="button" routerLink="/login/user-registration">
-      Register
-    </button>
-  </div>
-</nav>
-
-<div id="content">
+<html>
+    <body>
+        <div class="herosingle">
+            <div class="heromask">
+                <nav>
+                    <div class="navbar-logo">
+                    <a class="links" routerLink="/landing">
+                        <img
+                        class="nav-logo"
+                        src="assets/images/nav_bar/logo.png"
+                        alt="Logo"
+                        />
+                    </a>
+                    </div>
+                    <div class="navbar-links">
+                    <ul>
+                        <li><a class="links1" routerLink="/landing">Home</a></li>
+                        <li><a class="links2" routerLink="/map">Find hospitals</a></li>
+                        <li><a class="links3" routerLink="/doctors">Find doctors</a></li>
+                        <li><a class="links4" routerLink="/blogs">Articles</a></li>
+                        <li><a class="links5" routerLink="/">Community</a></li>
+                        <!-- Add more navigation links as needed -->
+                    </ul>
+                    </div>
+                    <div class="auth-buttons">
+                    <button class="button1" routerLink="/login/sign-in"><img src="assets/images/nav_bar/login.png" alt="login"/></button>
+                    <button class="button2" routerLink="/login/user-registration"><img src="assets/images/nav_bar/signup.png" alt="signup"/></button>
+                    <!-- <div class="profile-content row">
+                        <img src="assets/images/navbar/login.png" alt="">
+                        <p>Sign up</p>
+                    </div> -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </body>
+</html>
+    
+<!-- <div id="content">
   <a href="http://127.0.0.1:5000/">
     <button class="button scan">Scan</button>
   </a>
-</div>
+</div> -->
