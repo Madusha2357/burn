@@ -1,19 +1,18 @@
 <form [formGroup]="signInForm">
   <div class="host">
-    <div class="image"></div>
     <div class="inputs">
-      <p class="header">Login</p>
+      <img class="header" src="assets/images/login/login/logo.png" alt="Logo"/>
       <div class="column">
-        <label class="input-label sub-header-16" for="name">
+        <!-- <label class="input-label sub-header-16" for="name">
           E-mailaddress
-        </label>
+        </label> -->
 
         <div class="row">
           <input
             class="input-field"
             id="email"
             type="email"
-            placeholder="E-mailaddress"
+            placeholder="E-mail address"
             formControlName="username"
           />
         </div>
@@ -33,7 +32,7 @@
       </div>
 
       <div class="column">
-        <label class="input-label sub-header-16" for="name"> Password </label>
+        <!-- <label class="input-label sub-header-16" for="name"> Password </label> -->
 
         <div class="row">
           <input
@@ -68,11 +67,17 @@
         </span>
         <span class="error-message">{{ errorPassword }}</span>
       </div>
-
-      <div id="button-c">
-        <button class="button" type="submit" (click)="signIn()">Login</button>
-      </div>
       <a class="link" href="#login/forget-password">Forgot password?</a>
+      <div id="button-c">
+        <button class="button" type="submit" (click)="signIn()">Login to BurnWiseAid</button>
+      </div>
+      <div class="signupsection">
+        <p class="newto">New to BurnWiseAid? <a class="signlink" href="/login/user-registration/user-registration.component.html">Sign up!</a></p>
+      </div>
+      <div class="copy">
+        <p class="trademark">© BurnWiseAid</p>
+      </div>
     </div>
-  </div>
+    <div class="image"><div class="imagemask"></div></div>
+    </div>
 </form>
