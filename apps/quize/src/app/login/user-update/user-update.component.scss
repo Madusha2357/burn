@@ -13,12 +13,24 @@
   display: flex;
   flex-direction: row;
 
+  & .h {
+    margin-bottom: 50px;
+  }
+
   & .image {
     width: 50%;
     height: 100vh;
     background-position: center;
     background-size: cover;
-    background-image: url('/assets/images/login/registration/registration-image.png');
+    background-image: url('/assets/images/login/registration/registration.png');
+  }
+
+  & .button {
+    width: 330px;
+    height: 37px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 30px;
   }
 
   & .image-mobile {

@@ -11,13 +11,17 @@ import {
 import { MapState } from '../map/_state/map.state';
 import { FooterComponent } from '../site/_design-components/footer/footer.component';
 import { NavigationBarComponent } from '../site/_design-components/navigation-bar/navigation-bar.component';
-import { ActivatedRoute } from '@angular/router';
-import { IDoctorNotificatoin } from '@damen/models';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'damen-doctors',
   standalone: true,
-  imports: [CommonModule, FooterComponent, NavigationBarComponent],
+  imports: [
+    CommonModule,
+    FooterComponent,
+    NavigationBarComponent,
+    RouterModule,
+  ],
   templateUrl: './doctors.component.html',
   styleUrls: ['./doctors.component.scss'],
 })
@@ -51,19 +55,23 @@ export class DoctorsComponent implements AfterViewInit {
   }
 
   sendDoctor(id: string) {
-    const details = {
-      level: this.level ?? 'level 2',
-      name: 'Test',
-    } as IDoctorNotificatoin;
+    const details = [
+      {
+        level: this.level ?? 'level 2',
+        name: 'Test',
+      },
+    ] as any;
     console.log('doctor clcicked !', id);
     this.store.dispatch(new DoctorNotification(details, id));
   }
 
   notifyAll() {
-    const details = {
-      level: this.level ?? 'level 2',
-      name: 'Test',
-    } as IDoctorNotificatoin;
+    const details = [
+      {
+        level: this.level ?? 'level 2',
+        name: 'Test',
+      },
+    ] as any;
     console.log('doctor all clcicked !');
     this.store.dispatch(new DoctorNotificationAll(details));
   }

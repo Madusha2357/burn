@@ -50,6 +50,7 @@ export class UserController implements IUserController {
   @SkipThrottle()
   @Post(':id/send/invitation')
   @Roles(Role.ADMIN)
+  @Public()
   sendInvitationEmail(@Param('id') id: string) {
     return this.userEmailService.sendInvitationEmail(id);
   }
@@ -57,6 +58,7 @@ export class UserController implements IUserController {
   @SkipThrottle()
   @Get()
   @Roles(Role.ADMIN)
+  @Public()
   findAll(@Query() query: DefaultQueryParams) {
     query = applyDefaultPage(query);
     return this.userService.findAll(query);
@@ -65,6 +67,7 @@ export class UserController implements IUserController {
   @SkipThrottle()
   @Get('filter')
   @Roles(Role.ADMIN)
+  @Public()
   findAllWithFIlter(@Query() query: DefaultQueryParams) {
     query = applyDefaultPage(query);
     return this.userService.findAllWithFilter(query);
@@ -80,7 +83,8 @@ export class UserController implements IUserController {
 
   @SkipThrottle()
   @Patch(':id')
-  @Roles(Role.ADMIN, Role.USER)
+  @Public()
+  // @Roles(Role.ADMIN, Role.USER)
   update(
     @Param('id') id: string,
     @Body() dto: UpdateUserDto,
@@ -91,6 +95,7 @@ export class UserController implements IUserController {
 
   @SkipThrottle()
   @Patch('delete/:id')
+  @Public()
   @Roles(Role.ADMIN, Role.USER)
   delete(
     @Param('id') id: string,
@@ -103,6 +108,7 @@ export class UserController implements IUserController {
   @Post(`${URL_CHANGE_PASSWORD}`)
   @Roles(Role.ADMIN, Role.USER)
   @HttpCode(200)
+  @Public()
   changePassword(
     @Body() credentials: ChangePasswordDto,
     @Req() req: AuthorizedRequest
@@ -112,6 +118,7 @@ export class UserController implements IUserController {
 
   @Post(`${URL_DOWNLOAD}`)
   @Roles(Role.ADMIN)
+  @Public()
   async downloadCsv(
     @Query() query: DefaultQueryParams
   ): Promise<StreamableFile> {
@@ -121,12 +128,14 @@ export class UserController implements IUserController {
   }
 
   @Post(`${URL_ATTEMP}/:id`)
+  @Public()
   quizAttempCheck(@Param('id') id: string) {
     return this.userService.quizAttempCheck(id);
   }
 
   @SkipThrottle()
   @Get('quiz/filter')
+  @Public()
   @Roles(Role.ADMIN)
   getUsersByQuiz(@Query() query: DefaultQueryParams) {
     query = applyDefaultPage(query);
@@ -153,6 +162,7 @@ export class UserController implements IUserController {
 
   @SkipThrottle()
   @Patch('All/All')
+  @Public()
   @Roles(Role.ADMIN, Role.USER)
   updateAll(@Body() dto: UpdateUserDto, @Req() req: AuthorizedRequest) {
     return this.userService.updateAll(dto, req.user);

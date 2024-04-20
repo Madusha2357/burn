@@ -30,6 +30,7 @@ import { RegistrationState } from '../login/_state/user-registration/user-regist
 import { LoginService } from '../login/_service/login.service.abstract';
 import { LoginHttpService } from '../login/_service/login.service';
 import { LoginMockService } from '../login/_service/login.service.mock';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { LoginMockService } from '../login/_service/login.service.mock';
   imports: [
     CommonModule,
     FooterComponent,
+    RouterModule,
     NavigationBarComponent,
     SiteRoutingModule,
     FormsModule,

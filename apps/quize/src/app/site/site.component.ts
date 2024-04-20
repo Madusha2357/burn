@@ -19,6 +19,8 @@ export class SiteComponent implements OnInit {
 
   isDoctor?: boolean = false;
 
+  x = false;
+
   constructor(
     private store: Store,
     private route: ActivatedRoute,
@@ -40,6 +42,7 @@ export class SiteComponent implements OnInit {
               .pipe(
                 tap((state) => {
                   if (state) {
+                    this.x = true;
                     if (state.site.user.role == 'hospital') {
                       this.isDoctor = false;
                     } else {

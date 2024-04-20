@@ -36,7 +36,7 @@ $quize-theme: mat.define-light-theme(
 :root {
   --toolbar-height: 92px;
   --white: #fff;
-  --green: #013e34;
+  --green: #1287a5;
   --orange: #e22121;
   --red: #e22121;
   --gray: #fafafa;
@@ -196,7 +196,7 @@ ngx-otp-input {
 }
 
 .green {
-  color: #1287A5;
+  color: #1287a5;
 }
 
 .dense-5 {
@@ -253,7 +253,7 @@ ngx-otp-input {
 }
 
 .header {
-  color: #1287A5;
+  color: #1287a5;
   font-weight: 600;
   font-size: 48px;
   font-family: 'TT Firs Neue DemiBold', sans-serif !important;
@@ -262,7 +262,7 @@ ngx-otp-input {
 }
 
 .header-64 {
-  color: #1287A5;
+  color: #1287a5;
   font-weight: 600;
   font-size: 64px;
   font-family: 'TT Firs Neue DemiBold', sans-serif !important;
@@ -272,21 +272,21 @@ ngx-otp-input {
 }
 
 .sub-header-24 {
-  color: #013e34;
+  color: black;
   font-weight: 600;
   font-size: 24px;
   font-family: 'TT Firs Neue DemiBold', sans-serif !important;
 }
 
 .sub-header-32 {
-  color: #013e34;
+  color: black;
   font-weight: 600;
   font-size: 32px;
   font-family: 'TT Firs Neue DemiBold', sans-serif !important;
 }
 
 .sub-header-16 {
-  color: #013e34;
+  color: black;
   font-weight: 600;
   font-size: 16px;
   font-family: 'TT Firs Neue DemiBold', sans-serif !important;
@@ -315,7 +315,7 @@ ngx-otp-input {
   padding-inline: 20px;
   // margin-top: 24px;
   // margin-bottom: 18.91px;
-  background-color: #1287A5;
+  background-color: #1287a5;
   // width: 340px;
   // height: 37px;
   // font-weight: 600;
@@ -330,7 +330,7 @@ ngx-otp-input {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .button:disabled {
-  background: #013e3480;
+  background: #1287a580;
 }
 
 .center {
@@ -403,7 +403,7 @@ ngx-otp-input {
   height: 15px;
   width: 15px;
   background-color: #eee;
-  border: solid #D2D8DD;
+  border: solid #d2d8dd;
   border-radius: 3px;
   border-width: 0.5px 1px 0.5px 1px;
 }
@@ -415,7 +415,7 @@ ngx-otp-input {
 
 /* When the checkbox is checked, add a blue background */
 .container input:checked ~ .checkmark {
-  background-color: #013e34;
+  background-color: #1287a5;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */

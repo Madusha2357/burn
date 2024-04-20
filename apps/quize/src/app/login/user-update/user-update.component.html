@@ -1,12 +1,7 @@
 <form [formGroup]="registerForm">
   <div class="host">
-    <div class="image"></div>
-    <img
-      class="image-mobile"
-      src="/assets/images/login/registration/registration-image-mobile.webp"
-    />
-
     <div *ngIf="status === 'doctor'" class="inputs">
+      <img class="h" src="assets/images/login/login/logo.png" alt="Logo" />
       <p class="header">Doctor Update</p>
 
       <div class="column">
@@ -139,5 +134,10 @@
         </button>
       </div>
     </div>
+    <div class="image"></div>
+    <img
+      class="image-mobile"
+      src="/assets/images/login/registration/registration-image-mobile.webp"
+    />
   </div>
 </form>

@@ -201,50 +201,52 @@ export class UserService implements IUserService {
     updateUserDto: UpdateUserDto,
     requestUser: DecodedPayload
   ) {
+    console.log('updateUserDto', updateUserDto);
+
     // ids = requestUserRoleValidity(requestUser, id, updateUserDto);
     removePasswordField(updateUserDto);
-    updateUserDto.modifiedBy = requestUser.sub;
+    // updateUserDto.modifiedBy = requestUser.sub;
     //updateUserDto.status = UserStatus.REGISTERED;
 
     let x: IDoctorNotificatoin[];
 
-    // only ROLE ADMIN can update others
-    if (requestUser.roles.includes(Role.ADMIN)) {
+    // // only ROLE ADMIN can update others
+    // if (requestUser.roles.includes(Role.ADMIN)) {
+    //   return this.userRepository
+    //     .findOneAndUpdate({ _id: new ObjectId(id) }, updateUserDto, {
+    //       new: true,
+    //     })
+    //     .exec();
+    // } else {
+
+    // }
+    if (updateUserDto.notification) {
+      let newA: any[] = [];
+      const excistedUser = await this.userRepository
+        .findById({
+          _id: new ObjectId(id),
+        })
+        .exec();
+      // const exArray = excistedUser.notification;
+      // console.log('excistedUser', exArray);
+      newA.push(updateUserDto.notification[0]);
+      updateUserDto.notification = newA;
+
+      console.log('hello notifications', newA);
+
       return this.userRepository
         .findOneAndUpdate({ _id: new ObjectId(id) }, updateUserDto, {
           new: true,
         })
         .exec();
     } else {
-      if (updateUserDto.notification) {
-        let newA: any[] = [];
-        const excistedUser = await this.userRepository
-          .findById({
-            _id: new ObjectId(id),
-          })
-          .exec();
-        // const exArray = excistedUser.notification;
-        // console.log('excistedUser', exArray);
-        // newA.push(exArray);
-        newA.push(updateUserDto.notification[0]);
-        updateUserDto.notification = newA;
-
-        console.log('hello notifications', newA);
-
-        return this.userRepository
-          .findOneAndUpdate({ _id: new ObjectId(id) }, updateUserDto, {
-            new: true,
-          })
-          .exec();
-      } else {
-        return this.userRepository
-          .findOneAndUpdate(
-            { _id: new ObjectId(requestUser.id) },
-            updateUserDto,
-            { new: true }
-          )
-          .exec();
-      }
+      return this.userRepository
+        .findOneAndUpdate(
+          { _id: new ObjectId(requestUser.id) },
+          updateUserDto,
+          { new: true }
+        )
+        .exec();
     }
     //updateUserDto.status = UserStatus.ACTIVE; //update status as ACTIVE for every user
   }
