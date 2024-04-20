@@ -15,6 +15,8 @@
   opacity: 75%;
 }
 
+// navbar
+
 nav {
   background-color: transparent;
   display: flex;
@@ -135,6 +137,8 @@ a {
     margin-left: -7px;
   }
 }
+
+// navbar
 
 .container {
   margin-top: 80.5px;
@@ -419,7 +423,7 @@ a {
 
 footer {
   width: 100%;
-  height: 400px;
+  height: auto;
 }
 
 .footerline {
@@ -429,27 +433,27 @@ footer {
 }
 
 .footercontent {
-  width: 1440px;
-  justify-content: space-between;
+  width: 1280px;
+  // justify-content: space-between;
   margin-left: auto;
   margin-right: auto;
 }
 
 .description {
   width: 516px;
-  margin-top: 51px;
+  margin-top: 30px;
 }
 
 .footerlinks {
   width: 126px;
-  margin-top: 51px;
-  margin-left: 234px;
+  margin-top: 30px;
+  margin-left: 100px;
 }
 
 .footerserve {
   width: 95px;
-  margin-top: 51px;
-  margin-left: 234px;
+  margin-top: 30px;
+  margin-left: 100px;
 }
 
 .heading5 {
@@ -489,17 +493,23 @@ footer {
   margin-top: 17px;
 }
 
+.footerlast {
+  width: 100px;
+  height: 47px;
+}
+
 .footer-logo {
   width: 199.24px;
   height: 43px;
-  margin-top: 17px;
+  margin-top: 2px;
 }
 
 .footer-but {
   width: 139px;
   height: 39px;
-  margin-top: 35px;
-  margin-left: 1101.76px;
+  position: absolute;
+  right: 150px;
+  margin-top: 5px;
 }
 
 #content {
