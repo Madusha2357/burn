@@ -196,7 +196,7 @@ ngx-otp-input {
 }
 
 .green {
-  color: var(--green);
+  color: #1287A5;
 }
 
 .dense-5 {
@@ -253,7 +253,7 @@ ngx-otp-input {
 }
 
 .header {
-  color: #013e34;
+  color: #1287A5;
   font-weight: 600;
   font-size: 48px;
   font-family: 'TT Firs Neue DemiBold', sans-serif !important;
@@ -262,12 +262,13 @@ ngx-otp-input {
 }
 
 .header-64 {
-  color: #013e34;
+  color: #1287A5;
   font-weight: 600;
   font-size: 64px;
   font-family: 'TT Firs Neue DemiBold', sans-serif !important;
   padding: 0;
   margin: 0;
+  text-align: center;
 }
 
 .sub-header-24 {
