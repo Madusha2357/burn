@@ -8,17 +8,16 @@
 }
 
 .host {
-  width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: row;
 
   & .image {
-    width: 50%;
+    width: 65%;
     height: 100vh;
     background-position: center;
     background-size: cover;
-    background-image: url('/assets/images/login/registration/registration-image.png');
+    background-image: url('/assets/images/login/registration/registration.png');
   }
 
   & .image-mobile {
