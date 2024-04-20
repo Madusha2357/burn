@@ -1,5 +1,52 @@
 .header {
+  width: 194.25px;
+  height: 42px;
+  margin-top: 47px;
+  margin-bottom: 190px;
+}
+
+.button-1 {
+  width: 200px;
+  height: 67px;
+  font-weight: 600;
+  font-size: 16px;
+  background-color: #1287A5;
+  color: #ffffff;
+  border-radius: 3px;
+  border: none;
+  font-family: 'TT Firs Neue DemiBold', sans-serif !important;
+  margin-bottom: 50px;
+}
+
+.button-1:hover {
+  border: 1px solid #01463b;
+  background-color: #01463b;
+  color: #ffffff;
+  //padding: 5px 10px;
+}
+
+.button-1:disabled,
+.button-1[disabled] {
+  border: 1px solid #678b8580;
+  background-color: #678b8580;
+  color: #ffffff;
+}
+
+.copy {
+  position: fixed;
+  bottom: 0px;
+  & .trademark {
+    font-size: 13.45px;
+    font-weight: 400;
+    color: #999999;
+  }
+}
+
+.header1{
   font-size: 22px;
+  font-weight: 700;
+  margin-top: 47px;
+  margin-bottom: 60px;
 }
 
 .header-1 {
@@ -20,6 +67,15 @@
     background-image: url('/assets/images/login/registration/registration.png');
   }
 
+  & .imagemask {
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-color: black;
+    opacity: 60%;
+  }
+
   & .image-mobile {
     display: none;
   }
@@ -27,7 +83,7 @@
   & .inputs {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     gap: 0px;
     flex: 1;
@@ -59,14 +115,17 @@
 
     .inputs {
       height: 34px;
-      background: #efefef;
-      border: #efefef solid;
+      background: #FFFFFF;
+      border-width: 1px;
+      border-radius: 3px;
+      border-color: #D2D8DD;
     }
 
     & .input-field {
       @extend .inputs;
-      width: 310px;
+      width: 340px;
       padding-left: 16px;
+      margin-bottom: 17px;
     }
 
     & .input-field-mobile {
@@ -85,6 +144,14 @@
       height: 14px;
     }
 
+    .button {
+      width: 340px;
+      height: 37px;
+      font-weight: 600;
+      font-size: 14px;
+      margin-top: 17px;
+    }
+
     .button:hover {
       border: 1px solid #01463b;
       background-color: #01463b;
@@ -94,13 +161,9 @@
 
     .button:disabled,
     .button[disabled] {
-      border: 1px solid #678b8580;
-      background-color: #678b8580;
+      border: 1px solid #1287A5;
+      background-color: #1287A5;
       color: #ffffff;
-    }
-
-    & .button {
-      // margin-top: 32px;
     }
 
     & .check-box {
@@ -120,9 +183,19 @@
 .choose {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   width: 50%;
+}
+
+.pick {
+  width: auto;
+  height: 37px;
+  color: #FFFFFF;
+  background-color: #1287A5;
+  border-style: none;
+  border-radius: 3px;
+  margin-left: -35px;
 }
 
 @media only screen and (max-width: 768px) {

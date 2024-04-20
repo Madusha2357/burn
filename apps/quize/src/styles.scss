@@ -315,10 +315,10 @@ ngx-otp-input {
   // margin-top: 24px;
   // margin-bottom: 18.91px;
   background-color: #1287A5;
-  width: 340px;
-  height: 37px;
-  font-weight: 600;
-  font-size: 14px;
+  // width: 340px;
+  // height: 37px;
+  // font-weight: 600;
+  // font-size: 14px;
   color: #ffffff;
   border-radius: 3px;
   border: none;
@@ -395,13 +395,16 @@ ngx-otp-input {
 
 /* Create a custom checkbox */
 .checkmark {
-  margin-top: 20px;
+  margin-top: 26px;
   position: absolute;
   top: 0;
   left: 0;
-  height: 28px;
-  width: 28px;
+  height: 15px;
+  width: 15px;
   background-color: #eee;
+  border: solid #D2D8DD;
+  border-radius: 3px;
+  border-width: 0.5px 1px 0.5px 1px;
 }
 
 /* On mouse-over, add a grey background color */

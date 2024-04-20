@@ -1,22 +1,26 @@
 <form [formGroup]="registerForm">
   <div class="host">
     <div *ngIf="!status" class="choose">
-      <p class="header header-1">Registration</p>
-
-      <button class="button" type="submit" (click)="changeStatus('doctor')">
-        Doctor
-      </button>
-
-      <button class="button" type="submit" (click)="changeStatus('hospital')">
-        Hospital
-      </button>
+      <img class="header" src="assets/images/login/registration/logo.png" alt="Logo"/>
+      
+        <button class="button-1" type="submit" (click)="changeStatus('doctor')">
+          Doctor
+        </button>
+      
+      
+        <button class="button-1" type="submit" (click)="changeStatus('hospital')">
+          Hospital
+        </button>
+    
+        <div class="copy">
+          <p class="trademark">© BurnWiseAid</p>
+        </div>
     </div>
 
     <div *ngIf="status === 'doctor'" class="inputs">
-      <p class="header">Doctor Registration</p>
+      <p class="header1">Doctor Registration</p>
 
       <div class="column">
-        <label class="input-label sub-header-16" for="name"> First Name </label>
         <div class="row">
           <input
             class="input-field"
@@ -29,7 +33,6 @@
       </div>
 
       <div class="column">
-        <label class="input-label sub-header-16" for="name"> Last Name </label>
         <div class="row">
           <input
             class="input-field"
@@ -41,9 +44,6 @@
         </div>
       </div>
       <div class="column">
-        <label class="input-label sub-header-16" for="name">
-          E-mailaddress
-        </label>
         <div class="row">
           <input
             class="input-field"
@@ -56,9 +56,6 @@
       </div>
 
       <div class="column">
-        <label class="input-label sub-header-16" for="name">
-          Available times
-        </label>
         <div class="row">
           <input
             class="input-field"
@@ -71,7 +68,6 @@
       </div>
 
       <div class="column password">
-        <label class="input-label sub-header-16" for="name"> Password </label>
 
         <div class="row">
           <input
@@ -114,9 +110,6 @@
       </div>
 
       <div class="column password">
-        <label class="input-label sub-header-16" for="name">
-          Repeat password
-        </label>
 
         <div class="row">
           <input
@@ -168,47 +161,41 @@
           [disabled]="!saveUsername"
           (click)="userRegistration()"
         >
-          Register
+        Register Now!
         </button>
+      </div>
+      <div class="copy">
+        <p class="trademark">© BurnWiseAid</p>
       </div>
     </div>
 
     <div *ngIf="status === 'hospital'" class="inputs">
-      <p class="header">Hospital Registration</p>
+      <p class="header1">Hospital Registration</p>
 
       <div class="column">
-        <label class="input-label sub-header-16" for="name">
-          Hospital Name
-        </label>
         <div class="row">
           <input
             class="input-field"
             id="firstName"
             type="text"
             formControlName="firstName"
-            placeholder="First Name"
+            placeholder="Hospital Name"
           />
         </div>
       </div>
 
       <div class="column">
-        <label class="input-label sub-header-16" for="name">
-          Branch Name
-        </label>
         <div class="row">
           <input
             class="input-field"
             id="lastName"
             type="text"
             formControlName="lastName"
-            placeholder="Last Name"
+            placeholder="Branch Name"
           />
         </div>
       </div>
       <div class="column">
-        <label class="input-label sub-header-16" for="name">
-          E-mailaddress
-        </label>
         <div class="row">
           <input
             class="input-field"
@@ -221,7 +208,6 @@
       </div>
 
       <div class="column">
-        <label class="input-label sub-header-16" for="name"> Location </label>
         <div class="row">
           <input
             class="input-field"
@@ -231,12 +217,11 @@
             placeholder="Location"
           />
 
-          <button (click)="openMap()">pick</button>
+          <button class="pick" (click)="openMap()">pick</button>
         </div>
       </div>
 
       <div class="column password">
-        <label class="input-label sub-header-16" for="name"> Password </label>
 
         <div class="row">
           <input
@@ -279,9 +264,6 @@
       </div>
 
       <div class="column password">
-        <label class="input-label sub-header-16" for="name">
-          Repeat password
-        </label>
 
         <div class="row">
           <input
@@ -333,11 +315,14 @@
           [disabled]="!saveUsername"
           (click)="userRegistration()"
         >
-          Register
+        Register Now!
         </button>
       </div>
+      <div class="copy">
+        <p class="trademark">© BurnWiseAid</p>
+      </div>
     </div>
-    <div class="image"></div>
+    <div class="image"><div class="imagemask"></div></div>
     <img
       class="image-mobile"
       src="/assets/images/login/registration/registration.png"
