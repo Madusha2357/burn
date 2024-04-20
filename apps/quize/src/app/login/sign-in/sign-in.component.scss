@@ -4,18 +4,36 @@
   display: flex;
   flex-direction: row;
 
+  & .header{
+    width: 194.25px;
+    height: 42px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 47px;
+    margin-bottom: 55px;
+  }
+
   & .image {
-    width: 50%;
+    width: 65%;
     height: 100vh;
     background-position: center;
     background-size: cover;
-    background-image: url('/assets/images/login/login/login-image.png');
+    background-image: url('/assets/images/login/login/loginpage.png');
+  }
+
+  & .imagemask {
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-color: black;
+    opacity: 60%;
   }
 
   & .inputs {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     gap: 0px;
     flex: 1;
@@ -33,11 +51,14 @@
     }
 
     & .input-field {
-      width: 370px;
-      height: 44px;
+      width: 338px;
+      height: 38px;
       background: #efefef;
       padding-left: 16px;
       border: #efefef solid;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 25px;
     }
 
     & .toggle-button {
@@ -52,11 +73,36 @@
     }
 
     & .link {
+      font-size: 12.8px;
+      font-weight: 500px;
       display: flex;
       text-align: center;
       justify-content: center;
-      color: var(--black);
+      color: #999999;
+      margin-bottom: 39.09px;
     }
+
+    & .signupsection {
+      margin-top: 18.91px;
+      & .newto {
+        font-size: 13.45px;
+        font-weight: 500px;
+        color: #444444;
+        & .signlink {
+          color: #1287A5;
+        }
+      }
+    }
+
+    & .copy {
+      margin-top: 250px;
+      & .trademark {
+        font-size: 13.45px;
+        font-weight: 400;
+        color: #999999;
+      }
+    }
+
   }
 }
 
@@ -74,15 +120,15 @@
       text-align: center;
     }
 
-    #button-c {
-      display: flex;
-      justify-content: center;
-      & .button {
-        justify-content: center;
-        align-items: center;
-        width: 100px;
-      }
-    }
+    // #button-c {
+    //   display: flex;
+    //   justify-content: center;
+    //   & .button {
+    //     justify-content: center;
+    //     align-items: center;
+    //     width: 100px;
+    //   }
+    // }
 
     & .inputs {
       padding-top: 20px;

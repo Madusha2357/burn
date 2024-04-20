@@ -312,14 +312,15 @@ ngx-otp-input {
 
 .button {
   padding-inline: 20px;
-  margin-top: 24px;
-  margin-bottom: 16px;
-  background-color: #013e34;
-  height: 48px;
+  // margin-top: 24px;
+  // margin-bottom: 18.91px;
+  background-color: #1287A5;
+  width: 340px;
+  height: 37px;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 14px;
   color: #ffffff;
-  border-radius: 4px;
+  border-radius: 3px;
   border: none;
   font-family: 'TT Firs Neue DemiBold', sans-serif !important;
 }
