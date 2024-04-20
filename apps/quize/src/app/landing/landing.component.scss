@@ -50,7 +50,7 @@ nav {
   margin-top: 15px;
 }
 
-ul {
+.nav-ul{
   list-style: none;
   display: flex;
   margin: 0;
@@ -100,7 +100,7 @@ ul {
 
 a {
   text-decoration: none;
-  color: white;
+  // color: white;
 }
 
 .auth-buttons {
@@ -416,6 +416,94 @@ a {
 .buttext {
   font-size: 14px;
   font-weight: 700;
+  color: #FFFFFF;
+}
+
+// footer
+
+footer {
+  width: 100%;
+  height: 400px;
+}
+
+.footerline {
+  width: 100%;
+  height: 5px;
+  background-image: linear-gradient(#1383A2 100%,#1F2F6A 100%);
+}
+
+.footercontent {
+  width: 1440px;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.description {
+  width: 516px;
+  margin-top: 51px;
+}
+
+.footerlinks {
+  width: 126px;
+  margin-top: 51px;
+  margin-left: 234px;
+}
+
+.footerserve {
+  width: 95px;
+  margin-top: 51px;
+  margin-left: 234px;
+}
+
+.heading5 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 19.81px;
+}
+
+.para5 {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 60px;
+}
+
+.footerhead {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+
+.foot-ul {
+  list-style: none;
+  margin-left: -39px;
+}
+
+.footlink {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.link6 {
+  color: black;
+}
+
+.footerline2 {
+  margin-top: 17px;
+}
+
+.footer-logo {
+  width: 199.24px;
+  height: 43px;
+  margin-top: 17px;
+}
+
+.footer-but {
+  width: 139px;
+  height: 39px;
+  margin-top: 35px;
+  margin-left: 1101.76px;
 }
 
 #content {
