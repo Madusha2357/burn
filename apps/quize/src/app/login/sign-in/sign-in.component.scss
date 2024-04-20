@@ -72,6 +72,13 @@
       height: 14px;
     }
 
+    & .button {
+      width: 340px;
+      height: 37px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
     & .link {
       font-size: 12.8px;
       font-weight: 500px;
@@ -120,15 +127,15 @@
       text-align: center;
     }
 
-    // #button-c {
-    //   display: flex;
-    //   justify-content: center;
-    //   & .button {
-    //     justify-content: center;
-    //     align-items: center;
-    //     width: 100px;
-    //   }
-    // }
+    #button-c {
+      display: flex;
+      justify-content: center;
+      & .button {
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+      }
+    }
 
     & .inputs {
       padding-top: 20px;

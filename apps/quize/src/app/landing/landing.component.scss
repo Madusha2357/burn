@@ -2,10 +2,6 @@
   margin: 0;
 }
 
-body{
-  width: 1600px;
-}
-
 .herosingle {
   width: 100%;
   height: 766px;
@@ -152,8 +148,8 @@ a {
   width: 16px;
   height: 24px;
   margin-top: 61px;
-  margin-left: 1328px;
-  margin-right: 168px;
+  position: absolute;
+  right: 168px;
 }
 
 .buttontext {
@@ -272,8 +268,8 @@ a {
 .container3 {
   width: 1280px;
   height: 675px;
-  margin-left: 160px;
-  margin-right: 160px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .col12head {
