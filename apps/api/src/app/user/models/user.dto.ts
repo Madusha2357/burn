@@ -14,7 +14,8 @@ export class CreateUserDto implements ICreateUserDto {
   status?: UserStatus;
   roles?: Role[];
   location?: ILocation;
-  time?: string;
+  time?: string[];
+  timer?: string[];
   password?: string;
   firstName?: string;
   lastName?: string;

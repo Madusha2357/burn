@@ -44,6 +44,9 @@ export class UserRegistrationComponent {
   status?: string;
   location!: ILocation;
 
+  selectedTimeRanges: string[] = [];
+  timeRanges: string[] = ['1am - 7am', '7am - 12pm', '12pm - 8pm', '8pm - 1am'];
+
   constructor(
     private store: Store,
     formBuilder: FormBuilder,
@@ -74,6 +77,17 @@ export class UserRegistrationComponent {
     });
   }
 
+  selectTimeRange(event: any) {
+    const timeRange = event?.target?.value;
+    if (timeRange && !this.selectedTimeRanges.includes(timeRange)) {
+      this.selectedTimeRanges.push(timeRange);
+    }
+  }
+
+  removeTimeRange(index: number) {
+    this.selectedTimeRanges.splice(index, 1);
+  }
+
   togglePassword() {
     this.showPassword = !this.showPassword;
   }
@@ -91,6 +105,7 @@ export class UserRegistrationComponent {
       reg.role = this.status;
       reg.location = this.location;
       reg.registerCode = reg.password;
+      reg.timer = this.selectedTimeRanges;
       this.store.dispatch(new UserRegistration(reg));
     }
   }

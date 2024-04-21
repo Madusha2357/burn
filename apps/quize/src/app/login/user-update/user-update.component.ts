@@ -97,6 +97,7 @@ export class UserUpdateComponent implements OnInit {
   userRegistration() {
     const reg: ICreateUserDto = {
       ...this.registerForm.value,
+      timer: [],
     };
     if (this.id) {
       this.store.dispatch(new UpdateUserM(this.id, reg));

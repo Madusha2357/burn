@@ -10,7 +10,7 @@
   height: 67px;
   font-weight: 600;
   font-size: 16px;
-  background-color: #1287A5;
+  background-color: #1287a5;
   color: #ffffff;
   border-radius: 3px;
   border: none;
@@ -42,7 +42,7 @@
   }
 }
 
-.header1{
+.header1 {
   font-size: 22px;
   font-weight: 700;
   margin-top: 47px;
@@ -75,7 +75,6 @@
     background-color: black;
     opacity: 60%;
   }
-
 
   & .image-mobile {
     display: none;
@@ -116,10 +115,28 @@
 
     .inputs {
       height: 34px;
-      background: #FFFFFF;
+      background: #ffffff;
+      border-width: 0.5px;
+      border-radius: 3px;
+      border-color: #d2d8dd;
+    }
+
+    & .input-field-1 {
+      width: 360px;
+      height: 34px;
+      background: #ffffff;
       border-width: 1px;
       border-radius: 3px;
-      border-color: #D2D8DD;
+      border-color: #d2d8dd;
+      color: #626568;
+      padding-left: 10px;
+      // margin-bottom: 16px;
+    }
+
+    & .selected-time-ranges {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-left: 6px;
     }
 
     & .input-field {
@@ -162,8 +179,8 @@
 
     .button:disabled,
     .button[disabled] {
-      border: 1px solid #1287A5;
-      background-color: #1287A5;
+      border: 1px solid #1287a5;
+      background-color: #1287a5;
       color: #ffffff;
     }
 
@@ -192,8 +209,8 @@
 .pick {
   width: auto;
   height: 37px;
-  color: #FFFFFF;
-  background-color: #1287A5;
+  color: #ffffff;
+  background-color: #1287a5;
   border-style: none;
   border-radius: 3px;
   margin-left: -35px;

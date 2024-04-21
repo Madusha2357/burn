@@ -1,20 +1,23 @@
 <form [formGroup]="registerForm">
   <div class="host">
     <div *ngIf="!status" class="choose">
-      <img class="header" src="assets/images/login/registration/logo.png" alt="Logo"/>
-      
-        <button class="button-1" type="submit" (click)="changeStatus('doctor')">
-          Doctor
-        </button>
-      
-      
-        <button class="button-1" type="submit" (click)="changeStatus('hospital')">
-          Hospital
-        </button>
-    
-        <div class="copy">
-          <p class="trademark">© BurnWiseAid</p>
-        </div>
+      <img
+        class="header"
+        src="assets/images/login/registration/logo.png"
+        alt="Logo"
+      />
+
+      <button class="button-1" type="submit" (click)="changeStatus('doctor')">
+        Doctor
+      </button>
+
+      <button class="button-1" type="submit" (click)="changeStatus('hospital')">
+        Hospital
+      </button>
+
+      <div class="copy">
+        <p class="trademark">© BurnWiseAid</p>
+      </div>
     </div>
 
     <div *ngIf="status === 'doctor'" class="inputs">
@@ -55,7 +58,7 @@
         </div>
       </div>
 
-      <div class="column">
+      <!-- <div class="column">
         <div class="row">
           <input
             class="input-field"
@@ -65,10 +68,27 @@
             placeholder="Available times"
           />
         </div>
+      </div> -->
+
+      <div class="time-ranges-selector">
+        <select class="input-field-1" (change)="selectTimeRange($event)">
+          <option value="">Available times</option>
+          <option *ngFor="let timeRange of timeRanges" [value]="timeRange">
+            {{ timeRange }}
+          </option>
+        </select>
+        <div class="selected-time-ranges">
+          <div
+            *ngFor="let selectedRange of selectedTimeRanges; let i = index"
+            class="selected-range"
+          >
+            {{ selectedRange }}
+            <span class="remove-icon" (click)="removeTimeRange(i)">x</span>
+          </div>
+        </div>
       </div>
 
       <div class="column password">
-
         <div class="row">
           <input
             class="input-field"
@@ -110,7 +130,6 @@
       </div>
 
       <div class="column password">
-
         <div class="row">
           <input
             class="input-field"
@@ -161,7 +180,7 @@
           [disabled]="!saveUsername"
           (click)="userRegistration()"
         >
-        Register Now!
+          Register Now!
         </button>
       </div>
       <div class="copy">
@@ -222,7 +241,6 @@
       </div>
 
       <div class="column password">
-
         <div class="row">
           <input
             class="input-field"
@@ -264,7 +282,6 @@
       </div>
 
       <div class="column password">
-
         <div class="row">
           <input
             class="input-field"
@@ -315,7 +332,7 @@
           [disabled]="!saveUsername"
           (click)="userRegistration()"
         >
-        Register Now!
+          Register Now!
         </button>
       </div>
       <div class="copy">

@@ -35,7 +35,10 @@ export class User extends BaseEntity {
   location: Location;
 
   @Prop()
-  time?: string;
+  time?: string[];
+
+  @Prop()
+  timer?: string[];
 
   @Prop()
   role: string;
