@@ -12,6 +12,7 @@ import { MapState } from '../map/_state/map.state';
 import { FooterComponent } from '../site/_design-components/footer/footer.component';
 import { NavigationBarComponent } from '../site/_design-components/navigation-bar/navigation-bar.component';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ICreateUserDto } from '@damen/models';
 
 @Component({
   selector: 'damen-doctors',
@@ -46,6 +47,23 @@ export class DoctorsComponent implements AfterViewInit {
         )
         .subscribe();
     });
+
+    const x: ICreateUserDto[] = [
+      {
+        firstName: 'Doctor 1',
+      },
+      {
+        firstName: 'Doctor 2',
+      },
+      {
+        firstName: 'Doctor 3',
+      },
+      {
+        firstName: 'Doctor 4',
+      },
+    ];
+    // this.doctors = doctors;
+  this.chunkedCards = this.chunkArray(x, 3);
   }
 
   chunkArray(array: any[], size: number): any[][] {
