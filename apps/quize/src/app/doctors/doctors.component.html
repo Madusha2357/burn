@@ -31,27 +31,26 @@
 </div>
 <!-- <p class="header">Doctors</p> -->
 <div class="container">
-  <div class="cards">
+    <div class="headersec">
+      <p class="header00">Find Doctor</p>
+    </div>
     <div class="row" *ngFor="let chunk of chunkedCards">
       <div class="card" *ngFor="let card of chunk">
-        <a
-          class="link"
-          [href]="
-            'http://localhost:4200/#/site?name=' +
-            card.firstName +
-            '&level=' +
-            level
-          "
-        >
-          <p (click)="sendDoctor(card._id)">{{ card.firstName }}</p>
-        </a>
+        <div class="adoctor">
+          <div class="photo">
+            <img class="nodp" src="assets/images/doctors/nodp.png"/>
+          </div>
+          <a class="link" [href]="'http://localhost:4200/#/site?name=' + card.firstName + '&level=' + level">
+            <p class="fname" (click)="sendDoctor(card._id)">{{ card.firstName }}</p>
+          </a>
+          <p class="hname">Hospital Name</p>
+          <p class="addre">No.123, Cup, Table.</p>
+        </div>
       </div>
     </div>
-
     <div class="notify-all">
       <button class="button" (click)="notifyAll()">Nofify all</button>
     </div>
-  </div>
 </div>
 <!-- <damen-footer></damen-footer> -->
 <footer>

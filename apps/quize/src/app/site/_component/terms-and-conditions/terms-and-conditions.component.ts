@@ -6,7 +6,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 @Component({
   selector: 'damen-terms-and-conditions',
   standalone: true,
-  imports: [NavigationBarComponent, FooterComponent],
+  imports: [NavigationBarComponent, FooterComponent, RouterModule],
   templateUrl: './terms-and-conditions.component.html',
   styleUrls: ['./terms-and-conditions.component.scss'],
 })
