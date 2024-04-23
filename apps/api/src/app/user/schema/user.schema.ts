@@ -41,6 +41,9 @@ export class User extends BaseEntity {
   timer?: string[];
 
   @Prop()
+  hospital?: string;
+
+  @Prop()
   role: string;
 
   @Prop()

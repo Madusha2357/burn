@@ -19,6 +19,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LocationComponent } from '../login/location-pick/location.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ILocation } from '@damen/models';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'damen-map',
@@ -36,13 +37,18 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
   nearestLocation: { name: string; distance: number } | null = null;
 
   locations?: any[];
+  level?: string;
 
   location?: ILocation;
 
   @ViewChild('map')
   private mapContainer!: ElementRef<HTMLElement>;
 
-  constructor(private store: Store, private dialog: MatDialog) {}
+  constructor(
+    private store: Store,
+    private dialog: MatDialog,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     const dialogRef = this.dialog.open(LocationComponent, {
@@ -60,6 +66,12 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
         }
       }
     );
+
+    this.route.queryParams.subscribe((params) => {
+      this.level = params['level'];
+
+      console.log('level', this.level);
+    });
   }
 
   ngAfterViewInit() {
@@ -132,8 +144,14 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
           <h3>${firstName}</h3>
           <a>0771234567</a>
           <p>${email}</p>
-          <button id="sendEmailBtn">Notify hospital</button>
+
         `;
+
+        if (this.level) {
+          popupContent.innerHTML += `
+            <button id="sendEmailBtn">Notify hospital</button>
+          `;
+        }
         const popup = new maplibregl.Popup().setDOMContent(popupContent);
 
         marker.setPopup(popup).addTo(this.map);

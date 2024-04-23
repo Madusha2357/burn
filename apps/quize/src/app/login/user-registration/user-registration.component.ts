@@ -65,6 +65,7 @@ export class UserRegistrationComponent {
       email: [null, [Validators.required, Validators.email]],
       role: [null],
       time: [null],
+      hospital: [null],
       location: [''], // Empty for now
       password: [
         null,

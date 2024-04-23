@@ -58,6 +58,18 @@
         </div>
       </div>
 
+      <div class="column">
+        <div class="row">
+          <input
+            class="input-field"
+            id="E-mailaddress"
+            type="text"
+            formControlName="hospital"
+            placeholder="Hospital Name"
+          />
+        </div>
+      </div>
+
       <!-- <div class="column">
         <div class="row">
           <input
@@ -72,7 +84,7 @@
 
       <div class="time-ranges-selector">
         <select class="input-field-1" (change)="selectTimeRange($event)">
-          <option value="">Available times</option>
+          <option value="">Available Times</option>
           <option *ngFor="let timeRange of timeRanges" [value]="timeRange">
             {{ timeRange }}
           </option>

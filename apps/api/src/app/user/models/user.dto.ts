@@ -19,6 +19,7 @@ export class CreateUserDto implements ICreateUserDto {
   password?: string;
   firstName?: string;
   lastName?: string;
+  hospital?: string;
   createdBy?: string;
   modifiedBy?: string;
   isDeleted?: boolean;

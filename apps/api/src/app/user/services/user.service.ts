@@ -496,6 +496,6 @@ export class UserService implements IUserService {
 
     console.log('dddddddddddddd', availableDoctors);
 
-    return data;
+    return availableDoctors;
   }
 }

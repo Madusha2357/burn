@@ -20,6 +20,7 @@ export interface ICreateUserDto extends BaseUser {
   firstName?: string;
   lastName?: string;
   role?: string;
+  hospital?: string;
   time?: string[];
   timer?: string[];
   location?: ILocation;
@@ -40,6 +41,7 @@ export interface UpdateUserDto extends BaseUser {
   allowMarketingMails?: boolean;
   isDeleted?: boolean;
   role?: string;
+  hospital?: string;
   time?: string[];
   timer?: string[];
   location?: ILocation;
