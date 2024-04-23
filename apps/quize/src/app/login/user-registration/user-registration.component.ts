@@ -45,7 +45,12 @@ export class UserRegistrationComponent {
   location!: ILocation;
 
   selectedTimeRanges: string[] = [];
-  timeRanges: string[] = ['1am - 7am', '7am - 12pm', '12pm - 8pm', '8pm - 1am'];
+  timeRanges: string[] = [
+    '1:00 - 7:00',
+    '7:00 - 12:00',
+    '12:00 - 20:00',
+    '20:00 - 1:00',
+  ];
 
   constructor(
     private store: Store,
