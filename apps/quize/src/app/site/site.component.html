@@ -43,7 +43,7 @@
 <div *ngIf="!level && isDoctor" class="doctor-container column">
   <!-- <div class="side-bar"></div> -->
 
-  <div *ngFor="let n of notifications" class="cards column">
+  <!-- <div *ngFor="let n of notifications" class="cards column">
     <div class="card">
       <div>
         <p class="patient">Patient name: {{ n.name }}</p>
@@ -53,26 +53,156 @@
         <button class="button">Connect with video</button>
       </a>
     </div>
+  </div> -->
+
+  <div class="fullcontainer">
+    <div class="row">
+      <div class="sidenav">
+        <div class="sideitem">
+          <a href="#to-show1">
+            <div class="row">
+              <img class="profile" src="assets/images/sidenav/profile.png" />
+              <p class="sideitxt">My Profile</p>
+            </div>
+          </a>
+        </div>
+        <div class="sideitem">
+          <a href="#to-show2">
+            <div class="row">
+              <img class="star" src="assets/images/sidenav/star.png" />
+              <p class="sideitxt">Patient’s Notifications</p>
+            </div>
+          </a>
+        </div>
+        <div class="sideitem">
+          <a href="#to-show3">
+            <div class="row">
+              <img class="set" src="assets/images/sidenav/set.png" />
+              <p class="sideitxt">Manage Hospital Details</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="myprofile" id="to-show1"></div>
+      <div class="notification" id="to-show2">
+        <div class="box">
+          <div class="hosdetails">
+            <p class="formtitle">Patient’s Notifications</p>
+          </div>
+          <div *ngFor="let n of notifications" class="column">
+            <div class="box1 row">
+              <div>
+                <div class="row3">
+                  <div class="row">
+                    <p class="p1">Notification 01</p>
+                    <a routerLink="/landing"
+                      ><img
+                        class="viewbut"
+                        src="assets/images/dashboard/viewbut.png"
+                    /></a>
+                  </div>
+                </div>
+                <div class="row4">
+                  <div class="row">
+                    <p class="p2">Name</p>
+                    <p class="p4">{{ n.name }}</p>
+                  </div>
+                </div>
+                <div class="row4">
+                  <div class="row">
+                    <p class="p2">Level</p>
+                    <p class="p3">{{ n.level }}</p>
+                  </div>
+                </div>
+              </div>
+              <a href="https://meet.google.com/git-pgta-oas?authuser=0">
+                <button class="button">Connect with video</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div id="content">
+  <!-- <div id="content">
     <a href="http://127.0.0.1:5000/">
       <button class="button scan">Scan</button>
     </a>
-  </div>
+  </div> -->
 </div>
 
 <div *ngIf="!level && !isDoctor" class="doctor-container column">
   <!-- <div class="side-bar"></div> -->
-  <div *ngFor="let n of notifications" class="cards column">
-    <div class="card">
-      <div>
-        <p class="patient">Patient name: {{ n.name }}</p>
-        <p class="patient">Burn level: {{ n.level }}</p>
+  <div class="fullcontainer">
+    <div class="row">
+      <div class="sidenav">
+        <div class="sideitem">
+          <a href="#to-show1">
+            <div class="row">
+              <img class="profile" src="assets/images/sidenav/profile.png" />
+              <p class="sideitxt">My Profile</p>
+            </div>
+          </a>
+        </div>
+        <div class="sideitem">
+          <a href="#to-show2">
+            <div class="row">
+              <img class="star" src="assets/images/sidenav/star.png" />
+              <p class="sideitxt">Patient’s Notifications</p>
+            </div>
+          </a>
+        </div>
+        <div class="sideitem">
+          <a href="#to-show3">
+            <div class="row">
+              <img class="set" src="assets/images/sidenav/set.png" />
+              <p class="sideitxt">Manage Hospital Details</p>
+            </div>
+          </a>
+        </div>
       </div>
-      <a [href]="n.url">
-        <button class="button">User location</button>
-      </a>
+      <div class="myprofile" id="to-show1"></div>
+      <div class="notification" id="to-show2">
+        <div class="box">
+          <div class="hosdetails">
+            <p class="formtitle">Patient’s Notifications</p>
+          </div>
+          <div *ngFor="let ns of notifications" class="column">
+            <div *ngFor="let n of ns">
+              <div class="box1 row">
+                <div>
+                  <div class="row3">
+                    <div class="row">
+                      <p class="p1">Notification 01</p>
+                      <a routerLink="/landing"
+                        ><img
+                          class="viewbut"
+                          src="assets/images/dashboard/viewbut.png"
+                      /></a>
+                    </div>
+                  </div>
+                  <div class="row4">
+                    <div class="row">
+                      <p class="p2">Name</p>
+                      <p class="p4">{{ n.name }}</p>
+                    </div>
+                  </div>
+                  <div class="row4">
+                    <div class="row">
+                      <p class="p2">Level</p>
+                      <p class="p3">{{ n.name }}</p>
+                    </div>
+                  </div>
+                </div>
+                <a [href]="n.url">
+                  <button class="button">Check Location</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

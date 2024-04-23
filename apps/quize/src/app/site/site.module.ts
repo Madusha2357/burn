@@ -31,6 +31,7 @@ import { LoginService } from '../login/_service/login.service.abstract';
 import { LoginHttpService } from '../login/_service/login.service';
 import { LoginMockService } from '../login/_service/login.service.mock';
 import { RouterModule } from '@angular/router';
+import { UserUpdateComponent } from '../login/user-update/user-update.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { RouterModule } from '@angular/router';
     ]),
     SecondImageAndAboutComponent,
     MatDialogModule,
+    UserUpdateComponent,
   ],
 })
 export class SiteModule {}

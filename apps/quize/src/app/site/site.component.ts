@@ -15,7 +15,7 @@ import { log } from 'console';
 export class SiteComponent implements OnInit {
   level: any;
 
-  notifications: IDoctorNotificatoin[] = [];
+  notifications: any[] = [];
 
   isDoctor?: boolean = false;
 
