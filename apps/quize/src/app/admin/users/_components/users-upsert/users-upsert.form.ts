@@ -1,12 +1,13 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ILocation } from '@damen/models';
 
 export type UserFormGroup = FormGroup<{
   email: FormControl<string>;
-  phoneNumber: FormControl<string>;
   firstName: FormControl<string>;
   lastName: FormControl<string>;
-  registerCode: FormControl<string>;
-  address: FormGroup;
+  role: FormControl<string>;
+  timer: FormControl<string[]>;
+  location: FormControl<any>;
 }>;
 
 export function email() {
@@ -26,6 +27,18 @@ export function firstName() {
 
 export function lastName() {
   return new FormControl('', { nonNullable: true });
+}
+
+export function role() {
+  return new FormControl('', { nonNullable: true });
+}
+
+export function timer() {
+  return new FormControl([''], { nonNullable: true });
+}
+
+export function location() {
+  return new FormControl(null, { nonNullable: true });
 }
 
 export function registerCode() {

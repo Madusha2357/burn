@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import {
@@ -25,11 +25,11 @@ export class UsersUpsertComponent implements OnDestroy {
   formGroup: form.UserFormGroup;
 
   email = form.email();
-  phoneNumber = form.phoneNumber();
   firstName = form.firstName();
   lastName = form.lastName();
-  registerCode = form.registerCode();
-  address = form.address();
+  role = form.role();
+  timer = form.timer();
+  location = form.location();
 
   user?: ProjectionUserDataTable;
   private subscription: Subscription;
@@ -41,11 +41,11 @@ export class UsersUpsertComponent implements OnDestroy {
   ) {
     this.formGroup = new FormGroup({
       email: this.email,
-      phoneNumber: this.phoneNumber,
       lastName: this.lastName,
       firstName: this.firstName,
-      registerCode: this.registerCode,
-      address: this.address,
+      role: this.role,
+      timer: this.timer,
+      location: this.location,
     });
 
     this.subscription = this.activatedRoute.data
@@ -55,8 +55,6 @@ export class UsersUpsertComponent implements OnDestroy {
           if (data && this.user) {
             if (this.user._id) {
               this.email.disable();
-              this.registerCode.disable();
-              this.address?.disable();
             }
             this.formGroup.patchValue(this.user);
           }

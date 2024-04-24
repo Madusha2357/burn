@@ -6,6 +6,7 @@ import { tap } from 'rxjs';
 import { IDoctorNotificatoin } from '@damen/models';
 import { GetCurrentUser } from './_state/site.actions';
 import { log } from 'console';
+import { Navigate } from '@ngxs/router-plugin';
 
 @Component({
   selector: 'damen-site',
@@ -18,6 +19,7 @@ export class SiteComponent implements OnInit {
   notifications: any[] = [];
 
   isDoctor?: boolean = false;
+  id?: string;
 
   x = false;
 
@@ -48,6 +50,11 @@ export class SiteComponent implements OnInit {
                     } else {
                       this.isDoctor = true;
                     }
+                    this.id = state.site.user._id;
+                    console.log(
+                      'state.site.user.notification',
+                      state.site.user.notification
+                    );
 
                     this.notifications = state.site.user.notification;
                   }
@@ -58,5 +65,19 @@ export class SiteComponent implements OnInit {
         })
       )
       .subscribe();
+  }
+
+  update() {
+    if (this.id) {
+      if (this.isDoctor == true) {
+        this.store.dispatch(
+          new Navigate([`login/user-update/${this.id}/doctor`])
+        );
+      } else {
+        this.store.dispatch(
+          new Navigate([`login/user-update/${this.id}/hospital`])
+        );
+      }
+    }
   }
 }
