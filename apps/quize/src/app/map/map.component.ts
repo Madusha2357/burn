@@ -141,6 +141,7 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
         ]);
         const popupContent = document.createElement('div');
         popupContent.innerHTML = `
+        <img src="assets/images/login/login/loginpage.png" alt="" width="200" height="120">
           <h3>${firstName}</h3>
           <a>0771234567</a>
           <p>${email}</p>
@@ -153,20 +154,10 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
           `;
         }
         const popup = new maplibregl.Popup().setDOMContent(popupContent);
-
         marker.setPopup(popup).addTo(this.map);
-
-        // Attach click event listener to the button
         popupContent
           .querySelector('#sendEmailBtn')
           ?.addEventListener('click', () => {
-            // Send email logic here
-            // const subject = 'hello';
-            // const body = 'This is body';
-            // const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
-            //   subject
-            // )}&body=${encodeURIComponent(body)}`;
-            // window.location.href = mailtoLink;
             this.anotherMethod(_id);
           });
       });
