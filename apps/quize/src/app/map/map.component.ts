@@ -19,12 +19,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LocationComponent } from '../login/location-pick/location.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ILocation } from '@damen/models';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'damen-map',
   standalone: true,
-  imports: [CommonModule, MatSnackBarModule, MatDialogModule],
+  imports: [CommonModule, MatSnackBarModule, MatDialogModule, RouterModule],
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
 })
