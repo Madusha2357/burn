@@ -1,6 +1,7 @@
-navbar nav {
+nav {
   background-color: transparent;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 15px, 0px, 50px, 0px;
@@ -450,98 +451,7 @@ footer {
 //   color: white;
 // }
 
-// .buttonspace {
-//   width: 100%;
-//   height: auto;
-// }
 
-// .bluebut {
-//   width: 206px;
-//   height: 69px;
-//   border-radius: 6.47px;
-//   background-color: #279ab9;
-//   margin-left: 35.5px;
-//   margin-right: 28px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-
-// .whitebut1 {
-//   width: 229px;
-//   height: 69px;
-//   border-radius: 6.47px;
-//   background-color: #ffffff;
-//   margin-right: 20px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-
-// .whitebut2 {
-//   width: 269px;
-//   height: 69px;
-//   border-radius: 6.47px;
-//   background-color: #ffffff;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-
-// .butlogtxt {
-//   width: auto;
-//   height: 36.41px;
-// }
-
-// .bbutlog {
-//   width: 37.33px;
-//   height: 36.41px;
-//   border-radius: 12.95px;
-//   background-color: #fefefe;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   margin-right: 21.65px;
-// }
-
-// .wbutlog {
-//   width: 37.33px;
-//   height: 36.41px;
-//   border-radius: 12.95px;
-//   background-color: #cff5ff;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   margin-right: 21.65px;
-// }
-
-// .bbuttxthead {
-//   font-size: 16.18px;
-//   font-weight: 700;
-//   color: #ffffff;
-//   margin: 0;
-// }
-
-// .bbuttxtdes {
-//   font-size: 8.09px;
-//   font-weight: 300;
-//   color: #eaeaea;
-//   margin: 0;
-// }
-
-// .wbuttxthead {
-//   font-size: 16.18px;
-//   font-weight: 700;
-//   color: #363636;
-//   margin: 0;
-// }
-
-// .wbuttxtdes {
-//   font-size: 8.09px;
-//   font-weight: 300;
-//   color: #b7b7c1;
-//   margin: 0;
-// }
 
 // .container2 {
 //   width: 90%;

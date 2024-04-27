@@ -7,7 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Store } from '@ngxs/store';
 import {
   Subject,
@@ -35,7 +35,7 @@ import { AccessToken } from '@damen/models';
 @Component({
   selector: 'damen-sign-in',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
 })

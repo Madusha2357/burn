@@ -1,7 +1,13 @@
 <form [formGroup]="registerForm">
   <div class="host">
     <div *ngIf="status === 'doctor'" class="inputs">
-      <img class="h" src="assets/images/login/login/logo.png" alt="Logo" />
+      <a class="links" routerLink="/landing">
+        <img
+          class="header"
+          src="assets/images/login/login/logo.png"
+          alt="Logo"
+        />
+      </a>
       <p class="header">Doctor Update</p>
 
       <div class="column">

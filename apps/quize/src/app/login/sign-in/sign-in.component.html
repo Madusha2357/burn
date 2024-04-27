@@ -1,7 +1,14 @@
 <form [formGroup]="signInForm">
   <div class="host">
     <div class="inputs">
-      <img class="header" src="assets/images/login/login/logo.png" alt="Logo"/>
+      <a class="links" routerLink="/landing">
+        <img
+          class="header"
+          src="assets/images/login/login/logo.png"
+          alt="Logo"
+        />
+      </a>
+
       <div class="column">
         <!-- <label class="input-label sub-header-16" for="name">
           E-mailaddress
@@ -69,15 +76,24 @@
       </div>
       <a class="link" href="#login/forget-password">Forgot password?</a>
       <div id="button-c">
-        <button class="button" type="submit" (click)="signIn()">Login to BurnWiseAid</button>
+        <button class="button" type="submit" (click)="signIn()">
+          Login to BurnWiseAid
+        </button>
       </div>
       <div class="signupsection">
-        <p class="newto">New to BurnWiseAid? <a class="signlink" href="/login/user-registration/user-registration.component.html">Sign up!</a></p>
+        <p class="newto">
+          New to BurnWiseAid?
+          <a
+            class="signlink"
+            href="/login/user-registration/user-registration.component.html"
+            >Sign up!</a
+          >
+        </p>
       </div>
       <div class="copy">
         <p class="trademark">© BurnWiseAid</p>
       </div>
     </div>
     <div class="image"><div class="imagemask"></div></div>
-    </div>
+  </div>
 </form>

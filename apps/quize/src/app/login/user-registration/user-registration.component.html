@@ -1,11 +1,13 @@
 <form [formGroup]="registerForm">
   <div class="host">
     <div *ngIf="!status" class="choose">
-      <img
-        class="header"
-        src="assets/images/login/registration/logo.png"
-        alt="Logo"
-      />
+      <a class="links" routerLink="/landing">
+        <img
+          class="header"
+          src="assets/images/login/login/logo.png"
+          alt="Logo"
+        />
+      </a>
 
       <button class="button-1" type="submit" (click)="changeStatus('doctor')">
         Doctor

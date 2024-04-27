@@ -14,7 +14,7 @@ import {
 } from '@damen/models';
 import { Store } from '@ngxs/store';
 import { UserRegistration } from '../_state/user-registration/user-registration.actions';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 import { PATH_TNC_FULL } from '../../app-routing.conts';
 import { Ng2TelInputModule } from '../../_directives/ng2-tel-input.module';
 import { log } from 'util';
@@ -31,6 +31,7 @@ import { LocationComponent } from '../location-pick/location.component';
     ReactiveFormsModule,
     Ng2TelInputModule,
     MatDialogModule,
+    RouterModule,
   ],
   templateUrl: './user-registration.component.html',
   styleUrls: ['./user-registration.component.scss'],
