@@ -62,6 +62,8 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
             lat: selectedLocation.lat,
             lon: selectedLocation.lon,
           };
+          this.findNearestLocation();
+          this.addMarkers();
           dialogRef.close();
         }
       }
@@ -97,7 +99,7 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
         switchMap(() => this.store.select(MapState.hospitals)),
         tap((hospitals) => {
           this.locations = hospitals;
-          this.addMarkers();
+          // this.addMarkers();
           this.getCurrentLocation();
         })
       )
@@ -112,7 +114,6 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
           this.addMarker([longitude, latitude]);
           this.setMapCenter([longitude, latitude]);
           this.currentLocation = { latitude, longitude };
-          this.findNearestLocation();
         },
         (error: GeolocationPositionError) => {
           console.error('Error getting current position:', error.message);
@@ -132,35 +133,47 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
   }
 
   private addMarkers() {
-    if (this.locations)
+    if (this.locations) {
+      const nearestLocationName = this.nearestLocation
+        ? this.nearestLocation.name
+        : null;
+
+      console.log('nearest', nearestLocationName);
+
       this.locations.forEach((resquer) => {
         const { firstName, location, email, _id } = resquer;
-        const marker = new maplibregl.Marker({ color: '#B70404' }).setLngLat([
+        const markerColor =
+          nearestLocationName === firstName ? '#0000000' : '#B70404'; // Green if nearest, red otherwise
+
+        const marker = new maplibregl.Marker({ color: markerColor }).setLngLat([
           location?.lon,
           location?.lat,
         ]);
+
         const popupContent = document.createElement('div');
         popupContent.innerHTML = `
-        <img src="assets/images/login/login/loginpage.png" alt="" width="200" height="120">
-          <h3>${firstName}</h3>
-          <a>0771234567</a>
-          <p>${email}</p>
-
-        `;
+                <img src="assets/images/login/login/loginpage.png" alt="" width="200" height="120">
+                <h3>${firstName}</h3>
+                <a>0771234567</a>
+                <p>${email}</p>
+            `;
 
         if (this.level) {
           popupContent.innerHTML += `
-            <button id="sendEmailBtn">Notify hospital</button>
-          `;
+                    <button id="sendEmailBtn">Notify hospital</button>
+                `;
         }
+
         const popup = new maplibregl.Popup().setDOMContent(popupContent);
         marker.setPopup(popup).addTo(this.map);
+
         popupContent
           .querySelector('#sendEmailBtn')
           ?.addEventListener('click', () => {
             this.anotherMethod(_id);
           });
       });
+    }
   }
 
   anotherMethod(id: string) {
@@ -182,14 +195,15 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
   }
 
   private findNearestLocation() {
-    if (this.currentLocation && this.locations) {
+    console.log('ffffff', this.location);
+    if (this.location && this.locations) {
       let nearestDistance = Number.MAX_VALUE;
       let nearestLocation: { name: string; distance: number } | null = null;
 
       this.locations.forEach((resquer) => {
         const distance = this.calculateDistance(
-          this.currentLocation!.latitude,
-          this.currentLocation!.longitude,
+          this.location!.lat,
+          this.location!.lon,
           resquer.location?.lat,
           resquer.location?.lon
         );

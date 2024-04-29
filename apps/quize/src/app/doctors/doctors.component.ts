@@ -63,7 +63,7 @@ export class DoctorsComponent implements AfterViewInit {
       },
     ];
     // this.doctors = doctors;
-  this.chunkedCards = this.chunkArray(x, 3);
+    this.chunkedCards = this.chunkArray(x, 3);
   }
 
   chunkArray(array: any[], size: number): any[][] {
@@ -87,7 +87,7 @@ export class DoctorsComponent implements AfterViewInit {
     const details = [
       {
         level: this.level ?? 'level 2',
-        name: 'Test',
+        name: 'Testing',
       },
     ] as any;
     console.log('doctor all clcicked !');

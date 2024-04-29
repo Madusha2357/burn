@@ -254,7 +254,7 @@ export class UserService implements IUserService {
   async updateAll(updateUserDto: UpdateUserDto, requestUser: DecodedPayload) {
     console.log('user', updateUserDto);
     removePasswordField(updateUserDto);
-    updateUserDto.modifiedBy = requestUser.sub;
+    // updateUserDto.modifiedBy = requestUser.sub;
 
     if (updateUserDto.notification) {
       let newA: any[] = [];
