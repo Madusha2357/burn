@@ -1,12 +1,12 @@
-import { AfterViewInit, Component, NgZone, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { AppState } from '../_state/app.state';
-import { tap } from 'rxjs';
-import { IDoctorNotificatoin } from '@damen/models';
 import { GetCurrentUser } from './_state/site.actions';
-import { log } from 'console';
 import { Navigate } from '@ngxs/router-plugin';
+import { tap } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { NotificationDialogComponent } from './site-dialog';
 
 @Component({
   selector: 'damen-site',
@@ -26,7 +26,7 @@ export class SiteComponent implements OnInit {
   constructor(
     private store: Store,
     private route: ActivatedRoute,
-    private ngZone: NgZone
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -79,5 +79,17 @@ export class SiteComponent implements OnInit {
         );
       }
     }
+  }
+
+  open(notification: any) {
+    const baseUrl = 'http://127.0.0.1:5000/uploads/';
+    const imageUrl = baseUrl + notification.image;
+    const dialogRef = this.dialog.open(NotificationDialogComponent, {
+      data: { ...notification, imageUrl },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
   }
 }

@@ -467,13 +467,9 @@ export class UserService implements IUserService {
     const users = await this.userRepository.find({ role: 'doctor' });
     const data = await users;
 
-    // Get current time
     const currentTime = new Date();
     const currentHour = currentTime.getHours();
-
     const currentMinute = currentTime.getMinutes();
-
-    // Filter doctors based on availability
     const availableDoctors = data.filter((doctor) => {
       if (doctor.timer && doctor.timer.length > 0) {
         for (const timeRange of doctor.timer) {
@@ -487,15 +483,12 @@ export class UserService implements IUserService {
             (currentHour < endHour ||
               (currentHour === endHour && currentMinute < endMinute))
           ) {
-            return true; // Doctor is available
+            return true;
           }
         }
       }
-      return false; // Doctor is not available or has no defined time ranges
+      return false;
     });
-
-    console.log('dddddddddddddd', availableDoctors);
-
-    return data;
+    return availableDoctors;
   }
 }

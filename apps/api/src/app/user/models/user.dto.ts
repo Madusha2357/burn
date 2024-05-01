@@ -15,10 +15,12 @@ export class CreateUserDto implements ICreateUserDto {
   roles?: Role[];
   location?: ILocation;
   time?: string[];
+  phoneNumber?: string;
   timer?: string[];
   password?: string;
   firstName?: string;
   lastName?: string;
+  image?: string;
   hospital?: string;
   createdBy?: string;
   modifiedBy?: string;

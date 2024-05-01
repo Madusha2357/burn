@@ -21,6 +21,7 @@ export interface ICreateUserDto extends BaseUser {
   lastName?: string;
   role?: string;
   hospital?: string;
+  image?: string;
   time?: string[];
   timer?: string[];
   location?: ILocation;
@@ -73,4 +74,6 @@ export interface IDoctorNotificatoin {
   level: string;
   name: string;
   url?: string;
+  age?: any;
+  image?: any;
 }

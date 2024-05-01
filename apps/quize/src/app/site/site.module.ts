@@ -72,6 +72,7 @@ import { UserUpdateComponent } from '../login/user-update/user-update.component'
     SecondImageAndAboutComponent,
     MatDialogModule,
     UserUpdateComponent,
+    MatDialogModule,
   ],
 })
 export class SiteModule {}

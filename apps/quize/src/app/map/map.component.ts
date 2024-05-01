@@ -37,7 +37,11 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
   nearestLocation: { name: string; distance: number } | null = null;
 
   locations?: any[];
-  level?: string;
+
+  level: any;
+  name?: string;
+  age?: any;
+  image?: any;
 
   location?: ILocation;
 
@@ -104,6 +108,13 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
         })
       )
       .subscribe();
+
+    this.route.queryParams.subscribe((params) => {
+      this.level = params['level'];
+      this.name = params['name'];
+      this.age = params['age'];
+      this.image = params['image'];
+    });
   }
 
   private getCurrentLocation() {
@@ -141,7 +152,7 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
       console.log('nearest', nearestLocationName);
 
       this.locations.forEach((resquer) => {
-        const { firstName, location, email, _id } = resquer;
+        const { firstName, location, email, _id, image } = resquer;
         const markerColor =
           nearestLocationName === firstName ? '#0000000' : '#B70404'; // Green if nearest, red otherwise
 
@@ -152,7 +163,7 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
 
         const popupContent = document.createElement('div');
         popupContent.innerHTML = `
-                <img src="assets/images/login/login/loginpage.png" alt="" width="200" height="120">
+                <img src="${image}" alt="" width="200" height="120">
                 <h3>${firstName}</h3>
                 <a>0771234567</a>
                 <p>${email}</p>
@@ -178,12 +189,13 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
 
   anotherMethod(id: string) {
     if (this.location) {
-      console.log('hello', id);
       const user = {
         notification: [
           {
-            name: 'Name',
-            level: 'Level 2',
+            level: this.level ?? 'level 2',
+            name: this.name ?? 'Name',
+            image: this.image ?? 'image.jpg',
+            age: this.age ?? '25',
             url: `https://www.google.com/maps/place/${
               this.location.lat ?? ''
             },${this.location.lon}`,

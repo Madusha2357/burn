@@ -29,6 +29,9 @@ import { ICreateUserDto } from '@damen/models';
 export class DoctorsComponent implements AfterViewInit {
   doctors?: any[];
   level: any;
+  name?: string;
+  age?: any;
+  image?: any;
   chunkedCards: any;
 
   constructor(private store: Store, private route: ActivatedRoute) {}
@@ -36,6 +39,9 @@ export class DoctorsComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.route.queryParams.subscribe((params) => {
       this.level = params['level'];
+      this.name = params['name'];
+      this.age = params['age'];
+      this.image = params['image'];
       this.store
         .dispatch(new GetDoctors())
         .pipe(
@@ -76,7 +82,9 @@ export class DoctorsComponent implements AfterViewInit {
     const details = [
       {
         level: this.level ?? 'level 2',
-        name: 'Test',
+        name: this.name ?? 'Name',
+        image: this.image ?? 'image.jpg',
+        age: this.age ?? '25',
       },
     ] as any;
     console.log('doctor clcicked !', id);
@@ -87,7 +95,9 @@ export class DoctorsComponent implements AfterViewInit {
     const details = [
       {
         level: this.level ?? 'level 2',
-        name: 'Testing',
+        name: this.name ?? 'Name',
+        image: this.image ?? 'image.jpg',
+        age: this.age ?? '25',
       },
     ] as any;
     console.log('doctor all clcicked !');
