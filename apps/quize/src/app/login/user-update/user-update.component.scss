@@ -82,6 +82,25 @@
       padding-left: 16px;
     }
 
+    & .input-field-1 {
+      width: 332px;
+      height: 34px;
+      margin-top: 2px;
+      background: #efefef;
+      border-width: 1px;
+      border-radius: 3px;
+      border-color: #efefef;
+      color: black;
+      padding-left: 10px;
+      // margin-bottom: 16px;
+    }
+
+    & .selected-time-ranges {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-left: 6px;
+    }
+
     & .input-field-mobile {
       @extend .inputs;
       width: 332px;

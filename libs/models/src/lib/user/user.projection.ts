@@ -16,6 +16,7 @@ export class ProjectionUserDataTableQuery {
   modifiedBy = true;
   createdAt = true;
   modifiedAt = true;
+  timer = true;
   address = true;
   isUpdate = true;
   allowMarketingMails = true;

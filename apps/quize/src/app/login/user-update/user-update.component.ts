@@ -41,6 +41,14 @@ export class UserUpdateComponent implements OnInit {
   location!: ILocation;
   id?: string;
 
+  selectedTimeRanges: string[] = [];
+  timeRanges: string[] = [
+    '1:00 - 7:00',
+    '7:00 - 12:00',
+    '12:00 - 20:00',
+    '20:00 - 1:00',
+  ];
+
   constructor(
     private store: Store,
     formBuilder: FormBuilder,
@@ -77,13 +85,31 @@ export class UserUpdateComponent implements OnInit {
             .pipe(
               tap(() => {
                 const user = this.store.selectSnapshot(MapState.user);
-                if (user) this.registerForm.patchValue(user);
+                if (user) {
+                  this.registerForm.patchValue(user);
+                  if (user.timer) {
+                    // this.selectedTimeRanges = user.timer;
+                  }
+                }
               })
             )
             .subscribe();
         })
       )
       .subscribe();
+  }
+
+  selectTimeRange(event: any) {
+    const timeRange = event?.target?.value;
+
+    if (timeRange && !this.selectedTimeRanges.includes(timeRange)) {
+      console.log('timer', timeRange);
+      this.selectedTimeRanges.push(timeRange);
+    }
+  }
+
+  removeTimeRange(index: number) {
+    this.selectedTimeRanges.splice(index, 1);
   }
 
   togglePassword() {

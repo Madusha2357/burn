@@ -50,18 +50,24 @@
         </div>
       </div>
 
-      <div class="column">
+      <div class="time-ranges-selector column">
         <label class="input-label sub-header-16" for="name">
           Available times
         </label>
-        <div class="row">
-          <input
-            class="input-field"
-            id="time"
-            type="email"
-            formControlName="time"
-            placeholder="Available times"
-          />
+        <select class="input-field-1" (change)="selectTimeRange($event)">
+          <option value="">Available Times</option>
+          <option *ngFor="let timeRange of timeRanges" [value]="timeRange">
+            {{ timeRange }}
+          </option>
+        </select>
+        <div class="selected-time-ranges">
+          <div
+            *ngFor="let selectedRange of selectedTimeRanges; let i = index"
+            class="selected-range"
+          >
+            {{ selectedRange }}
+            <span class="remove-icon" (click)="removeTimeRange(i)">x</span>
+          </div>
         </div>
       </div>
 
