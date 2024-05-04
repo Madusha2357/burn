@@ -20,6 +20,7 @@ import { LocationComponent } from '../login/location-pick/location.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ILocation } from '@damen/models';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { LocationShareComponent } from './map-dialog';
 
 @Component({
   selector: 'damen-map',
@@ -55,6 +56,29 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
   ) {}
 
   ngOnInit() {
+    const dialogRef = this.dialog.open(LocationShareComponent, {
+      width: '30%',
+      height: '16%',
+    });
+    dialogRef.componentInstance.isOk.subscribe((isOk) => {
+      console.log('is ok', isOk);
+      if (isOk == true) {
+        console.log('is ok', isOk);
+
+        this.openLocationDialog();
+      }
+    });
+
+    // this.openLocationDialog();
+
+    this.route.queryParams.subscribe((params) => {
+      this.level = params['level'];
+
+      console.log('level', this.level);
+    });
+  }
+
+  openLocationDialog() {
     const dialogRef = this.dialog.open(LocationComponent, {
       width: '60%',
       height: '60%',
@@ -72,12 +96,6 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
         }
       }
     );
-
-    this.route.queryParams.subscribe((params) => {
-      this.level = params['level'];
-
-      console.log('level', this.level);
-    });
   }
 
   ngAfterViewInit() {
@@ -152,7 +170,7 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
       this.locations.forEach((resquer) => {
         const { firstName, location, email, _id, image } = resquer;
         const markerColor =
-          nearestLocationName === firstName ? '#0000000' : '#B70404'; 
+          nearestLocationName === firstName ? '#0000000' : '#B70404';
         const marker = new maplibregl.Marker({ color: markerColor }).setLngLat([
           location?.lon,
           location?.lat,
@@ -170,7 +188,7 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
                 `;
         }
         const popup = new maplibregl.Popup().setDOMContent(popupContent);
-        marker.setPopup(popup).addTo(this.map); 
+        marker.setPopup(popup).addTo(this.map);
         popupContent
           .querySelector('#sendEmailBtn')
           ?.addEventListener('click', () => {

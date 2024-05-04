@@ -76,4 +76,5 @@ export interface IDoctorNotificatoin {
   url?: string;
   age?: any;
   image?: any;
+  email?: any;
 }

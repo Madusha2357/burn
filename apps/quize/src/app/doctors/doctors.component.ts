@@ -32,6 +32,7 @@ export class DoctorsComponent implements AfterViewInit {
   name?: string;
   age?: any;
   image?: any;
+  email?: any;
   chunkedCards: any;
 
   constructor(private store: Store, private route: ActivatedRoute) {}
@@ -42,6 +43,7 @@ export class DoctorsComponent implements AfterViewInit {
       this.name = params['name'];
       this.age = params['age'];
       this.image = params['image'];
+      this.email = params['email'];
       this.store
         .dispatch(new GetDoctors())
         .pipe(
@@ -85,6 +87,7 @@ export class DoctorsComponent implements AfterViewInit {
         name: this.name ?? 'Name',
         image: this.image ?? 'image.jpg',
         age: this.age ?? '25',
+        email: this.email ?? 'test@gmail.com',
       },
     ] as any;
     console.log('doctor clcicked !', id);
@@ -98,6 +101,7 @@ export class DoctorsComponent implements AfterViewInit {
         name: this.name ?? 'Name',
         image: this.image ?? 'image.jpg',
         age: this.age ?? '25',
+        email: this.email ?? 'test@gmail.com',
       },
     ] as any;
     console.log('doctor all clcicked !');

@@ -47,10 +47,14 @@ export class UserRegistrationComponent {
 
   selectedTimeRanges: string[] = [];
   timeRanges: string[] = [
-    '1:00 - 7:00',
-    '7:00 - 12:00',
-    '12:00 - 20:00',
-    '20:00 - 1:00',
+    '1:00 - 4:00',
+    '4:00 - 7:00',
+    '7:00 - 10:00',
+    '10:00 - 13:00',
+    '13:00 - 16:00',
+    '16:00 - 19:00',
+    '19:00 - 22:00',
+    '22:00 - 1:00',
   ];
 
   constructor(
@@ -111,7 +115,7 @@ export class UserRegistrationComponent {
       const reg: ICreateUserDto = {
         ...this.registerForm.value,
       };
-      // Adding new fields to the reg 
+      // Adding new fields to the reg
       reg.status = UserStatus.REGISTERED;
       reg.role = this.status;
       reg.location = this.location;

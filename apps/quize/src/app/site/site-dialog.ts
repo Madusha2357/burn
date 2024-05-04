@@ -5,10 +5,12 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   selector: 'damen-notification-dialog',
   template: `
     <div style="padding: 10px">
-      <img [src]="data.imageUrl" alt="Notification Image" />
+      <img style="width: 100%" [src]="data.imageUrl" alt="Notification Image" />
       <h2>Patient name: {{ data.name }}</h2>
       <p>Age: {{ data.age }}</p>
-      <button (click)="downloadDoc()">Download</button>
+      <button class="button" style="padding: 10px" (click)="downloadDoc()">
+        Download
+      </button>
     </div>
   `,
 })

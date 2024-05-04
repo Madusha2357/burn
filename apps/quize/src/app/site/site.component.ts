@@ -81,10 +81,24 @@ export class SiteComponent implements OnInit {
     const imageUrl = baseUrl + notification.image;
     const dialogRef = this.dialog.open(NotificationDialogComponent, {
       data: { ...notification, imageUrl },
+      width: ' 30%',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
     });
+  }
+
+  payment(recipient: string) {
+    const subject = 'Payment Details';
+    const body = 'Please find attached the payment details.';
+
+    // Construct mailto URL
+    const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+
+    // Open default email client
+    window.location.href = mailtoUrl;
   }
 }

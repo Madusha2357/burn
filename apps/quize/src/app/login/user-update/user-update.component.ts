@@ -43,10 +43,14 @@ export class UserUpdateComponent implements OnInit {
 
   selectedTimeRanges: string[] = [];
   timeRanges: string[] = [
-    '1:00 - 7:00',
-    '7:00 - 12:00',
-    '12:00 - 20:00',
-    '20:00 - 1:00',
+    '1:00 - 4:00',
+    '4:00 - 7:00',
+    '7:00 - 10:00',
+    '10:00 - 13:00',
+    '13:00 - 16:00',
+    '16:00 - 19:00',
+    '19:00 - 22:00',
+    '22:00 - 1:00',
   ];
 
   constructor(
@@ -126,6 +130,7 @@ export class UserUpdateComponent implements OnInit {
       timer: [],
     };
     if (this.id) {
+      reg.timer = this.selectedTimeRanges;
       this.store.dispatch(new UpdateUserM(this.id, reg));
     }
   }
