@@ -105,15 +105,19 @@ export class UserRegistrationComponent {
   }
 
   userRegistration() {
+    // First check the validity of the form
     if (this.registerForm.valid && this.status) {
+      // Create constant (reg) and it will equel to the form's value
       const reg: ICreateUserDto = {
         ...this.registerForm.value,
       };
+      // Adding new fields to the reg 
       reg.status = UserStatus.REGISTERED;
       reg.role = this.status;
       reg.location = this.location;
       reg.registerCode = reg.password;
       reg.timer = this.selectedTimeRanges;
+      // Trigger the user creation action
       this.store.dispatch(new UserRegistration(reg));
     }
   }

@@ -155,16 +155,16 @@ export class UsersListComponent implements OnInit, AfterViewInit {
       .subscribe();
   }
 
-  onSendInvitation(el: ProjectionUserDataTable) {
-    this.store.dispatch(new SendInvitationEmail(el._id));
-  }
-
   downloadCsv() {
     if (this.quizId) {
       this.store.dispatch(new DownloadCsv(this.quizId));
     } else {
       this.store.dispatch(new DownloadCsv());
     }
+  }
+
+  onSendInvitation(el: ProjectionUserDataTable) {
+    this.store.dispatch(new SendInvitationEmail(el._id));
   }
 
   onOpenRegistration(el: ProjectionUserDataTable) {

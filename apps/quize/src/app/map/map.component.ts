@@ -149,18 +149,14 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
         ? this.nearestLocation.name
         : null;
 
-      console.log('nearest', nearestLocationName);
-
       this.locations.forEach((resquer) => {
         const { firstName, location, email, _id, image } = resquer;
         const markerColor =
-          nearestLocationName === firstName ? '#0000000' : '#B70404'; // Green if nearest, red otherwise
-
+          nearestLocationName === firstName ? '#0000000' : '#B70404'; 
         const marker = new maplibregl.Marker({ color: markerColor }).setLngLat([
           location?.lon,
           location?.lat,
         ]);
-
         const popupContent = document.createElement('div');
         popupContent.innerHTML = `
                 <img src="${image}" alt="" width="200" height="120">
@@ -168,16 +164,13 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
                 <a>0771234567</a>
                 <p>${email}</p>
             `;
-
         if (this.level) {
           popupContent.innerHTML += `
                     <button id="sendEmailBtn">Notify hospital</button>
                 `;
         }
-
         const popup = new maplibregl.Popup().setDOMContent(popupContent);
-        marker.setPopup(popup).addTo(this.map);
-
+        marker.setPopup(popup).addTo(this.map); 
         popupContent
           .querySelector('#sendEmailBtn')
           ?.addEventListener('click', () => {

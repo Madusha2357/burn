@@ -51,11 +51,6 @@ export class SiteComponent implements OnInit {
                       this.isDoctor = true;
                     }
                     this.id = state.site.user._id;
-                    console.log(
-                      'state.site.user.notification',
-                      state.site.user.notification
-                    );
-
                     this.notifications = state.site.user.notification;
                   }
                 })
