@@ -54,6 +54,7 @@ export class UserUpdateComponent implements OnInit {
     '16:00 - 19:00',
     '19:00 - 22:00',
     '22:00 - 23:59',
+    '00:00 - 1:00',
   ];
 
   constructor(
