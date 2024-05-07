@@ -85,6 +85,8 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
     });
     dialogRef.componentInstance.locationSelected.subscribe(
       (selectedLocation: { lat: number; lon: number }) => {
+        console.log('selected', selectedLocation);
+
         if (selectedLocation) {
           this.location = {
             lat: selectedLocation.lat,
