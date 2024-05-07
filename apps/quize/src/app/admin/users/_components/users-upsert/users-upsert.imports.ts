@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 export const IMPORTS = [
   CommonModule,
   ReactiveFormsModule,
@@ -22,4 +23,6 @@ export const IMPORTS = [
   MatInputModule,
   MatIconModule,
   MatOptionModule,
+  MatSelectModule,
+  MatIconModule,
 ];

@@ -15,30 +15,17 @@
       </mat-error>
     </mat-form-field>
 
-    <!-- <mat-form-field id="role" appearance="outline">
+    <mat-form-field appearance="outline">
+      <mat-label>password</mat-label>
+      <input type="text" matInput formControlName="password" />
+    </mat-form-field>
+
+    <mat-form-field id="role" appearance="outline">
       <mat-label>Role</mat-label>
-      <mat-select formControlName="role">
+      <mat-select (selectionChange)="onRoleChange($event.value)">
         <mat-option value="doctor">Doctor</mat-option>
         <mat-option value="hospital">Hospital</mat-option>
       </mat-select>
-    </mat-form-field> -->
-
-    <mat-form-field
-      *ngIf="formGroup.get('role')?.value === 'doctor'"
-      id="availableTimes"
-      appearance="outline"
-    >
-      <mat-label>Available Times</mat-label>
-      <input matInput formControlName="timer" />
-    </mat-form-field>
-
-    <mat-form-field
-      *ngIf="formGroup.get('role')?.value === 'hospital'"
-      id="location"
-      appearance="outline"
-    >
-      <mat-label>Location</mat-label>
-      <input matInput formControlName="location" />
     </mat-form-field>
 
     <mat-form-field id="firstName" appearance="outline">
@@ -49,6 +36,49 @@
     <mat-form-field id="lastName" appearance="outline">
       <mat-label>Last Name</mat-label>
       <input matInput formControlName="lastName" />
+    </mat-form-field>
+
+    <mat-form-field
+      *ngIf="selectedRole === 'hospital'"
+      id="location"
+      appearance="outline"
+    >
+      <mat-label>Image</mat-label>
+      <input matInput formControlName="image" />
+    </mat-form-field>
+
+    <mat-form-field
+      *ngIf="selectedRole === 'doctor'"
+      id="availableTimes"
+      appearance="outline"
+    >
+      <mat-label>Available Times</mat-label>
+      <mat-select (selectionChange)="onRoleChange($event.value)">
+        <mat-option *ngFor="let timeRange of timeRanges" [value]="timeRange">
+          {{ timeRange }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="selected-time-ranges">
+      <div
+        *ngFor="let selectedRange of selectedTimeRanges; let i = index"
+        class="selected-range"
+      >
+        {{ selectedRange }}
+        <span class="remove-icon" (click)="removeTimeRange(i)">x</span>
+      </div>
+    </div>
+
+    <mat-form-field
+      *ngIf="selectedRole === 'hospital'"
+      id="location"
+      appearance="outline"
+    >
+      <mat-label>Location</mat-label>
+      <input matInput formControlName="location" />
+      <button mat-button matSuffix (click)="openMap()">
+        <mat-icon>add</mat-icon>
+      </button>
     </mat-form-field>
   </form>
 </div>

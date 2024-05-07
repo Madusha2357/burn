@@ -8,6 +8,8 @@ export type UserFormGroup = FormGroup<{
   role: FormControl<string>;
   timer: FormControl<string[]>;
   location: FormControl<any>;
+  password: FormControl<any>;
+  image: FormControl<any>;
 }>;
 
 export function email() {
@@ -38,6 +40,14 @@ export function timer() {
 }
 
 export function location() {
+  return new FormControl(null, { nonNullable: true });
+}
+
+export function password() {
+  return new FormControl(null, { nonNullable: true });
+}
+
+export function image() {
   return new FormControl(null, { nonNullable: true });
 }
 
