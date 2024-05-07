@@ -136,6 +136,7 @@ export class UserUpdateComponent implements OnInit {
     };
     if (this.id) {
       reg.timer = this.selectedTimeRanges;
+      reg.location = this.location;
       this.store
         .dispatch(new UpdateUserM(this.id, reg))
         .pipe(
