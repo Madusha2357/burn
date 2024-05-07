@@ -13,6 +13,7 @@ import { FooterComponent } from '../site/_design-components/footer/footer.compon
 import { NavigationBarComponent } from '../site/_design-components/navigation-bar/navigation-bar.component';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ICreateUserDto } from '@damen/models';
+import { Navigate } from '@ngxs/router-plugin';
 
 @Component({
   selector: 'damen-doctors',
@@ -105,6 +106,16 @@ export class DoctorsComponent implements AfterViewInit {
       },
     ] as any;
     console.log('doctor all clcicked !');
-    this.store.dispatch(new DoctorNotificationAll(details));
+    this.store
+      .dispatch(new DoctorNotificationAll(details))
+      .pipe(
+        tap((data) => {
+          // const name = 'l'; // Replace 'l' with the actual value you want to send
+          // const level = 'level1'; // Replace 'level1' with the actual value you want to send
+          // const url = `/site?name=${name}&level=${level}`;
+          // this.store.dispatch(new Navigate([url]));
+        })
+      )
+      .subscribe();
   }
 }

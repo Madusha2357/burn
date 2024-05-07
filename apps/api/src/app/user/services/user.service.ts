@@ -201,7 +201,7 @@ export class UserService implements IUserService {
     updateUserDto: UpdateUserDto,
     requestUser: DecodedPayload
   ) {
-    console.log('updateUserDto', updateUserDto);
+    console.log('updateUserDto', id);
 
     // ids = requestUserRoleValidity(requestUser, id, updateUserDto);
     removePasswordField(updateUserDto);
@@ -241,11 +241,9 @@ export class UserService implements IUserService {
         .exec();
     } else {
       return this.userRepository
-        .findOneAndUpdate(
-          { _id: new ObjectId(requestUser.id) },
-          updateUserDto,
-          { new: true }
-        )
+        .findOneAndUpdate({ _id: new ObjectId(id) }, updateUserDto, {
+          new: true,
+        })
         .exec();
     }
     //updateUserDto.status = UserStatus.ACTIVE; //update status as ACTIVE for every user

@@ -21,6 +21,9 @@ import { log } from 'util';
 import { MapComponent } from '../../map/map.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { LocationComponent } from '../location-pick/location.component';
+import { tap } from 'rxjs';
+import { snackbarSuccess } from '../../_utils/snack-bar.utils';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'damen-user-registration',
@@ -60,7 +63,8 @@ export class UserRegistrationComponent {
   constructor(
     private store: Store,
     formBuilder: FormBuilder,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {
     this.location = { lat: 0, lon: 0 }; // Initialize location as an empty object
 
@@ -122,7 +126,14 @@ export class UserRegistrationComponent {
       reg.registerCode = reg.password;
       reg.timer = this.selectedTimeRanges;
       // Trigger the user creation action
-      this.store.dispatch(new UserRegistration(reg));
+      this.store
+        .dispatch(new UserRegistration(reg))
+        .pipe(
+          tap((data) => {
+            snackbarSuccess('Successfuly updated!', this.snackBar);
+          })
+        )
+        .subscribe();
     }
   }
 

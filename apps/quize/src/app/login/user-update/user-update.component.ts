@@ -16,6 +16,9 @@ import { MapState } from '../../map/_state/map.state';
 import { GetUserM, UpdateUserM } from '../../map/_state/map.actions';
 import { LocationComponent } from '../location-pick/location.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { snackbarSuccess } from '../../_utils/snack-bar.utils';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Navigate } from '@ngxs/router-plugin';
 
 @Component({
   selector: 'damen-user-update',
@@ -57,7 +60,8 @@ export class UserUpdateComponent implements OnInit {
     private store: Store,
     formBuilder: FormBuilder,
     private router: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {
     this.location = { lat: 0, lon: 0 }; // Initialize location as an empty object
 
@@ -92,7 +96,7 @@ export class UserUpdateComponent implements OnInit {
                 if (user) {
                   this.registerForm.patchValue(user);
                   if (user.timer) {
-                    // this.selectedTimeRanges = user.timer;
+                    this.selectedTimeRanges.push(...user.timer);
                   }
                 }
               })
@@ -131,7 +135,15 @@ export class UserUpdateComponent implements OnInit {
     };
     if (this.id) {
       reg.timer = this.selectedTimeRanges;
-      this.store.dispatch(new UpdateUserM(this.id, reg));
+      this.store
+        .dispatch(new UpdateUserM(this.id, reg))
+        .pipe(
+          tap((data) => {
+            snackbarSuccess('Successfuly updated!', this.snackBar);
+            this.store.dispatch(new Navigate(['/site']));
+          })
+        )
+        .subscribe();
     }
   }
 
