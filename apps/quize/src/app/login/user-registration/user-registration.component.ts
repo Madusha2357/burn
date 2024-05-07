@@ -57,7 +57,7 @@ export class UserRegistrationComponent {
     '13:00 - 16:00',
     '16:00 - 19:00',
     '19:00 - 22:00',
-    '22:00 - 1:00',
+    '22:00 - 23:59',
   ];
 
   constructor(

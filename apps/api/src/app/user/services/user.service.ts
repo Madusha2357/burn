@@ -468,20 +468,25 @@ export class UserService implements IUserService {
     const currentTime = new Date();
     const currentHour = currentTime.getHours();
     const currentMinute = currentTime.getMinutes();
+    console.log('start', currentHour);
+    console.log('end', currentMinute);
     const availableDoctors = data.filter((doctor) => {
       if (doctor.timer && doctor.timer.length > 0) {
         for (const timeRange of doctor.timer) {
           const [start, end] = timeRange.split(' - ');
           const [startHour, startMinute] = start.split(':').map(Number);
+
           const [endHour, endMinute] = end.split(':').map(Number);
 
           if (
-            (currentHour > startHour ||
-              (currentHour === startHour && currentMinute >= startMinute)) &&
-            (currentHour < endHour ||
-              (currentHour === endHour && currentMinute < endMinute))
+            (currentHour > startHour || currentHour === startHour) &&
+            (currentHour < endHour || currentHour === endHour)
           ) {
+            console.log('hello', currentHour, startHour);
+
             return true;
+          } else {
+            console.log('helhhooooolo', currentHour, startHour);
           }
         }
       }
