@@ -197,6 +197,13 @@
           Register Now!
         </button>
       </div>
+
+      <a
+        class="slect-user"
+        (click)="changeStatus(undefined)"
+        href="http://localhost:4200/#/login/user-registration"
+        >Select user</a
+      >
       <div class="copy">
         <p class="trademark">© BurnWiseAid</p>
       </div>
@@ -251,6 +258,18 @@
           />
 
           <button class="pick" (click)="openMap()">pick</button>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="row">
+          <input
+            class="input-field"
+            id="mobile"
+            type="text"
+            formControlName="mobile"
+            placeholder="Mobile number"
+          />
         </div>
       </div>
 
@@ -361,6 +380,12 @@
           Register Now!
         </button>
       </div>
+      <a
+        class="slect-user"
+        (click)="changeStatus(undefined)"
+        href="http://localhost:4200/#/login/user-registration"
+        >Select user</a
+      >
       <div class="copy">
         <p class="trademark">© BurnWiseAid</p>
       </div>

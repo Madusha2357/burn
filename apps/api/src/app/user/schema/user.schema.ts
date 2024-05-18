@@ -44,6 +44,9 @@ export class User extends BaseEntity {
   image?: string;
 
   @Prop()
+  mobile?: string;
+
+  @Prop()
   hospital?: string;
 
   @Prop()

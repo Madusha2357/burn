@@ -26,6 +26,7 @@ export interface ICreateUserDto extends BaseUser {
   timer?: string[];
   location?: ILocation;
   notification?: IDoctorNotificatoin[];
+  mobile?: string;
 }
 
 export interface UpdateUserDto extends BaseUser {
@@ -47,6 +48,7 @@ export interface UpdateUserDto extends BaseUser {
   timer?: string[];
   location?: ILocation;
   email?: string;
+  mobile?: string;
   __v?: number;
   notification?: IDoctorNotificatoin[];
 }

@@ -72,6 +72,7 @@ export class UserUpdateComponent implements OnInit {
       email: [null, [Validators.required, Validators.email]],
       role: [null],
       time: [null],
+      mobile: [null],
       location: [''], // Empty for now
     });
 
@@ -134,6 +135,8 @@ export class UserUpdateComponent implements OnInit {
       ...this.registerForm.value,
       timer: [],
     };
+    reg.location = this.location;
+
     if (this.id) {
       reg.timer = this.selectedTimeRanges;
       reg.location = this.location;

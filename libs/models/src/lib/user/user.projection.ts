@@ -22,6 +22,7 @@ export class ProjectionUserDataTableQuery {
   allowMarketingMails = true;
   isDeleted = true;
   company = true;
+  mobile = true;
   notification = true;
   role = true;
 }

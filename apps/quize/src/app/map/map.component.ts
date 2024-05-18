@@ -170,7 +170,7 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
         : null;
 
       this.locations.forEach((resquer) => {
-        const { firstName, location, email, _id, image } = resquer;
+        const { firstName, location, email, _id, image, mobile } = resquer;
         const markerColor =
           nearestLocationName === firstName ? '#0000000' : '#B70404';
         const marker = new maplibregl.Marker({ color: markerColor }).setLngLat([
@@ -181,7 +181,7 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnInit {
         popupContent.innerHTML = `
                 <img src="${image}" alt="" width="200" height="120">
                 <h3>${firstName}</h3>
-                <a>0771234567</a>
+                <a>${mobile}</a>
                 <p>${email}</p>
             `;
         if (this.level) {

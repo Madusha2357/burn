@@ -45,7 +45,7 @@ export class UserRegistrationComponent {
   showPassword = false;
   showConfirmPassword = false;
   tnc: string = PATH_TNC_FULL;
-  status?: string;
+  status?: string | undefined;
   location!: ILocation;
 
   selectedTimeRanges: string[] = [];
@@ -78,6 +78,7 @@ export class UserRegistrationComponent {
       image: [null],
       hospital: [null],
       location: [''], // Empty for now
+      mobile: [null],
       password: [
         null,
         Validators.compose([Validators.required, Validators.minLength(4)]),
@@ -131,14 +132,14 @@ export class UserRegistrationComponent {
         .dispatch(new UserRegistration(reg))
         .pipe(
           tap((data) => {
-            snackbarSuccess('Successfuly updated!', this.snackBar);
+            snackbarSuccess('Successfuly created!', this.snackBar);
           })
         )
         .subscribe();
     }
   }
 
-  changeStatus(status: string) {
+  changeStatus(status: string | undefined) {
     this.status = status;
   }
 
