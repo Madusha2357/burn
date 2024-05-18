@@ -280,32 +280,8 @@ export class UserService implements IUserService {
     const updateUser: UpdateUserDto = {
       isDeleted: true,
     };
-    // only ROLE ADMIN can update others
-    await this.quizResponseServise.softDelete(updateUserDto.email);
-    if (requestUser.roles.includes(Role.ADMIN)) {
-      return this.userRepository
-        .findOneAndUpdate({ _id: new ObjectId(id) }, updateUser, {
-          new: true,
-        })
-        .exec();
-    } else {
-      return this.userRepository
-        .findOneAndUpdate({ _id: new ObjectId(requestUser.id) }, updateUser, {
-          new: true,
-        })
-        .exec();
-    }
 
-    //////
-
-    // updateUserDto.isDeleted = false;
-    // const filter: UpdateFilter<any> = {
-    //   __v: 0,
-    // };
-    // const update: UpdateUserDto = {
-    //   isDeleted: false,
-    // };
-    // return this.userRepository.updateMany(filter, update).exec();
+    return this.userRepository.deleteOne({ _id: new ObjectId(id) }).exec();
   }
 
   /**
