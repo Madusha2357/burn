@@ -229,10 +229,10 @@ export class UserService implements IUserService {
         .exec();
       // const exArray = excistedUser.notification;
       // console.log('excistedUser', exArray);
-      newA.push(updateUserDto.notification[0]);
+      newA.push(updateUserDto.notification);
       updateUserDto.notification = newA;
 
-      console.log('hello notifications', newA);
+      console.log('hello notifications', updateUserDto.notification);
 
       return this.userRepository
         .findOneAndUpdate({ _id: new ObjectId(id) }, updateUserDto, {
@@ -250,21 +250,12 @@ export class UserService implements IUserService {
   }
 
   async updateAll(updateUserDto: UpdateUserDto, requestUser: DecodedPayload) {
-    console.log('user', updateUserDto);
     removePasswordField(updateUserDto);
-    // updateUserDto.modifiedBy = requestUser.sub;
-
     if (updateUserDto.notification) {
       let newA: any[] = [];
-      console.log('aaaaa');
-
       const findQuery = await this.userRepository.find({ role: 'doctor' });
-
       newA.push(updateUserDto.notification);
-
       const doctorIds = findQuery.map((doctor) => doctor._id.toString());
-      console.log('fineeeeeeeee all dotors', doctorIds);
-
       for (const doctorId of doctorIds) {
         await this.userRepository.findOneAndUpdate(
           { _id: new ObjectId(doctorId) },
@@ -272,19 +263,6 @@ export class UserService implements IUserService {
           { new: true }
         );
       }
-
-      // const excistedUser = await this.userRepository
-      //   .findById({
-      //     _id: new ObjectId(id),
-      //   })
-      //   .exec();
-      // newA.push(updateUserDto.notification[0]);
-      // updateUserDto.notification = newA;
-      // return this.userRepository
-      //   .findOneAndUpdate({ _id: new ObjectId(id) }, updateUserDto, {
-      //     new: true,
-      //   })
-      //   .exec();
     }
   }
 
@@ -468,8 +446,7 @@ export class UserService implements IUserService {
     const currentTime = new Date();
     const currentHour = currentTime.getHours();
     const currentMinute = currentTime.getMinutes();
-    console.log('start', currentHour);
-    console.log('end', currentMinute);
+
     const availableDoctors = data.filter((doctor) => {
       if (doctor.timer && doctor.timer.length > 0) {
         for (const timeRange of doctor.timer) {
@@ -482,11 +459,7 @@ export class UserService implements IUserService {
             (currentHour > startHour || currentHour === startHour) &&
             (currentHour < endHour || currentHour === endHour)
           ) {
-            console.log('hello', currentHour, startHour);
-
             return true;
-          } else {
-            console.log('helhhooooolo', currentHour, startHour);
           }
         }
       }

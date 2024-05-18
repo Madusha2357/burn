@@ -165,7 +165,6 @@ export class UserController implements IUserController {
   @SkipThrottle()
   @Patch('All/All')
   @Public()
-  @Roles(Role.ADMIN, Role.USER)
   updateAll(@Body() dto: UpdateUserDto, @Req() req: AuthorizedRequest) {
     return this.userService.updateAll(dto, req.user);
   }

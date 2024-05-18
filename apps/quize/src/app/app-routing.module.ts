@@ -29,7 +29,7 @@ const routes: Routes = [
   {
     path: path.PATH_SITE,
     loadChildren: () => import('./site/site.module').then((m) => m.SiteModule),
-    canActivate: [AppGuard],
+    // canActivate: [AppGuard],
   },
   {
     path: 'landing',

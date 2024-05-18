@@ -47,10 +47,7 @@
         <a
           class="link"
           [href]="
-            'http://localhost:4200/#/site?name=' +
-            card.firstName +
-            '&level=' +
-            level
+            'http://localhost:4200/#/site?name=' + name + '&level=' + level
           "
         >
           <p class="fname" (click)="sendDoctor(card._id)">

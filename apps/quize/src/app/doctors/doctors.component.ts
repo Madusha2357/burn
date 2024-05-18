@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngxs/store';
 import { switchMap, tap } from 'rxjs';
@@ -27,7 +27,7 @@ import { Navigate } from '@ngxs/router-plugin';
   templateUrl: './doctors.component.html',
   styleUrls: ['./doctors.component.scss'],
 })
-export class DoctorsComponent implements AfterViewInit {
+export class DoctorsComponent implements OnInit {
   doctors?: any[];
   level: any;
   name?: string;
@@ -38,7 +38,7 @@ export class DoctorsComponent implements AfterViewInit {
 
   constructor(private store: Store, private route: ActivatedRoute) {}
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       this.level = params['level'];
       this.name = params['name'];
@@ -105,17 +105,7 @@ export class DoctorsComponent implements AfterViewInit {
         email: this.email ?? 'test@gmail.com',
       },
     ] as any;
-    console.log('doctor all clcicked !');
-    this.store
-      .dispatch(new DoctorNotificationAll(details))
-      .pipe(
-        tap((data) => {
-          // const name = 'l'; // Replace 'l' with the actual value you want to send
-          // const level = 'level1'; // Replace 'level1' with the actual value you want to send
-          // const url = `/site?name=${name}&level=${level}`;
-          // this.store.dispatch(new Navigate([url]));
-        })
-      )
-      .subscribe();
+    console.log('doctor all clcicked !', details);
+    this.store.dispatch(new DoctorNotificationAll(details));
   }
 }
