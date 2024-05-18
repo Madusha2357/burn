@@ -23,6 +23,15 @@
     </div>
 
     <div *ngIf="status === 'doctor'" class="inputs">
+      <div class="back">
+        <a
+          (click)="changeStatus(undefined)"
+          href="http://localhost:4200/#/login/user-registration"
+        >
+          <img src="assets/svg/previous.svg" alt="Back" />
+        </a>
+      </div>
+
       <p class="header1">Doctor Registration</p>
 
       <div class="x column">
@@ -198,18 +207,20 @@
         </button>
       </div>
 
-      <a
-        class="slect-user"
-        (click)="changeStatus(undefined)"
-        href="http://localhost:4200/#/login/user-registration"
-        >Select user</a
-      >
       <div class="copy">
         <p class="trademark">© BurnWiseAid</p>
       </div>
     </div>
 
     <div *ngIf="status === 'hospital'" class="inputs">
+      <div class="back">
+        <a
+          (click)="changeStatus(undefined)"
+          href="http://localhost:4200/#/login/user-registration"
+        >
+          <img src="assets/svg/previous.svg" alt="Back" />
+        </a>
+      </div>
       <p class="header1">Hospital Registration</p>
 
       <div class="x column">
@@ -380,12 +391,7 @@
           Register Now!
         </button>
       </div>
-      <a
-        class="slect-user"
-        (click)="changeStatus(undefined)"
-        href="http://localhost:4200/#/login/user-registration"
-        >Select user</a
-      >
+
       <div class="copy">
         <p class="trademark">© BurnWiseAid</p>
       </div>
