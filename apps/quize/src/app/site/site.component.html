@@ -180,38 +180,38 @@
           <div class="hosdetails">
             <p class="formtitle">Patient’s Notifications</p>
           </div>
-          <div *ngFor="let n of notifications" class="column">
-            <!-- <div *ngFor="let n of ns"> -->
-            <div class="box1 row">
-              <div>
-                <div class="row3">
-                  <div class="row">
-                    <p class="p1">Notification 01</p>
-                    <a (click)="open(n)"
-                      ><img
-                        class="viewbut"
-                        src="assets/images/dashboard/viewbut.png"
-                    /></a>
+          <div *ngFor="let ns of notifications" class="column">
+            <div *ngFor="let n of ns">
+              <div class="box1 row">
+                <div>
+                  <div class="row3">
+                    <div class="row">
+                      <p class="p1">Notification 01</p>
+                      <a (click)="open(n)"
+                        ><img
+                          class="viewbut"
+                          src="assets/images/dashboard/viewbut.png"
+                      /></a>
+                    </div>
+                  </div>
+                  <div class="row4">
+                    <div class="row">
+                      <p class="p2">Name</p>
+                      <p class="p4">{{ n.name }}</p>
+                    </div>
+                  </div>
+                  <div class="row4">
+                    <div class="row">
+                      <p class="p2">Level</p>
+                      <p class="p3">{{ n.level }}</p>
+                    </div>
                   </div>
                 </div>
-                <div class="row4">
-                  <div class="row">
-                    <p class="p2">Name</p>
-                    <p class="p4">{{ n.name }}</p>
-                  </div>
-                </div>
-                <div class="row4">
-                  <div class="row">
-                    <p class="p2">Level</p>
-                    <p class="p3">{{ n.level }}</p>
-                  </div>
-                </div>
+                <a [href]="n.url">
+                  <button class="button">Check Location</button>
+                </a>
               </div>
-              <a [href]="n.url">
-                <button class="button">Check Location</button>
-              </a>
             </div>
-            <!-- </div> -->
           </div>
         </div>
       </div>
