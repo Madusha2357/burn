@@ -44,7 +44,7 @@ export class UserController implements IUserController {
   // @Roles(Role.ADMIN)
   @Public()
   create(@Body() dto: CreateUserDto, @Req() req: AuthorizedRequest) {
-    return this.userService.create(dto, req.user);
+    return this.userService.create(dto);
   }
 
   @SkipThrottle()
@@ -78,7 +78,7 @@ export class UserController implements IUserController {
   // @Roles(Role.ADMIN, Role.USER)
   @Public()
   findOne(@Param('id') id: string, @Req() req: AuthorizedRequest) {
-    return this.userService.findOne(id, req.user);
+    return this.userService.findOne(id);
   }
 
   @SkipThrottle()
@@ -104,7 +104,7 @@ export class UserController implements IUserController {
     @Body() dto: UpdateUserDto,
     @Req() req: AuthorizedRequest
   ) {
-    return this.userService.softDelete(id, dto, req.user);
+    return this.userService.softDelete(id);
   }
 
   @Post(`${URL_CHANGE_PASSWORD}`)
@@ -166,6 +166,6 @@ export class UserController implements IUserController {
   @Patch('All/All')
   @Public()
   updateAll(@Body() dto: UpdateUserDto, @Req() req: AuthorizedRequest) {
-    return this.userService.updateAll(dto, req.user);
+    return this.userService.updateAll(dto);
   }
 }
