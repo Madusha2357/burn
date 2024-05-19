@@ -9,9 +9,7 @@ import {
   ProjectionUserDataTableQuery,
   Role,
   UpdateUserDto,
-  ProjectionUserBasic,
   UserStatus,
-  ICreateUserDto,
   IDoctorNotificatoin,
 } from '@damen/models';
 import {
@@ -20,7 +18,7 @@ import {
   NotAcceptableException,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { ObjectId, UpdateFilter } from 'mongodb';
+import { ObjectId } from 'mongodb';
 import { Model } from 'mongoose';
 import { CreateUserDto } from '../models/user.dto';
 import { User, UserDocument } from '../schema/user.schema';
@@ -31,7 +29,6 @@ import {
   checkForSamePassword,
   checkToThrowError,
   removePasswordField,
-  requestUserRoleValidity,
 } from './user.service-consts.consts';
 import { writeFileSync } from 'fs';
 import { join } from 'path';
@@ -44,46 +41,26 @@ export class UserService implements IUserService {
     @InjectModel(User.name)
     private readonly userRepository: Model<UserDocument>,
     private quizResponseServise: QuizResponseService
-  ) {
-    // this.initialize();
-  }
+  ) {}
 
-  // async initialize() {
-  //   await this.userRepository.create({
-  //     email: 'admin@obmdigitalfactory.com',
-  //     password: '$2b$10$Qm2p5uXQjFuUvmriNaKHDOGZnRWIEz562qQ5Nm0BBY8J0OLl4/j0u',
-  //     roles: ['ADMIN'],
-  //     status: 'ACTIVE',
-  //   });
-  // }
-
-  async create(
-    createUserDto: CreateUserDto,
-    requestUser: DecodedPayload
-  ): Promise<UserDocument> {
-    // check for existing
-
+  async create(createUserDto: CreateUserDto): Promise<UserDocument> {
     createUserDto.isDeleted = false;
     createUserDto.status = UserStatus.ACTIVE;
     const existingUser = await this.userRepository.findOne({
       email: createUserDto.email,
     });
-
-    console.log('createUserDto', createUserDto);
-
     if (existingUser) throw new ConflictException();
-
     const clone = { ...createUserDto };
     clone.createdBy = 'requestUser.email';
     clone.password = generateHashPassword(clone.registerCode);
     clone.roles = [Role.USER];
     return await this.userRepository.create(clone);
   }
-
   async createAll(createUserDto: CreateUserDto[]) {
     return await this.userRepository.create(createUserDto);
   }
 
+  // Find all users
   async findAll(query: DefaultQueryParams): Promise<Page<UserDocument>> {
     const { order, sortByField, limit, skip } = query;
     let findQuery: any;
@@ -92,14 +69,13 @@ export class UserService implements IUserService {
       .sort({ [sortByField]: order })
       .skip(skip * limit)
       .limit(limit);
-
     const data = await findQuery;
     const length = await this.userRepository.count();
-
     const page: PageData = { length, pageIndex: skip, pageSize: limit };
     return <Page<UserDocument>>{ data, page };
   }
 
+  //Find all with filters
   async findAllWithFilter(query: DefaultQueryParams): UserFindAllPromise {
     const { order, sortByField, limit, skip, projection, user } = query;
     let findQuery: any;
@@ -143,7 +119,6 @@ export class UserService implements IUserService {
 
     const data = await findQuery;
     const length = await this.userRepository.count();
-
     const page: PageData = { length, pageIndex: skip, pageSize: limit };
     return { data, page } as Page<UserDocument | ProjectionUserDataTableQuery>;
   }
@@ -163,23 +138,11 @@ export class UserService implements IUserService {
     return user;
   }
 
-  async findOne(
-    id: string,
-    requestUser: DecodedPayload
-  ): Promise<UserDocument> {
-    //
-    // if (!requestUser.roles.includes(Role.ADMIN)) {
-    //   user = await this.userRepository
-    //     .findOne({ email: requestUser.email }, new ProjectionUserBasic())
-    //     .exec();
-    // } else
-
+  async findOne(id: string): Promise<UserDocument> {
     let user: UserDocument;
-
     user = await this.userRepository
       .findOne({ _id: new ObjectId(id) }, new ProjectionUserDataTableQuery())
       .exec();
-
     checkToThrowError<User>(user);
     return user;
   }
@@ -201,25 +164,8 @@ export class UserService implements IUserService {
     updateUserDto: UpdateUserDto,
     requestUser: DecodedPayload
   ) {
-    console.log('updateUserDto', id);
-
-    // ids = requestUserRoleValidity(requestUser, id, updateUserDto);
     removePasswordField(updateUserDto);
-    // updateUserDto.modifiedBy = requestUser.sub;
-    //updateUserDto.status = UserStatus.REGISTERED;
-
     let x: IDoctorNotificatoin[];
-
-    // // only ROLE ADMIN can update others
-    // if (requestUser.roles.includes(Role.ADMIN)) {
-    //   return this.userRepository
-    //     .findOneAndUpdate({ _id: new ObjectId(id) }, updateUserDto, {
-    //       new: true,
-    //     })
-    //     .exec();
-    // } else {
-
-    // }
     if (updateUserDto.notification) {
       let newA: any[] = [];
       const excistedUser = await this.userRepository
@@ -227,13 +173,8 @@ export class UserService implements IUserService {
           _id: new ObjectId(id),
         })
         .exec();
-      // const exArray = excistedUser.notification;
-      // console.log('excistedUser', exArray);
       newA.push(updateUserDto.notification);
       updateUserDto.notification = newA;
-
-      console.log('hello notifications', updateUserDto.notification);
-
       return this.userRepository
         .findOneAndUpdate({ _id: new ObjectId(id) }, updateUserDto, {
           new: true,
@@ -246,10 +187,10 @@ export class UserService implements IUserService {
         })
         .exec();
     }
-    //updateUserDto.status = UserStatus.ACTIVE; //update status as ACTIVE for every user
   }
 
-  async updateAll(updateUserDto: UpdateUserDto, requestUser: DecodedPayload) {
+  // All doctors update
+  async updateAll(updateUserDto: UpdateUserDto) {
     removePasswordField(updateUserDto);
     if (updateUserDto.notification) {
       let newA: any[] = [];
@@ -272,22 +213,14 @@ export class UserService implements IUserService {
       .exec();
   }
 
-  async softDelete(
-    id: string,
-    updateUserDto: UpdateUserDto,
-    requestUser: DecodedPayload
-  ) {
+  // Remove user
+  async softDelete(id: string) {
     const updateUser: UpdateUserDto = {
       isDeleted: true,
     };
-
     return this.userRepository.deleteOne({ _id: new ObjectId(id) }).exec();
   }
 
-  /**
-   * Reset the password of a user based on email address
-   * @param credentials
-   */
   async changePassword(
     credentials: ChangePasswordDto,
     requestUser: DecodedPayload
@@ -409,12 +342,14 @@ export class UserService implements IUserService {
     }
   }
 
+  // Get all hospital
   async getHospitals(query?: DefaultQueryParams) {
     const users = await this.userRepository.find({ role: 'hospital' });
     const data = await users;
     return data;
   }
 
+  // Get all doctors
   async getDoctors(query?: DefaultQueryParams) {
     const users = await this.userRepository.find({ role: 'doctor' });
     const data = await users;
