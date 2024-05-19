@@ -288,7 +288,7 @@ export class UserService implements IUserService {
     const filename = join(process.cwd(), 'temp.csv');
     writeFileSync(filename, x);
   }
-
+  //
   // Get all hospital (Feature: Find nearby hospitals)
   async getHospitals(query?: DefaultQueryParams) {
     const users = await this.userRepository.find({ role: 'hospital' });
