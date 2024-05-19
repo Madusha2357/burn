@@ -43,6 +43,7 @@ export class UserService implements IUserService {
     private quizResponseServise: QuizResponseService
   ) {}
 
+  // Create doctor and hospital (Feature: User registration)
   async create(createUserDto: CreateUserDto): Promise<UserDocument> {
     createUserDto.isDeleted = false;
     createUserDto.status = UserStatus.ACTIVE;
@@ -60,7 +61,7 @@ export class UserService implements IUserService {
     return await this.userRepository.create(createUserDto);
   }
 
-  // Find all users
+  // Find all users (Feature: Admin table)
   async findAll(query: DefaultQueryParams): Promise<Page<UserDocument>> {
     const { order, sortByField, limit, skip } = query;
     let findQuery: any;
@@ -138,6 +139,7 @@ export class UserService implements IUserService {
     return user;
   }
 
+  // Get one user when login (Feature: Doctor/ Hospital get user notification)
   async findOne(id: string): Promise<UserDocument> {
     let user: UserDocument;
     user = await this.userRepository
@@ -147,18 +149,9 @@ export class UserService implements IUserService {
     return user;
   }
 
-  async findOneByEmail(email: string): Promise<UserDocument> {
-    const user = await this.userRepository.findOne({ email }).exec();
-    checkToThrowError<UserDocument>(user);
-    return user;
-  }
-
-  async findOneByPhoneNumber(phoneNumber: string): Promise<UserDocument> {
-    const user = await this.userRepository.findOne({ phoneNumber }).exec();
-    checkToThrowError<UserDocument>(user);
-    return user;
-  }
-
+  // When click the notify button in both hospital and doctors list, This will trigger.
+  // User upadate with notification
+  // Also in user dashboad we can manage the user details, In that case this will trigger also.
   async update(
     id: string,
     updateUserDto: UpdateUserDto,
@@ -189,7 +182,7 @@ export class UserService implements IUserService {
     }
   }
 
-  // All doctors update
+  // All doctors update (Feature: Notify all doctors)
   async updateAll(updateUserDto: UpdateUserDto) {
     removePasswordField(updateUserDto);
     if (updateUserDto.notification) {
@@ -207,13 +200,7 @@ export class UserService implements IUserService {
     }
   }
 
-  remove(id: string): Promise<User> {
-    return this.userRepository
-      .findByIdAndRemove({ _id: new ObjectId(id) })
-      .exec();
-  }
-
-  // Remove user
+  // Remove user  (Feature: Delete user in admin table)
   async softDelete(id: string) {
     const updateUser: UpdateUserDto = {
       isDeleted: true,
@@ -221,6 +208,7 @@ export class UserService implements IUserService {
     return this.userRepository.deleteOne({ _id: new ObjectId(id) }).exec();
   }
 
+  // Change password
   async changePassword(
     credentials: ChangePasswordDto,
     requestUser: DecodedPayload
@@ -250,6 +238,7 @@ export class UserService implements IUserService {
     throw new NotAcceptableException('Invalid input for password');
   }
 
+  // Download doc (Featrue: Admin panel download document)
   async downloadCsv(quizId: string) {
     let users: User[];
     if (quizId == '') {
@@ -300,6 +289,63 @@ export class UserService implements IUserService {
     writeFileSync(filename, x);
   }
 
+  // Get all hospital (Feature: Find nearby hospitals)
+  async getHospitals(query?: DefaultQueryParams) {
+    const users = await this.userRepository.find({ role: 'hospital' });
+    const data = await users;
+    return data;
+  }
+
+  // Get all doctors (Feature: Get avaialable doctors)
+  async getDoctors(query?: DefaultQueryParams) {
+    const users = await this.userRepository.find({ role: 'doctor' });
+    const data = await users;
+
+    const currentTime = new Date();
+    const currentHour = currentTime.getHours();
+    const currentMinute = currentTime.getMinutes();
+
+    const availableDoctors = data.filter((doctor) => {
+      if (doctor.timer && doctor.timer.length > 0) {
+        for (const timeRange of doctor.timer) {
+          const [start, end] = timeRange.split(' - ');
+          const [startHour, startMinute] = start.split(':').map(Number);
+
+          const [endHour, endMinute] = end.split(':').map(Number);
+
+          if (
+            (currentHour > startHour || currentHour === startHour) &&
+            (currentHour < endHour || currentHour === endHour)
+          ) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+    return availableDoctors;
+  }
+
+  // No need to consider
+
+  async findOneByEmail(email: string): Promise<UserDocument> {
+    const user = await this.userRepository.findOne({ email }).exec();
+    checkToThrowError<UserDocument>(user);
+    return user;
+  }
+
+  async findOneByPhoneNumber(phoneNumber: string): Promise<UserDocument> {
+    const user = await this.userRepository.findOne({ phoneNumber }).exec();
+    checkToThrowError<UserDocument>(user);
+    return user;
+  }
+
+  remove(id: string): Promise<User> {
+    return this.userRepository
+      .findByIdAndRemove({ _id: new ObjectId(id) })
+      .exec();
+  }
+
   async quizAttempCheck(id: string): Promise<boolean> {
     const user = await this.userRepository
       .findOne({ _id: new ObjectId(id) })
@@ -340,42 +386,5 @@ export class UserService implements IUserService {
     } catch (error) {
       console.error('Error while querying for users:', error);
     }
-  }
-
-  // Get all hospital
-  async getHospitals(query?: DefaultQueryParams) {
-    const users = await this.userRepository.find({ role: 'hospital' });
-    const data = await users;
-    return data;
-  }
-
-  // Get all doctors
-  async getDoctors(query?: DefaultQueryParams) {
-    const users = await this.userRepository.find({ role: 'doctor' });
-    const data = await users;
-
-    const currentTime = new Date();
-    const currentHour = currentTime.getHours();
-    const currentMinute = currentTime.getMinutes();
-
-    const availableDoctors = data.filter((doctor) => {
-      if (doctor.timer && doctor.timer.length > 0) {
-        for (const timeRange of doctor.timer) {
-          const [start, end] = timeRange.split(' - ');
-          const [startHour, startMinute] = start.split(':').map(Number);
-
-          const [endHour, endMinute] = end.split(':').map(Number);
-
-          if (
-            (currentHour > startHour || currentHour === startHour) &&
-            (currentHour < endHour || currentHour === endHour)
-          ) {
-            return true;
-          }
-        }
-      }
-      return false;
-    });
-    return availableDoctors;
   }
 }
