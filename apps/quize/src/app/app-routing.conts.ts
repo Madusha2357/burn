@@ -54,34 +54,34 @@ export function updateTitle(notifier$: Subject<void>) {
 function update(url: string, title: Title) {
   switch (url) {
     case `/${PATH_LOGIN}/${PATH_SIGNIN}`:
-      title.setTitle('Login | Damen Yachting');
+      title.setTitle('Burn Wise Aid');
       break;
     case `/${PATH_LOGIN}/${PATH_REGISTER_CODE}`:
-      title.setTitle('Validate unique code | Damen Yachting');
+      title.setTitle('Burn Wise Aid');
       break;
     case `/${PATH_LOGIN}/${PATH_USER_REGISTRATION}`:
-      title.setTitle('Registration | Damen Yachting');
+      title.setTitle('Burn Wise Aid');
       break;
     case `/${PATH_SITE}`:
-      title.setTitle('Challenge SeaXplorer 80 | Damen Yachting');
+      title.setTitle('Burn Wise Aid');
       break;
     case `/${PATH_SITE}/${PATH_SEAXPLORER}`:
-      title.setTitle('SeaXplorer 80 | Damen Yachting');
+      title.setTitle('Burn Wise Aid');
       break;
     case `/${PATH_SITE}/${PATH_ABOUT}`:
-      title.setTitle('About the Challenge | Damen Yachting');
+      title.setTitle('Burn Wise Aid');
       break;
     case `/${PATH_QUIZ}/${PATH_WELCOME}`:
-      title.setTitle('Welcome to the quiz | Damen Yachting');
+      title.setTitle('Burn Wise Aid');
       break;
     case `/${PATH_QUIZ}/${PATH_QUESTION}`:
-      title.setTitle('Quiz | Damen Yachting');
+      title.setTitle('Burn Wise Aid');
       break;
     case `/${PATH_QUIZ}/${PATH_QUIZ_FORM}`:
-      title.setTitle('Result | Damen Yachting');
+      title.setTitle('Burn Wise Aid');
       break;
     case `/${PATH_CHALLENGE}`:
-      title.setTitle('SeaXplorer Challenge | Damen Yachting');
+      title.setTitle('Burn Wise Aid');
       break;
   }
 }
